@@ -1,0 +1,13 @@
+
+body {
+  padding-top: 65px; 
+
+}
+/* ✅ Hide scrollbar for WebKit (Chrome, Safari, Edge) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
