@@ -3,8 +3,11 @@ import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeftLong, FaClipboardUser } from 'react-icons/fa6';
+import { useAuthContextData } from '../../../../../context/AuthProvider';
 
-const SignUpModalStep2 = ({setStep}) => {
+const SignUpModalStep2 = () => {
+   const { setStep } = useAuthContextData()
+
       const [mobile, setMobile] = useState(0)
       const [email, setEmail] = useState(false)
   return (

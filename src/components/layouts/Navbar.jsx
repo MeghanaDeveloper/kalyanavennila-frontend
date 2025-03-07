@@ -1,12 +1,13 @@
 import { useState } from "react";
 import SignUpModalLayout from "../../pages/auth/signUp/signUpModalLayout";
 import LoginModal from "../../pages/auth/login/loginModal";
+import { useAuthContextData } from "../../context/AuthProvider";
 
 
 const Navbar = () => {
+  const {isLoginOpen, setIsLoginOpen, isSignUpOpen, setIsSignUpOpen,} = useAuthContextData()
   const [isOpen, setIsOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
 
   return (
     <>
@@ -50,13 +51,13 @@ const Navbar = () => {
       {/* Sign Up Modal */}
       {
         isSignUpOpen &&
-        <SignUpModalLayout setIsSignUpOpen={setIsSignUpOpen}  setIsLoginOpen={setIsLoginOpen} />
+        <SignUpModalLayout  />
       }
 
       {/* Login Modal */}
       {
         isLoginOpen &&
-        <LoginModal  setIsSignUpOpen={setIsSignUpOpen} setIsLoginOpen={setIsLoginOpen} />
+        <LoginModal  />
       }
     </>
   );

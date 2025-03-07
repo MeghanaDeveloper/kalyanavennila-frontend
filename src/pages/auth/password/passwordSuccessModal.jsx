@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion as Motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
+import { useAuthContextData } from '../../../context/AuthProvider';
 
-const PasswordSuccessModal = ({setStep}) => {
+const PasswordSuccessModal = () => {
+  const { setStep} = useAuthContextData()
+
   return (
     <>
        <div className="text-center py-7">

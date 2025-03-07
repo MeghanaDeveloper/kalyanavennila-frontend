@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { IoLogInOutline } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
 import SignUpModalLayout from '../signUp/signUpModalLayout';
 import ForgotPassword from '../password/forgotPassword';
+import { useAuthContextData } from '../../../context/AuthProvider';
 
-const LoginModal = ({ setIsSignUpOpen, setIsLoginOpen}) => {
+const LoginModal = () => {
+  const { setStep, setIsSignUpOpen, setIsLoginOpen} = useAuthContextData()
+
   const [accountId, setaccountId] = useState(0)
   const [password, setpassword] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
   return (
     <>
       <div className="fixed inset-0  bg-opacity-30 backdrop-blur-md flex justify-center items-center z-50 py-5">
@@ -72,7 +74,8 @@ const LoginModal = ({ setIsSignUpOpen, setIsLoginOpen}) => {
               </div>
             </div>
 
-            <div onClick={() => [ setIsForgotPassword(true) ]}className="absolute right-5 top-[210px] text-primary text-md font-bold  underline transition-effects">Forgot Password ?</div>
+            <p onClick={ () => [setIsLoginOpen(false), setIsSignUpOpen(true), setStep(8)]} 
+            className="absolute right-5 top-[210px] text-primary text-md font-bold  underline transition-effects">Forgot Password ?</p>
 
             <div className='mt-6 mb-3'>
               <button className='button-styles'>Submit</button>
@@ -83,18 +86,11 @@ const LoginModal = ({ setIsSignUpOpen, setIsLoginOpen}) => {
 
           <ol className='pl-9 py-2 list-decimal'>
             <li className='py-2' >if your login is success, we will redirect to profile page</li>
-            <li className='py-2' > Don't have an account?{'  '}Go to SignUp Page{'  '}-{'  '}<span onClick={() => [setIsLoginOpen(false), setIsSignUpOpen(true)]} className="text-primary text-md font-bold  underline transition-effects">Sign Up</span></li>
-            <li className='py-2' >if you have registered but not generated go to password generation page{'  '}-{'  '} <span onClick={() => [setIsLoginOpen(false),]} className="text-primary text-md font-bold  underline transition-effects">Password Generation Page</span></li>
+            <li className='py-2' > Don't  have an account?{'  '}Go to SignUp Page{'  '}-{'  '}<span onClick={() => [setIsLoginOpen(false), setIsSignUpOpen(true)]} className="text-primary text-md font-bold  underline transition-effects">Sign Up</span></li>
+            <li className='py-2' >if you have registered but not generated go to password generation page{'  '}-{'  '} <span onClick={() => [setIsLoginOpen(false), setIsSignUpOpen(true), setStep(5)]} className="text-primary text-md font-bold  underline transition-effects">Password Generation Page</span></li>
           </ol>
         </div>
       </div>
-
-
-      {
-        isForgotPassword && (
-          <ForgotPassword/>
-        )
-      }
     </>
   )
 }

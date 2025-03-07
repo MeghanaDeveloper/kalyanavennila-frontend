@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeftLong, FaCircleUser } from 'react-icons/fa6';
+import { useAuthContextData } from '../../../../../context/AuthProvider';
 
 
-const SignupModalstep3 = ({setStep}) => { 
+const SignupModalstep3 = () => { 
+  const {setStep} = useAuthContextData()
+
     const [name, setname] = useState(0)
     const [mothertongue, setmothertongue] = useState(false)
     const [religion, setreligion] = useState(false)

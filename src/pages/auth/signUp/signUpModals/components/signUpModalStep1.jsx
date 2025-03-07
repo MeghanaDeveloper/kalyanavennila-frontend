@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { FaUser } from 'react-icons/fa6';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { motion as Motion, AnimatePresence } from "framer-motion";
+import { useAuthContextData } from '../../../../../context/AuthProvider';
 
-const SignUpModalStep1 = ({ setStep, setIsSignUpOpen }) => {
+const SignUpModalStep1 = () => {
+  const { setStep , setIsSignUpOpen} = useAuthContextData()
+
   const [createdBy, setCreatedBy] = useState("");
   const [gender, setGender] = useState("");
   return (
