@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import { motion as Motion, AnimatePresence } from "framer-motion";
@@ -6,10 +6,8 @@ import { FaArrowLeftLong, FaClipboardUser } from 'react-icons/fa6';
 import { useAuthContextData } from '../../../../../context/AuthProvider';
 
 const SignUpModalStep2 = () => {
-   const { setStep } = useAuthContextData()
+   const { setStep, formData,  handleChange , setFormData} = useAuthContextData()
 
-      const [mobile, setMobile] = useState(0)
-      const [email, setEmail] = useState(false)
   return (
     <>
     <FaArrowLeftLong onClick={() => setStep(1)} className="text-primary text-4xl transition-effects" />
@@ -32,8 +30,8 @@ const SignUpModalStep2 = () => {
               autoComplete="email"
               className="textbox-styles"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your email address"
 
             />
@@ -41,7 +39,7 @@ const SignUpModalStep2 = () => {
         </div>
 
         <AnimatePresence>
-          {email && (
+          {formData.email && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -52,9 +50,10 @@ const SignUpModalStep2 = () => {
 
               <PhoneInput
               required
+              name='mobile'
                 defaultCountry="IN"
-                value={mobile}
-                onChange={(value) => setMobile(value)}
+                value={formData.mobile}
+                onChange={(value) => setFormData({ ...formData, mobile: value })}
                 placeholder='Enter your Mobile number'
                 inputClassName="w-full border border-gray-200 rounded-md p-2 focus:ring-2 focus:ring-gray-500"
               />
@@ -65,7 +64,7 @@ const SignUpModalStep2 = () => {
 
       <div className='my-14'>
       <AnimatePresence>
-        {mobile && (
+        {formData.email && formData.mobile && (
           <Motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

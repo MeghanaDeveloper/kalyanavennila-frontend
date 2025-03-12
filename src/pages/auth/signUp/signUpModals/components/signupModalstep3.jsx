@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeftLong, FaCircleUser } from 'react-icons/fa6';
 import { useAuthContextData } from '../../../../../context/AuthProvider';
 
 
 const SignupModalstep3 = () => { 
-  const {setStep} = useAuthContextData()
+  const {setStep, formData,  handleChange, handleSubmit } = useAuthContextData()
 
-    const [name, setname] = useState(0)
-    const [mothertongue, setmothertongue] = useState(false)
-    const [religion, setreligion] = useState(false)
   return (
     <>
     <FaArrowLeftLong onClick={() => setStep(2)} className="text-primary text-4xl transition-effects" />
@@ -22,26 +19,26 @@ const SignupModalstep3 = () => {
 
     <form className="px-5 py-3">
         <div className='pb-9'>
-          <label htmlFor="name" className="label-styles">
+          <label htmlFor="fullName" className="label-styles">
             Bride/Groom Full Name
           </label>
           <div className="mt-2">
             <input
             required
-              id="name"
-              name="name"
-              type="name"
+              id="fullName"
+              name="fullName"
+              type="fullName"
               autoComplete="name"
               className="textbox-styles"
-              value={name}
-              onChange={(e) => setname(e.target.value)}
+              value={formData.fullName}
+              onChange={handleChange}
               placeholder="Full Name"
             />
           </div>
         </div>
 
         <AnimatePresence>
-          {name && (
+          {formData.fullName && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,18 +46,18 @@ const SignupModalstep3 = () => {
               transition={{ duration: 0.3 }}
             >
               <div className='pb-9'>
-                <label htmlFor="mt" className="label-styles">
+                <label htmlFor="motherTongue" className="label-styles">
                   Mother Tongue
                 </label>
                 <div className="mt-2">
                   <input
-                    id="mt"
-                    name="mt"
-                    type="mt"
-                    autoComplete="mt"
+                    id="motherTongue"
+                    name="motherTongue"
+                    type="motherTongue"
+                    autoComplete="motherTongue"
                     className="textbox-styles"
-                    value={mothertongue}
-                    onChange={(e) => setmothertongue(e.target.value)}
+                    value={formData.motherTongue}
+                    onChange={handleChange}
                     placeholder="Mother Tongue"
                     required
                   />
@@ -71,7 +68,7 @@ const SignupModalstep3 = () => {
         </AnimatePresence>
 
         <AnimatePresence>
-          {mothertongue && (
+          {formData.motherTongue && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -89,8 +86,8 @@ const SignupModalstep3 = () => {
                     type="religion"
                     autoComplete="religion"
                     className="textbox-styles"
-                    value={religion}
-                    onChange={(e) => setreligion(e.target.value)}
+                    value={formData.religion}
+                    onChange={handleChange}
                     placeholder="Religion"
                     required
                   />
@@ -101,14 +98,14 @@ const SignupModalstep3 = () => {
         </AnimatePresence>
 
       <AnimatePresence>
-        {religion && (
+        {formData.fullName && formData.motherTongue && formData.religion && (
           <Motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className="button-styles "
-            onClick={() => setStep(4)}
+            onClick={handleSubmit}
           >
             Submit
           </Motion.button>

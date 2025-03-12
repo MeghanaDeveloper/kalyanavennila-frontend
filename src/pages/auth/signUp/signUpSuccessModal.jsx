@@ -24,7 +24,7 @@ const SignUpSuccessModal = () => {
         </Motion.div>
 
         <h2 className="text-3xl font-bold text-primary my-5">
-          Account Created Successfully!
+          Your Account Verified <span className="block py-2">Successfully!</span> 
         </h2>
         <p className=" my-5">
           Your Account ID has been generated and <span className="block">sent to your registered email.</span> 
@@ -35,7 +35,7 @@ const SignUpSuccessModal = () => {
 
         <p
           className=" text-primary text-lg font-bold  underline transition-effects"
-          onClick={() => setStep(5)}
+          onClick={() => setStep(6)}
         >
           Go to Password Generation Page
         </p>

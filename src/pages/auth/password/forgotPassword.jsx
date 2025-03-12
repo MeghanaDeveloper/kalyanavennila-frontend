@@ -67,7 +67,7 @@ const ForgotPassword = () => {
         </div>
 
         <div className='mt-6 mb-3'>
-          <button  onClick={() => setStep(5)} className='button-styles'>Submit</button>
+          <button  onClick={() => setStep(6)} className='button-styles'>Submit</button>
         </div>
       </form>
     </>

@@ -33,7 +33,7 @@ const PasswordSuccessModal = () => {
    
            <p
             className="text-primary text-xl font-bold  underline transition-effects"
-             onClick={() => setStep(7)}
+             onClick={() => setStep(8)}
            >
              Go to Login Page
            </p>

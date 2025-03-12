@@ -74,7 +74,7 @@ const LoginModal = () => {
               </div>
             </div>
 
-            <p onClick={ () => [setIsLoginOpen(false), setIsSignUpOpen(true), setStep(8)]} 
+            <p onClick={ () => [setIsLoginOpen(false), setIsSignUpOpen(true), setStep(9)]} 
             className="absolute right-5 top-[210px] text-primary text-md font-bold  underline transition-effects">Forgot Password ?</p>
 
             <div className='mt-6 mb-3'>

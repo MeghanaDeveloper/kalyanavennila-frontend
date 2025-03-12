@@ -164,7 +164,7 @@ const PasswordGeneration = ({ isForgotPassword = false }) => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
               className="button-styles"
-              onClick={() => setStep(6)}
+              onClick={() => setStep(7)}
             >
               Submit
             </Motion.button>
