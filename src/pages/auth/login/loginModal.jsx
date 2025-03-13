@@ -1,16 +1,31 @@
 import React, {  useState } from 'react'
 import { IoLogInOutline } from "react-icons/io5";
-import { FaEye } from "react-icons/fa";
-import SignUpModalLayout from '../signUp/signUpModalLayout';
-import ForgotPassword from '../password/forgotPassword';
+import { FaEye , FaEyeSlash} from "react-icons/fa";
 import { useAuthContextData } from '../../../context/AuthProvider';
+import { loginData } from '../../../services/authAPI\'s';
+import { useNavigate } from "react-router-dom";
+
 
 const LoginModal = () => {
   const { setStep, setIsSignUpOpen, setIsLoginOpen} = useAuthContextData()
 
-  const [accountId, setaccountId] = useState(0)
-  const [password, setpassword] = useState(false)
+  const navigate = useNavigate()
+
+  const [accountId, setAccountId] = useState("")
+  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = async (e) => {
+      e.preventDefault()
+      console.log(accountId,password)
+       const response = await loginData(accountId,password);
+          if (response.success) {
+            setIsLoginOpen(false)
+            navigate('/profile')
+            setAccountId("")
+            setPassword("")
+          }
+  }
   return (
     <>
       <div className="fixed inset-0  bg-opacity-30 backdrop-blur-md flex justify-center items-center z-50 py-5">
@@ -44,7 +59,7 @@ const LoginModal = () => {
                   autoComplete="accountId"
                   className="textbox-styles"
                   value={accountId}
-                  onChange={(e) => setaccountId(e.target.value)}
+                  onChange={(e) => setAccountId(e.target.value)}
                   placeholder="Account Id"
                 />
               </div>
@@ -52,7 +67,7 @@ const LoginModal = () => {
 
             <div className='pb-12'>
               <label htmlFor="password" className="label-styles">
-                Create Password
+                 Password
               </label>
               <div className="mt-1 relative">
                 <input
@@ -61,7 +76,7 @@ const LoginModal = () => {
                   type={showPassword ? "text" : "password"} 
                   className="textbox-styles pr-10" 
                   value={password}
-                  onChange={(e) => setpassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter Password"
                   required
                 />
@@ -78,7 +93,7 @@ const LoginModal = () => {
             className="absolute right-5 top-[210px] text-primary text-md font-bold  underline transition-effects">Forgot Password ?</p>
 
             <div className='mt-6 mb-3'>
-              <button className='button-styles'>Submit</button>
+              <button type='submit' className='button-styles' onClick={handleSubmit} >Submit</button>
             </div>
           </form>
 

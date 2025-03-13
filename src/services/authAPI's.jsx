@@ -62,7 +62,7 @@ export const verifyOtp =  async ( otp) => {
 
         const response = await axios.post(`${BASE_URL}/verify-otp`, 
             {
-                "verifyOtp" : otp
+                otp : otp
             },
             {
                 headers: {
@@ -148,11 +148,11 @@ export const resendOtp =  async() => {
 
 
 //password
-export const createPassword =  async() => {
+export const createPassword =  async(passwordData) => {
     try{
         const signUpToken = sessionStorage.getItem('signUpToken');
 
-        const response = await axios.post(`${BASE_URL}/resend-otp`,{ },
+        const response = await axios.post(`${BASE_URL}/create-password`, passwordData,
             {
                 headers: {
                     Authorization: `Bearer ${signUpToken}`
@@ -190,3 +190,153 @@ export const createPassword =  async() => {
         };
     }
 }
+
+//login
+export const loginData = async (accountId,password) => {
+    try{
+        const signUpToken = sessionStorage.getItem('signUpToken');
+
+        const response = await axios.post(`${BASE_URL}/login`, 
+            {
+                accountId : accountId,
+                password: password
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${signUpToken}`
+                  },
+            }
+        )
+        if (response &&  response.status === 200) {
+            // const { token, loginDetails } = response.data;
+            // const { _id, role, email } = loginDetails;
+            // const userDetails = { _id, role, email }
+
+            // localStorage.setItem('loginToken', token);
+            // localStorage.setItem('userDetails', JSON.stringify(userDetails));
+            
+            //dispatch(loginSuccess({loginDetails}));
+            toast.success(response.data.message, {
+                position: "top-center",
+                autoClose: 3000 ,
+                 className: 'custom-toast'
+            });
+            return  { 
+                success: true, 
+                data: response.data 
+            };
+        }
+    }
+    catch (error) {
+        let errorMessages = [];
+        if (error.response && error.response.data && error.response.data.error) {
+            if (Array.isArray(error.response.data.error)) {
+                errorMessages = error.response.data.error.map(err => err.msg);
+            } else if (typeof error.response.data.error === 'string') {
+                errorMessages = [error.response.data.error];
+            } else {
+                errorMessages = ['An unknown error occurred'];
+            }
+        } else {
+            errorMessages = ['A network error occurred. Please try again later.'];
+        }
+        errorMessages.forEach(message => {
+            toast.error(message, {
+                position: "top-center",
+                autoClose: 5000,
+                className: 'custom-toast'
+            });
+        });
+        return { 
+            success: false, 
+            errors: errorMessages 
+        };
+    } 
+}
+
+//forgot password
+export const forgotPassword =  async(accountId, email) => {
+    try{
+        const response = await axios.post(`${BASE_URL}/forgot-password`,
+            {
+                accountId:accountId,
+                email:email
+            }
+        )
+        if (response && response.data.token && response.status === 200) {
+            sessionStorage.setItem("passwordToken", response.data.token);
+            toast.success(response.data.message, {
+                position: "top-center",
+                autoClose: 3000 ,
+                 className: 'custom-toast'
+            });
+            return  { 
+                success: true, 
+                data: response.data 
+            };
+        }
+    }
+    catch(error){
+        const errors = error.response.data.error 
+        toast.error(errors, {
+            position: "top-center",
+            autoClose: 3000,
+             className: 'custom-toast'
+          });
+          return { 
+            success: false, 
+            errors: errors 
+        };
+    }
+}
+
+//update password
+export const resetPassword =async  ( resetPasswordData)  => {
+    try{
+        const passwordToken = sessionStorage.getItem('passwordToken');
+
+        const response = await axios.post(`${BASE_URL}/reset-password`,resetPasswordData,
+            {
+                headers: {
+                    Authorization: `Bearer ${passwordToken}`
+                  },
+            }
+        )
+        if (response &&  response.status === 200) {
+            toast.success(response.data.message, {
+                position: "top-center",
+                autoClose: 3000 ,
+                 className: 'custom-toast'
+            });
+            return  { 
+                success: true, 
+                data: response.data 
+            };
+        }
+    }
+    catch(error){ 
+        let errorMessages = [];
+        if (error.response && error.response.data && error.response.data.error) {
+            if (Array.isArray(error.response.data.error)) {
+                errorMessages = error.response.data.error.map(err => err.msg);
+            } else if (typeof error.response.data.error === 'string') {
+                errorMessages = [error.response.data.error];
+            } else {
+                errorMessages = ['An unknown error occurred'];
+            }
+        } else {            
+            errorMessages = ['A network error occurred. Please try again later.'];
+        }
+        toast.error(errorMessages.join(', '), {
+            position: "top-center",
+            autoClose: 3000,
+             className: 'custom-toast'
+          });
+          return { 
+            success: false, 
+            errors: errorMessages 
+        };
+    }
+}
+
+

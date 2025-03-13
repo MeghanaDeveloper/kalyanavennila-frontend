@@ -2,12 +2,14 @@ import React from "react";
 import { motion as Motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { useAuthContextData } from "../../../context/AuthProvider";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+
 
 const SignUpSuccessModal = () => {
   const { setStep } = useAuthContextData()
 
   return (
-    <div className="text-center py-7">
+    <div className="text-center py-9">
       <div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -20,18 +22,37 @@ const SignUpSuccessModal = () => {
           transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
           className="flex justify-center"
         >
-          <FaCheckCircle className="text-green-500 text-7xl drop-shadow-md" />
+          <RiVerifiedBadgeFill className="text-green-500 text-6xl drop-shadow-md" />
         </Motion.div>
 
-        <h2 className="text-3xl font-bold text-primary my-5">
-          Your Account Verified <span className="block py-2">Successfully!</span> 
-        </h2>
-        <p className=" my-5">
-          Your Account ID has been generated and <span className="block">sent to your registered email.</span> 
-        </p>
-        <p className=" my-6">Check your email for confirmation.</p>
+        <h1 className="text-3xl font-bold text-primary my-4">
+  🎉 Congratulations! <span className="block py-2">Your Account is Verified!</span>
+</h1>
 
-        <p className=" my-6">If Account Id is generated then redirect to password generation page </p>
+<p className="my-3">
+  Your unique <span className="text-primary font-bold">Account ID</span> has been generated 
+  and sent to your <span className="block py-2">registered email address.</span>  
+</p>
+
+
+<p className="my-3">
+  Please check your inbox for the confirmation email.
+</p>
+
+
+
+<p className="my-3">
+  You will need this Account ID to log in and create your password.
+</p>
+
+<p className="my-3">
+  If you have received your Account ID, click below to proceed to the 
+  <span className="block py-2">Password Creation Page.</span>
+</p>
+
+<p className="my-6 text-red-600 font-semibold">
+  ⚠️ Important: Please **save your Account ID**. It will not be generated again!
+</p>
 
         <p
           className=" text-primary text-lg font-bold  underline transition-effects"

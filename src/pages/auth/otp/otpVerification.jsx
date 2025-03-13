@@ -5,7 +5,7 @@ import { useAuthContextData } from "../../../context/AuthProvider";
 import { resendOtp, verifyOtp } from "../../../services/authAPI's";
 
 const OTPVerification = () => {
-      const { setStep,   setIsSignUpOpen } = useAuthContextData()
+      const { setStep } = useAuthContextData()
 
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [timer, setTimer] = useState(90);
@@ -45,11 +45,12 @@ const OTPVerification = () => {
       return;
     }
     const otpString = otp.join("");
+    console.log(typeof otpString, otpString)
     try {
       const response = await verifyOtp(otpString);
       if (response.success) {
-        setOtp(Array(6).fill(""));
         setStep(5)
+        setOtp(Array(6).fill(""));
       }
     } catch (err) {
       toast.error("Invalid OTP. Please try again.", err.message);
@@ -71,12 +72,6 @@ const OTPVerification = () => {
 
   return (
     <>
-
-<p
-        onClick={() => setIsSignUpOpen(false)}
-        className="absolute top-5 right-5  text-primary text-lg font-bold  underline transition-effects">
-        Close
-      </p>
 
  <div className="flex justify-center items-center pt-10">
         <div className='rounded-full p-4 border-white border-2 bg-green-700/20'>
@@ -111,7 +106,7 @@ const OTPVerification = () => {
               onClick={handleResendOtp}
               disabled={!canResend}
               className={`${
-                canResend ? "text-primary" : "text-gray-400 cursor-not-allowed"
+                canResend ? "text-primary cursor-pointer" : "text-gray-400 cursor-not-allowed"
               }`}
             >
               Resend OTP

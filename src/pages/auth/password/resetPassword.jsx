@@ -3,43 +3,40 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuthContextData } from "../../../context/AuthProvider";
-import { createPassword } from "../../../services/authAPI's";
+import { resetPassword } from "../../../services/authAPI's";
 
-const PasswordGeneration = () => {
-  const { setStep } = useAuthContextData();
+const ResetPassword = () => {
+  const { setIsSignUpOpen} = useAuthContextData();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const [passwordData,setPasswordData] = useState({
-    accountId:"",
-    password:"",
-    confirmPassword:""
+  const [resetPasswordData, setResetPasswordData] = useState({
+    accountId: '',
+    temporaryPassword: '',
+    newPassword: '',
+    confirmPassword: ''
   })
 
   const handleChange = (e) => {
-    setPasswordData({
-      ...passwordData,
+    setResetPasswordData({
+      ...resetPasswordData,
       [e.target.name]: e.target.value
     });
   };
 
+
   const handleSubmit = async (e) => {
-      e.preventDefault()
-      console.log(passwordData)
-       const response = await createPassword(passwordData);
-          if (response.success) {
-            setStep(7)
-            setPasswordData({
-              accountCreatedBy: '',
-              gender: '',
-              email: '',
-              mobile: '',
-              fullName: '',
-              motherTongue: '',
-              religion: ''
-            });
-          }
+    e.preventDefault()
+    const response = await resetPassword(resetPasswordData);
+    if (response.success) {
+      setIsSignUpOpen(false)
+      setResetPasswordData({
+        accountId: '',
+        temporaryPassword: '',
+        newPassword: '',
+        confirmPassword: ''
+      });
+    }
   }
 
   return (
@@ -51,10 +48,9 @@ const PasswordGeneration = () => {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-primary text-center py-4">Generate Password</h2>
+      <h2 className="text-2xl font-bold text-primary text-center py-4">Change Password</h2>
 
       <form className="px-5 py-3">
-        {/* Account ID Input */}
         <div className="pb-9">
           <label htmlFor="accountId" className="label-styles">
             Account ID
@@ -66,16 +62,15 @@ const PasswordGeneration = () => {
               name="accountId"
               type="text"
               className="textbox-styles"
-              value={passwordData.accountId}
+              value={resetPasswordData.accountId}
               onChange={handleChange}
               placeholder="Enter Account ID"
             />
           </div>
         </div>
 
-        {/* Password Fields */}
         <AnimatePresence>
-          {passwordData.accountId && (
+          {resetPasswordData.accountId && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,16 +78,45 @@ const PasswordGeneration = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="pb-9 relative">
-                <label htmlFor="password" className="label-styles">
-                  Create Password
+                <label htmlFor="temporaryPassword" className="label-styles">
+                  Temporary Password
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="temporaryPassword"
+                    name="temporaryPassword"
+                    type="text"
+                    className="textbox-styles"
+                    value={resetPasswordData.temporaryPassword}
+                    onChange={handleChange}
+                    placeholder="Enter Temporary Password"
+                    required
+                  />
+                </div>
+              </div>
+            </Motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {resetPasswordData.temporaryPassword && (
+            <Motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="pb-9 relative">
+                <label htmlFor="newPassword" className="label-styles">
+                  New Password
                 </label>
                 <div className="mt-2 relative">
                   <input
-                    id="password"
-                    name="password"
+                    id="newPassword"
+                    name="newPassword"
                     type={showPassword ? "text" : "password"}
                     className="textbox-styles pr-10"
-                    value={passwordData.password}
+                    value={resetPasswordData.newPassword}
                     onChange={handleChange}
                     placeholder="Enter New Password"
                     required
@@ -109,9 +133,8 @@ const PasswordGeneration = () => {
           )}
         </AnimatePresence>
 
-        {/* Confirm Password Field */}
         <AnimatePresence>
-          {passwordData.password && (
+          {resetPasswordData.newPassword && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,7 +151,7 @@ const PasswordGeneration = () => {
                     name="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     className="textbox-styles pr-10"
-                    value={passwordData.confirmPassword}
+                    value={resetPasswordData.confirmPassword}
                     onChange={handleChange}
                     placeholder="Re-enter Password"
                     required
@@ -147,7 +170,7 @@ const PasswordGeneration = () => {
 
         {/* Submit Button */}
         <AnimatePresence>
-          {passwordData.accountId && passwordData.password && passwordData.confirmPassword && (
+          {resetPasswordData.accountId && resetPasswordData.temporaryPassword && resetPasswordData.newPassword && resetPasswordData.confirmPassword && (
             <Motion.button
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -163,6 +186,6 @@ const PasswordGeneration = () => {
       </form>
     </>
   );
-};
+};  
 
-export default PasswordGeneration;
+export default ResetPassword;

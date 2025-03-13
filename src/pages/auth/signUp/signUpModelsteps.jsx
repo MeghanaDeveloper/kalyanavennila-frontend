@@ -9,6 +9,7 @@ import ForgotPassword from '../password/forgotPassword';
 import LoginModal from '../login/loginModal';
 import { useAuthContextData } from '../../../context/AuthProvider';
 import OTPVerification from '../otp/otpVerification';
+import ResetPassword from '../password/resetPassword';
 
 const SignUpModalsteps = () => {
   const { step } = useAuthContextData();
@@ -24,6 +25,7 @@ const SignUpModalsteps = () => {
       {step === 7 && <PasswordSuccessModal />}
       {step === 8 && <LoginModal />}
       {step === 9 && <ForgotPassword />}
+      {step === 10 && <ResetPassword />}
     </div>
   );
 };

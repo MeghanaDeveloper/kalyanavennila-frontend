@@ -5,12 +5,23 @@ import { FaEye } from "react-icons/fa";
 import SignUpModalLayout from '../signUp/signUpModalLayout';
 import PasswordGeneration from '../password/PasswordGeneration';
 import { useAuthContextData } from '../../../context/AuthProvider';
+import { forgotPassword } from '../../../services/authAPI\'s';
 
 const ForgotPassword = () => {
   const { setStep,   setIsSignUpOpen } = useAuthContextData()
 
-  const [accountId, setaccountId] = useState(0)
-  const [email, setemail] = useState(false)
+  const [accountId, setAccountId] = useState('')
+  const [email, setEmail] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+         const response = await forgotPassword(accountId,email);
+            if (response.success) {
+              setStep(10)
+              setAccountId("")
+              setEmail("")
+            }
+    }
 
   return (
     <>
@@ -42,7 +53,7 @@ const ForgotPassword = () => {
               autoComplete="accountId"
               className="textbox-styles"
               value={accountId}
-              onChange={(e) => setaccountId(e.target.value)}
+              onChange={(e) => setAccountId(e.target.value)}
               placeholder="Account Id"
             />
           </div>
@@ -59,7 +70,7 @@ const ForgotPassword = () => {
               type='email'
               className="textbox-styles pr-10"
               value={email}
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter email"
               required
             />
@@ -67,7 +78,7 @@ const ForgotPassword = () => {
         </div>
 
         <div className='mt-6 mb-3'>
-          <button  onClick={() => setStep(6)} className='button-styles'>Submit</button>
+          <button  onClick={handleSubmit} className='button-styles'>Submit</button>
         </div>
       </form>
     </>
