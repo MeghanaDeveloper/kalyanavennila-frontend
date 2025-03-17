@@ -4,20 +4,29 @@ import 'react-international-phone/style.css';
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeftLong, FaClipboardUser } from 'react-icons/fa6';
 import { useAuthContextData } from '../../../../../context/AuthProvider';
+import { IoMdClose } from "react-icons/io";
+
 
 const SignUpModalStep2 = () => {
-   const { setStep, formData,  handleChange , setFormData} = useAuthContextData()
+  const { setStep, formData, handleChange, setFormData, setIsSignUpOpen } = useAuthContextData()
 
   return (
     <>
-    <FaArrowLeftLong onClick={() => setStep(1)} className="text-primary text-4xl transition-effects" />
-
-    <div className="flex justify-center items-center pb-5">
-      <div className='rounded-full p-4 border-2 border-white bg-[#800000]/10'>
-        <FaClipboardUser className="text-[#800000]/40 text-3xl " />
+      <div className='flex justify-between items-center pb-5'>
+        <FaArrowLeftLong onClick={() => setStep(1)} className="text-primary text-xl transition-effects" />
+        <IoMdClose
+          onClick={() => [setIsSignUpOpen(false)]}
+          className=" text-primary text-xl transition-effects">
+        </IoMdClose>
       </div>
-    </div>
-    <form className="px-5 py-3">
+
+      <div className="flex justify-center items-center pb-5">
+        <div className='rounded-full p-4 border-2 border-white bg-[#800000]/10'>
+          <FaClipboardUser className="text-[#800000]/40 text-3xl " />
+        </div>
+      </div>
+
+      <form className="px-5 py-3">
         <div className='pb-9'>
           <label htmlFor="email" className="label-styles">
             Email address
@@ -49,8 +58,8 @@ const SignUpModalStep2 = () => {
               <label className="label-styles">Phone Number</label>
 
               <PhoneInput
-              required
-              name='mobile'
+                required
+                name='mobile'
                 defaultCountry="IN"
                 value={formData.mobile}
                 onChange={(value) => setFormData({ ...formData, mobile: value })}
@@ -62,24 +71,24 @@ const SignUpModalStep2 = () => {
           )}
         </AnimatePresence>
 
-      <div className='my-14'>
-      <AnimatePresence>
-        {formData.email && formData.mobile && (
-          <Motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="button-styles "
-            onClick={() => setStep(3)}
-          >
-            Next
-          </Motion.button>
-        )}
-      </AnimatePresence>
-      </div>
-    </form>
-  </>
+        <div className='my-14'>
+          <AnimatePresence>
+            {formData.email && formData.mobile && (
+              <Motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="button-styles "
+                onClick={() => setStep(3)}
+              >
+                Next
+              </Motion.button>
+            )}
+          </AnimatePresence>
+        </div>
+      </form>
+    </>
   )
 }
 

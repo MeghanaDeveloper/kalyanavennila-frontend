@@ -3,17 +3,17 @@ import { FaUser } from 'react-icons/fa6';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { useAuthContextData } from '../../../../../context/AuthProvider';
+import { IoMdClose } from "react-icons/io";
 
 const SignUpModalStep1 = () => {
-  const { setStep , setIsSignUpOpen, formData,  handleChange} = useAuthContextData()
+  const { setStep, setIsSignUpOpen, formData, handleChange } = useAuthContextData()
 
   return (
     <>
-      <p
-        onClick={() => setIsSignUpOpen(false)}
-        className="absolute top-5 right-5  text-primary text-lg font-bold  underline transition-effects">
-        GoBack
-      </p>
+      <IoMdClose
+        onClick={() => [setIsSignUpOpen(false)]}
+        className="absolute top-5 right-5  text-primary text-lg transition-effects">
+      </IoMdClose>
 
       <div className="flex justify-center items-center pt-6 lg:pt-10 ">
         <div className='rounded-full p-4 border-2 border-white bg-primary/10'>
@@ -28,7 +28,7 @@ const SignUpModalStep1 = () => {
           <label className="label-styles">Created By</label>
           <div className="mt-2 relative">
             <select
-            name='accountCreatedBy'
+              name='accountCreatedBy'
               value={formData.accountCreatedBy}
               onChange={handleChange}
               className="dropdown-styles"
@@ -58,8 +58,8 @@ const SignUpModalStep1 = () => {
               <label className="label-styles">Bride/Groom Gender</label>
               <div className="mt-2 relative">
                 <select
-                name='gender'
-                value={formData.gender}
+                  name='gender'
+                  value={formData.gender}
                   onChange={handleChange}
                   className="dropdown-styles"
                   required
@@ -76,7 +76,7 @@ const SignUpModalStep1 = () => {
 
         <div className='my-6 sm:my-10'>
           <AnimatePresence>
-            { formData.accountCreatedBy && formData.gender && (
+            {formData.accountCreatedBy && formData.gender && (
               <Motion.button
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}

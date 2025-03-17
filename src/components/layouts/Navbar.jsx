@@ -1,11 +1,11 @@
 import { useState } from "react";
-import SignUpModalLayout from "../../pages/auth/signUp/signUpModalLayout";
 import LoginModal from "../../pages/auth/login/loginModal";
 import { useAuthContextData } from "../../context/AuthProvider";
+import AuthModalLayout from "./authModalLayout";
 
 
 const Navbar = () => {
-  const {isLoginOpen, setIsLoginOpen, isSignUpOpen, setIsSignUpOpen,} = useAuthContextData()
+  const {isLoginOpen, setIsLoginOpen, isSignUpOpen, setIsSignUpOpen, setStep} = useAuthContextData()
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -20,8 +20,8 @@ const Navbar = () => {
             <a href="#" className="hover:text-gray-300">Find Your Match</a>
             <a href="#" className="hover:text-gray-300">About Us</a>
             <a href="#" className="hover:text-gray-300">Contact Us</a> */}
-            <p onClick={() => setIsSignUpOpen(true)} className=" border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Sign Up</p>
-            <p onClick={() => setIsLoginOpen(true)} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects">Login</p>
+            <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className=" border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Sign Up</p>
+            <p onClick={() => [setIsLoginOpen(true), setStep(8)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects">Login</p>
             {/* <img
               alt="Profile"
               src="https://via.placeholder.com/40"
@@ -42,16 +42,16 @@ const Navbar = () => {
             <a href="#" className="hover:text-gray-300">Find Your Match</a>
             <a href="#" className="hover:text-gray-300">About Us</a>
             <a href="#" className="hover:text-gray-300">Contact Us</a> */}
-            <p onClick={() => setIsSignUpOpen(true)} className=" rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Sign Up</p>
-            <p onClick={() => setIsLoginOpen(true)} className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition-effects">Login</p>
+            <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className=" rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Sign Up</p>
+            <p onClick={() =>[setIsLoginOpen(true), setStep(8)]} className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition-effects">Login</p>
           </div>
         )}
       </nav>
-
+ 
       {/* Sign Up Modal */}
       {
         isSignUpOpen &&
-        <SignUpModalLayout  />
+        <AuthModalLayout  />
       }
 
       {/* Login Modal */}

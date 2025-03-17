@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState } from 'react'
-import { signUp } from '../services/authAPI\'s';
+//import { signUp } from '../services/authAPI\'s';
 //import { useDispatch } from 'react-redux';
 
 
@@ -29,27 +29,11 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const response = await signUp(formData);
-    if (response.success) {
-      setStep(4)
-      setFormData({
-        accountCreatedBy: '',
-        gender: '',
-        email: '',
-        mobile: '',
-        fullName: '',
-        motherTongue: '',
-        religion: ''
-      });
-    }
-  }
-
+  
   return (
     <>
       <AuthContext.Provider value={{
-        step, setStep, isSignUpOpen, setIsSignUpOpen, isLoginOpen, setIsLoginOpen, formData, setFormData, handleChange, handleSubmit
+        step, setStep, isSignUpOpen, setIsSignUpOpen, isLoginOpen, setIsLoginOpen, formData, setFormData, handleChange
 
       }}
       >

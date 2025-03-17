@@ -1,17 +1,17 @@
 import React from 'react';
-import SignUpModalStep1 from './signUpModals/components/signUpModalStep1';
-import SignUpModalStep2 from './signUpModals/components/signUpModalStep2';
-import SignupModalstep3 from './signUpModals/components/signupModalstep3';
+import SignUpModalStep1 from '../signUp/signUpModals/components/signUpModalStep1';
+import SignUpModalStep2 from '../signUp/signUpModals/components/signUpModalStep2';
+import SignupModalstep3 from '../signUp/signUpModals/components/signupModalstep3';
 import PasswordGeneration from '../password/PasswordGeneration';
 import PasswordSuccessModal from '../password/passwordSuccessModal';
-import SignUpSuccessModal from './signUpSuccessModal';
+import SignUpSuccessModal from '../signUp/signUpSuccessModal';
 import ForgotPassword from '../password/forgotPassword';
 import LoginModal from '../login/loginModal';
 import { useAuthContextData } from '../../../context/AuthProvider';
 import OTPVerification from '../otp/otpVerification';
 import ResetPassword from '../password/resetPassword';
 
-const SignUpModalsteps = () => {
+const AuthModalsteps = () => {
   const { step } = useAuthContextData();
 
   return (
@@ -30,4 +30,4 @@ const SignUpModalsteps = () => {
   );
 };
 
-export default SignUpModalsteps;
+export default AuthModalsteps;

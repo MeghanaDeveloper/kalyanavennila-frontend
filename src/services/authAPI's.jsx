@@ -314,27 +314,19 @@ export const resetPassword =async  ( resetPasswordData)  => {
             };
         }
     }
-    catch(error){ 
-        let errorMessages = [];
-        if (error.response && error.response.data && error.response.data.error) {
-            if (Array.isArray(error.response.data.error)) {
-                errorMessages = error.response.data.error.map(err => err.msg);
-            } else if (typeof error.response.data.error === 'string') {
-                errorMessages = [error.response.data.error];
-            } else {
-                errorMessages = ['An unknown error occurred'];
-            }
-        } else {            
-            errorMessages = ['A network error occurred. Please try again later.'];
-        }
-        toast.error(errorMessages.join(', '), {
+    catch(error){
+        const errors = error.response.data.error 
+        toast.error(errors, {
             position: "top-center",
-            autoClose: 3000,
-             className: 'custom-toast'
+            duration: 5000,
+            style: {
+                border: '3px solid red',
+                padding: '16px',
+              }
           });
           return { 
             success: false, 
-            errors: errorMessages 
+            errors: errors 
         };
     }
 }

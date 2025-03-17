@@ -1,13 +1,20 @@
 import React from 'react'
 import { motion as Motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
-
+import { IoMdClose } from "react-icons/io";
+import { useAuthContextData } from '../../../context/AuthProvider';
 
 const PasswordSuccessModal = () => {
+  const { setIsSignUpOpen } = useAuthContextData();
 
   return (
     <>
-      <div className="text-center py-7">
+      <IoMdClose
+        onClick={() => [setIsSignUpOpen(false)]}
+        className="absolute top-5 right-5  text-primary text-lg transition-effects">
+      </IoMdClose>
+
+      <div className="text-center py-5">
         <div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
