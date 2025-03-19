@@ -7,9 +7,9 @@ import missionImage from '../../assets/vission.webp';
 import bgAbout from '../../assets/bg-about.jpg';
 import Footer from "../../components/layouts/Footer";
 import Navbar from "../../components/layouts/Navbar";
-import { motion as Motion} from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
-const About = () => {
+const AboutPage = () => {
     return (
         <>
             <Navbar />
@@ -104,27 +104,27 @@ const About = () => {
                 </Motion.div>
             </section>
 
-            <section className="bg-[#F9F9F9] py-12 text-center">
+            <section className="bg-[#F9F9F9] py-10 text-center">
                 <Motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                     className="max-w-4xl mx-auto px-6"
                 >
-                    <h2 className="text-3xl font-bold text-gray-900">Find Your Life Partner with Us!</h2>
-                    <p className="mt-4 text-lg text-gray-700">
+                    <h2 className="text-3xl font-bold text-primary py-3">Find Your Life Partner with Us!</h2>
+                    <p className="my-4 text-lg text-gray-700">
                         Join the most **trusted matchmaking platform** and start your journey today.
                     </p>
-                    <p className="mt-2 text-md text-gray-600">
+                    <p className="my-2 pb-7 text-md text-gray-600">
                         With thousands of success stories, we help you find a match based on **values, compatibility, and trust**.
                     </p>
-                    <button className="mt-6 bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300">
+                    <button className="button-styles">
                         Register Now
                     </button>
                 </Motion.div>
             </section>
 
-            <section className="bg-[#FDF6F0] py-12 text-center">
+            <section className="bg-[#FDF6F0] py-10 text-center">
                 <Motion.div
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -134,37 +134,37 @@ const About = () => {
                     <h2 className="text-3xl font-bold text-primary mb-6">How It Works</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Motion.div
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.08 }}
                             transition={{ duration: 0.3 }}
-                            className="bg-white p-6 shadow-lg rounded-lg transition-all"
+                            className="bg-white p-6 shadow-lg cursor-pointer rounded-lg transition-all"
                         >
                             <span className="text-4xl text-primary">📋</span>
-                            <h3 className="text-xl font-semibold text-gray-800 mt-4">1. Create Your Profile</h3>
-                            <p className="text-gray-600 mt-2">
+                            <h3 className="text-xl font-bold text-primary my-4">1. Create Your Profile</h3>
+                            <p className="text-gray-600 my-2">
                                 Sign up and share details about yourself, your lifestyle, and what you're looking for in a partner.
                             </p>
                         </Motion.div>
 
                         <Motion.div
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.08 }}
                             transition={{ duration: 0.3 }}
-                            className="bg-white p-6 shadow-lg rounded-lg transition-all"
+                            className="bg-white p-6 shadow-lg cursor-pointer rounded-lg transition-all"
                         >
                             <span className="text-4xl text-primary">💖</span>
-                            <h3 className="text-xl font-semibold text-gray-800 mt-4">2. Find Compatible Matches</h3>
-                            <p className="text-gray-600 mt-2">
+                            <h3 className="text-xl font-bold text-primary my-4">2. Find Compatible Matches</h3>
+                            <p className="text-gray-600 my-2">
                                 Our advanced **AI-powered matching** system finds potential partners based on shared interests and values.
                             </p>
                         </Motion.div>
 
                         <Motion.div
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.08 }}
                             transition={{ duration: 0.3 }}
-                            className="bg-white p-6 shadow-lg rounded-lg transition-all"
+                            className="bg-white p-6 shadow-lg cursor-pointer rounded-lg transition-all"
                         >
                             <span className="text-4xl text-primary">💬</span>
-                            <h3 className="text-xl font-semibold text-gray-800 mt-4">3. Connect & Communicate</h3>
-                            <p className="text-gray-600 mt-2">
+                            <h3 className="text-xl font-bold text-primary my-4">3. Connect & Communicate</h3>
+                            <p className="text-gray-600 my-2">
                                 Chat securely with your matches, build a connection, and take the **next step towards a happy marriage**.
                             </p>
                         </Motion.div>
@@ -172,9 +172,70 @@ const About = () => {
                 </Motion.div>
             </section>
 
-           <Footer />
+            <section className="bg-[#FDF6F0] py-10">
+                <Motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="max-w-7xl mx-auto px-6"
+                >
+                    <h2 className="text-3xl font-bold text-primary text-center mb-6">Contact Us</h2>
+                    <p className="text-gray-700 text-center mb-10">
+                        Have questions? Need assistance? Reach out to us, and we’ll be happy to help!
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white shadow-lg rounded-lg p-8">
+                        <div className="space-y-6 text-left">
+                            <div className="flex items-center gap-4">
+                                <span className="text-3xl text-primary">📞</span>
+                                <div>
+                                    <p className="text-lg font-semibold text-gray-800">Phone</p>
+                                    <p className="text-gray-600">+91 98765 43210</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                                <span className="text-3xl text-primary">📧</span>
+                                <div>
+                                    <p className="text-lg font-semibold text-gray-800">Email</p>
+                                    <p className="text-gray-600">info@kalyanavennila.com</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                                <span className="text-3xl text-primary">📍</span>
+                                <div>
+                                    <p className="text-lg font-semibold text-gray-800">Address</p>
+                                    <p className="text-gray-600">Chennai, Tamil Nadu, India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form className="space-y-4">
+                            <div>
+                                <label className="label-styles">Your Name</label>
+                                <input type="text" className="textbox-styles" placeholder="Enter your name" />
+                            </div>
+                            <div>
+                                <label className="label-styles">Your Email</label>
+                                <input type="email" className="textbox-styles" placeholder="Enter your email" />
+                            </div>
+                            <div className="pb-5">
+                                <label className="label-styles">Message</label>
+                                <textarea className="textbox-styles" placeholder="Write your message..." rows="4"></textarea>
+                            </div>
+                            <button type="submit" className="button-styles">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </Motion.div>
+            </section>
+
+
+            <Footer />
         </>
     );
 };
 
-export default About;
+export default AboutPage;

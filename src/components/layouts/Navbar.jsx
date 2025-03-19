@@ -13,7 +13,7 @@ const Navbar = () => {
     <>
       <nav className="padding-lr bg-primary p-4 shadow-md fixed top-0 left-0 w-full text-white z-50">
         <div className="container   mx-auto flex justify-between items-center">
-          <a href='#' className=" text-2xl font-bold cursor-pointer">Kalyana Vennila</a>
+          <a href='/' className=" text-2xl font-bold cursor-pointer">Kalyana Vennila</a>
 
           <div className="hidden md:flex items-center space-x-6  font-medium">
             {/* <a href="#" className="hover:text-gray-300">Home</a>

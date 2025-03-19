@@ -66,7 +66,7 @@ const OTPVerification = () => {
     try {
       const response = await resendOtp();
       if (response.success) {
-        setTimer(120);
+        setTimer(90);
         setOtp(Array(6).fill(""));
         setCanResend(false);
       }
