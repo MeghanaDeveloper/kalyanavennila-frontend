@@ -5,15 +5,12 @@ import success2 from '../../assets/success-2.jpg';
 import success3 from '../../assets/success-3.jpg';
 import missionImage from '../../assets/vission.webp';
 import bgAbout from '../../assets/bg-about.jpg';
-import Footer from "../../components/layouts/Footer";
-import Navbar from "../../components/layouts/Navbar";
+import valueImage from '../../assets/value-image.png'
 import { motion as Motion } from "framer-motion";
 
 const AboutPage = () => {
     return (
         <>
-            <Navbar />
-
             <section className="relative bg-cover bg-center py-20 text-center text-white" style={{ backgroundImage: `url(${bgAbout})` }}>
                 <div className="bg-black/50 absolute inset-0"></div>
                 <div className="relative z-10 max-w-4xl mx-auto">
@@ -33,6 +30,25 @@ const AboutPage = () => {
                             <p className="text-gray-600">
                                 We come from a family deeply rooted in Tamil culture and values. Our journey started in Mayiladuthurai, Tamil Nadu, and expanded to Chennai and Hyderabad.
                                 At Kalyana Vennila, we believe that marriage is not just about two individuals but about two families coming together in love and harmony.
+                            </p>
+                            <p className="text-gray-600 mt-3">
+                                Our platform is built with **trust, authenticity, and modern technology** to help people find their ideal life partners.
+                            </p>
+                        </div>
+                    </div>
+                </Motion.div>
+            </section>
+
+            <section className="bg-[#FFF8F2] py-10 text-center">
+                <Motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-7xl mx-auto px-6">
+                    <div className="bg-white rounded-lg p-10 shadow-lg flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-8">
+                        <img src={valueImage} alt="About Us" className="w-80 h-80 object-cover rounded-lg" />
+                        <div className="text-left">
+                            <h2 className="text-3xl font-bold text-primary mb-4">Our Value</h2>
+                            <p className="text-gray-600">
+                                My great grandfather Narayanaswamy Iyer and grandfather Ramachandran Iyer who led a very austere life,
+                                always believed and stressed while we are progressing as a society and accepting scientific development,
+                                we should not lose our traditional and moral values which are deep rooted in our social system.
                             </p>
                             <p className="text-gray-600 mt-3">
                                 Our platform is built with **trust, authenticity, and modern technology** to help people find their ideal life partners.
@@ -231,9 +247,6 @@ const AboutPage = () => {
                     </div>
                 </Motion.div>
             </section>
-
-
-            <Footer />
         </>
     );
 };

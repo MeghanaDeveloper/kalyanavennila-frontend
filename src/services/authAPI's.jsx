@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { loginUser } from '../redux/slices/authSlice';
 
 const BASE_URL = import.meta.env.VITE_BASE_AUTH_URL;
 
@@ -8,7 +9,7 @@ export const signUp = async (formData) => {
         const response = await axios.post(`${BASE_URL}/registration`, formData);
 
         if (response && response.data.token && response.status === 200) {
-            sessionStorage.setItem("signUpToken", response.data.token);
+            localStorage.setItem("signUpToken", response.data.token);
             toast.success(response.data.message, {
                 position: "top-center",
                 duration: 3000,
@@ -58,7 +59,7 @@ export const signUp = async (formData) => {
 //verify otp
 export const verifyOtp =  async ( otp) => {
     try{
-        const signUpToken = sessionStorage.getItem('signUpToken');
+        const signUpToken = localStorage.getItem('signUpToken');
 
         const response = await axios.post(`${BASE_URL}/verify-otp`, 
             {
@@ -105,7 +106,7 @@ export const verifyOtp =  async ( otp) => {
 //resend otp
 export const resendOtp =  async() => {
     try{
-        const signUpToken = sessionStorage.getItem('signUpToken');
+        const signUpToken = localStorage.getItem('signUpToken');
 
         const response = await axios.post(`${BASE_URL}/resend-otp`,{ },
             {
@@ -150,7 +151,7 @@ export const resendOtp =  async() => {
 //password
 export const createPassword =  async(passwordData) => {
     try{
-        const signUpToken = sessionStorage.getItem('signUpToken');
+        const signUpToken = localStorage.getItem('signUpToken');
 
         const response = await axios.post(`${BASE_URL}/create-password`, passwordData,
             {
@@ -192,30 +193,20 @@ export const createPassword =  async(passwordData) => {
 }
 
 //login
-export const loginData = async (accountId,password) => {
+export const loginData = ( accountId, password) => async (dispatch) => {
     try{
-        const signUpToken = sessionStorage.getItem('signUpToken');
-
         const response = await axios.post(`${BASE_URL}/login`, 
             {
                 accountId : accountId,
                 password: password
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${signUpToken}`
-                  },
             }
         )
-        if (response &&  response.status === 200) {
-            // const { token, loginDetails } = response.data;
-            // const { _id, role, email } = loginDetails;
-            // const userDetails = { _id, role, email }
-
-            // localStorage.setItem('loginToken', token);
-            // localStorage.setItem('userDetails', JSON.stringify(userDetails));
-            
-            //dispatch(loginSuccess({loginDetails}));
+        console.log('response')
+        console.log(response)
+        if (response &&  response.status === 200 && response.data.token) {
+            console.log(response)
+            localStorage.setItem("loginToken", response.data.token);            
+            dispatch(loginUser(response.data.profileDetails));
             toast.success(response.data.message, {
                 position: "top-center",
                 autoClose: 3000 ,
@@ -263,6 +254,7 @@ export const forgotPassword =  async(accountId, email) => {
                 email:email
             }
         )
+        console.log(response)
         if (response && response.data.token && response.status === 200) {
             sessionStorage.setItem("passwordToken", response.data.token);
             toast.success(response.data.message, {
@@ -277,6 +269,7 @@ export const forgotPassword =  async(accountId, email) => {
         }
     }
     catch(error){
+        console.log(error)
         const errors = error.response.data.error 
         toast.error(errors, {
             position: "top-center",
@@ -302,7 +295,10 @@ export const resetPassword =async  ( resetPasswordData)  => {
                   },
             }
         )
-        if (response &&  response.status === 200) {
+        console.log(response)
+        if (response &&   response.status === 200) {
+            console.log('data',response)
+            sessionStorage.removeItem('passwordToken')
             toast.success(response.data.message, {
                 position: "top-center",
                 autoClose: 3000 ,

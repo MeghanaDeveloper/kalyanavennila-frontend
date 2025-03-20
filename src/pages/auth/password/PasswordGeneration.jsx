@@ -69,7 +69,7 @@ const PasswordGeneration = () => {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-primary text-center py-4">Generate Password</h2>
+      <h2 className="text-2xl font-bold text-primary text-center">Generate Password</h2>
 
       <form className="px-5 py-3" onSubmit={handleSubmit}>
         <div className="pb-9">
@@ -118,10 +118,6 @@ const PasswordGeneration = () => {
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </span>
                 </div>
-                <p className="text-sm text-gray-400 flex items-center gap-2 my-2">
-                  <MdError className="text-primary text-xl" />
-                  Must be 8+ characters with 1 number & 1 special character (@, #, $)
-                </p>
               </div>
             </Motion.div>
           )}
@@ -178,6 +174,13 @@ const PasswordGeneration = () => {
           )}
         </AnimatePresence>
       </form>
+
+      <h2 className="text-lg pl-2 font-bold underline text-primary">Password must contain:</h2>
+      <ol className="pl-9 py-2 list-decimal">
+        <li className="py-1"> Must include at least 8 characters long.</li>
+        <li className="py-1"> Must include at least 1 number.</li>
+        <li className="py-1"> Must include at least 1 special character (@, #, $).</li>
+      </ol>
     </div>
   );
 };

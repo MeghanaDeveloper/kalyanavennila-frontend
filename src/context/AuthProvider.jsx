@@ -17,7 +17,9 @@ export const AuthProvider = ({ children }) => {
     gender: '',
     email: '',
     mobile: '',
-    fullName: '',
+    surName: '',
+    firstName: '',
+    lastName: '',
     motherTongue: '',
     religion: ''
   })

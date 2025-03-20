@@ -34,9 +34,12 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
+      console.log('password', resetPasswordData)
       const response = await resetPassword(resetPasswordData);
+      console.log(response)
       if (response.success) {
-        toast.success("Password reset successfully! Please log in with your new password.");
+        console.log('response')
+        console.log(response)
         setIsSignUpOpen(false);
         setResetPasswordData({
           accountId: '',
@@ -44,11 +47,9 @@ const ResetPassword = () => {
           newPassword: '',
           confirmPassword: ''
         });
-      } else {
-        toast.error(response.message || "Password reset failed. Please try again.");
       }
     } catch (error) {
-      toast.error(error.message || "Something went wrong. Please try again.");
+      toast.error(error.message );
     } finally {
       setLoading(false);
     }

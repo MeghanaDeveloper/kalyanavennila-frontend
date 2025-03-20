@@ -24,7 +24,9 @@ const SignupModalstep3 = () => {
           gender: '',
           email: '',
           mobile: '',
-          fullName: '',
+          surName: '',
+          firstName: '',
+          lastName: '',
           motherTongue: '',
           religion: ''
         });
@@ -62,35 +64,81 @@ const SignupModalstep3 = () => {
       </div>
 
       <form className="px-5 py-3" onSubmit={handleSubmit} method="POST">
-        <div className='pb-9'>
-          <label htmlFor="fullName" className="label-styles">
-            Bride/Groom Full Name
+        <div className='pb-5'>
+          <label htmlFor="surName" className="label-styles">
+            Bride/Groom Sur Name
           </label>
           <div className="mt-2">
             <input
               required
-              id="fullName"
-              name="fullName"
+              id="surName"
+              name="surName"
               type="text"
               autoComplete="name"
               className="textbox-styles"
-              value={formData.fullName}
+              value={formData.surName}
               onChange={handleChange}
-              placeholder="Full Name"
+              placeholder="Enter the Name"
               disabled={loading}
             />
           </div>
         </div>
 
         <AnimatePresence>
-          {formData.fullName && (
+          {formData.surName && (
             <Motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className='pb-9'>
+              {/* First Name & Last Name in One Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-3">
+                <div>
+                  <label htmlFor="firstName" className="label-styles">Bride/Groom First Name</label>
+                  <input
+                    required
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    autoComplete="name"
+                    className="textbox-styles w-full mt-2"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    placeholder="Enter First Name"
+                    disabled={loading}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="label-styles">Bride/Groom Last Name</label>
+                  <input
+                    
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    autoComplete="name"
+                    className="textbox-styles w-full mt-2"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder="Enter Last Name"
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+            </Motion.div>
+          )}
+        </AnimatePresence>
+
+
+        <AnimatePresence>
+          {formData.firstName && (
+            <Motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className='pb-5'>
                 <label htmlFor="motherTongue" className="label-styles">
                   Mother Tongue
                 </label>
@@ -121,7 +169,7 @@ const SignupModalstep3 = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className='pb-9'>
+              <div className='pb-5'>
                 <label htmlFor="religion" className="label-styles">
                   Religion
                 </label>
@@ -145,7 +193,7 @@ const SignupModalstep3 = () => {
         </AnimatePresence>
 
         <AnimatePresence>
-          {formData.fullName && formData.motherTongue && formData.religion && (
+          {formData.surName && formData.firstName && formData.motherTongue && formData.religion && (
             <Motion.button
               type="submit"
               initial={{ opacity: 0, scale: 0.9 }}
