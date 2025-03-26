@@ -60,7 +60,7 @@ const SignUpModalStep2 = () => {
               <PhoneInput
                 required
                 name='mobile'
-                defaultCountry="IN"
+                defaultCountry="in"
                 value={formData.mobile}
                 onChange={(value) => setFormData({ ...formData, mobile: value })}
                 placeholder='Enter your Mobile number'

@@ -41,19 +41,12 @@ const SignUpSuccessModal = () => {
             and sent to your <span className="block py-2">registered email address.</span>
           </p>
 
-
-          <p className="my-3">
-            Please check your inbox for the confirmation email.
-          </p>
-
-
-
           <p className="my-3">
             You will need this Account ID to log in and create your password.
           </p>
 
           <p className="my-3">
-            If you have received your Account ID, click below to proceed to the
+            If you have received your Account ID, click below link to proceed to the
             <span className="block py-2">Password Creation Page.</span>
           </p>
 

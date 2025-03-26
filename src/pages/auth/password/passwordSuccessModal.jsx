@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { useAuthContextData } from '../../../context/AuthProvider';
 
 const PasswordSuccessModal = () => {
-  const { setIsSignUpOpen } = useAuthContextData();
+  const { setIsSignUpOpen, setStep } = useAuthContextData();
 
   return (
     <>
@@ -38,13 +38,13 @@ const PasswordSuccessModal = () => {
             <span className='block py-3'>Your account is now secured, and you can</span>proceed with <span className='text-primary font-bold text-lg'>Login</span> and continue using <span className='block py-3'> our services.</span>
           </p>
 
-          <p className='py-4'>Go to <span className='text-primary font-bold'> Home Page </span> proceed to  login</p>
+          <p className='py-4'>Go to <span className='text-primary font-bold'> Login Page </span></p>
 
-          <a href='/'
+          <p onClick={() => setStep(8)}
             className="text-primary text-xl font-bold  underline transition-effects"
           >
-            Home Page
-          </a>
+            Login
+          </p>
         </div>
       </div>
     </>

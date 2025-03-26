@@ -175,12 +175,25 @@ const PasswordGeneration = () => {
         </AnimatePresence>
       </form>
 
-      <h2 className="text-lg pl-2 font-bold underline text-primary">Password must contain:</h2>
-      <ol className="pl-9 py-2 list-decimal">
-        <li className="py-1"> Must include at least 8 characters long.</li>
-        <li className="py-1"> Must include at least 1 number.</li>
-        <li className="py-1"> Must include at least 1 special character (@, #, $).</li>
-      </ol>
+      <AnimatePresence>
+        {passwordData.accountId && (
+          <Motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <h2 className="text-lg pl-2 font-bold underline text-primary">Password must contain:</h2>
+            <ol className="pl-9 py-2 list-decimal">
+              <li className="py-1"> Must include at least 8 characters long.</li>
+              <li className="py-1"> Must include at least 1 number.</li>
+              <li className="py-1"> Must include at least 1 special character (@, #, $).</li>
+            </ol>
+          </Motion.div>
+        )}
+      </AnimatePresence>
+
+
     </div>
   );
 };

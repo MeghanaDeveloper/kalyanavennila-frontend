@@ -2,12 +2,14 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { loginUser } from '../redux/slices/authSlice';
 
-const BASE_URL = import.meta.env.VITE_BASE_AUTH_URL;
 
+const BASE_URL = import.meta.env.VITE_BASE_AUTH_URL;
+console.log('BASE_URL',BASE_URL)
 export const signUp = async (formData) => {    
+    console.log(formData    )
     try {
         const response = await axios.post(`${BASE_URL}/registration`, formData);
-
+console.log(`${BASE_URL}/registration`)
         if (response && response.data.token && response.status === 200) {
             localStorage.setItem("signUpToken", response.data.token);
             toast.success(response.data.message, {
@@ -204,7 +206,7 @@ export const loginData = ( accountId, password) => async (dispatch) => {
         console.log('response')
         console.log(response)
         if (response &&  response.status === 200 && response.data.token) {
-            console.log(response)
+            console.log(response, response.data.token)
             localStorage.setItem("loginToken", response.data.token);            
             dispatch(loginUser(response.data.profileDetails));
             toast.success(response.data.message, {
@@ -327,55 +329,5 @@ export const resetPassword =async  ( resetPasswordData)  => {
     }
 }
 
-//update profile
-export const updateProfileDetails = (formData) => async (dispatch) => {
-    try { 
-        const loginToken = sessionStorage.getItem('loginToken');
 
-        const response = await axios.patch(`${BASE_URL}/update-profile`, formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${loginToken}`,
-                },
-            }
-        )
-        if (response && response.data && response.status === 200) {
-
-            toast.success(response.data.message, {
-                position: "top-center",
-                autoClose: 3000,
-                className: 'custom-toast'
-            });
-            return {
-                success: true,
-                data: response.data
-            };
-        }
-    }
-    catch (error) {
-        let errorMessages = [];
-        if (error.response && error.response.data && error.response.data.error) {
-            if (Array.isArray(error.response.data.error)) {
-                errorMessages = error.response.data.error.map(err => err.msg);
-            } else if (typeof error.response.data.error === 'string') {
-                errorMessages = [error.response.data.error];
-            } else {
-                errorMessages = ['An unknown error occurred'];
-            }
-        } else {
-            errorMessages = ['A network error occurred. Please try again later.'];
-        }
-        errorMessages && errorMessages.forEach(message => {
-            toast.error(message, {
-                position: "top-center",
-                autoClose: 5000,
-                className: 'custom-toast'
-            });
-        });
-        return {
-            success: false,
-            errors: errorMessages
-        };
-    }
-}
 

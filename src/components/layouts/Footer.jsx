@@ -1,4 +1,5 @@
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,22 +9,22 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-3">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gray-400">Find Your Match</a></li>
-            <li><a href="#" className="hover:text-gray-400">About Us</a></li>
+            <li><Link to="#" className="hover:text-gray-400">Find Your Match</Link></li>
+            <li><Link to="#" className="hover:text-gray-400">About Us</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="text-lg font-bold mb-3">Policies</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gray-400">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gray-400">Terms of Service</a></li>
+            <li><Link to="#" className="hover:text-gray-400">Privacy Policy</Link></li>
+            <li><Link to="#" className="hover:text-gray-400">Terms of Service</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="text-lg font-bold mb-3">Get in Touch</h3>
-          <p>Email: <a href="mailto:info@kalyanavennila.com" className="hover:text-gray-400">info@kalyanavennila.com</a></p>
+          <p>Email: <Link to="mailto:info@kalyanavennila.com" className="hover:text-gray-400">info@kalyanavennila.com</Link></p>
           <p>Phone: +91 98862 22157</p>
           <p>Timings: 10:30 AM - 7:30 PM IST</p>
         </div>
@@ -43,15 +44,15 @@ const Footer = () => {
        <div>
   <h3 className="text-lg font-bold mb-3">Follow Us</h3>
   <div className="flex items-center space-x-3">
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <Link to="https://facebook.com" target="_blank" rel="noopener noreferrer">
       <FaFacebookSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
-    </a>
-    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    </Link>
+    <Link to="https://twitter.com" target="_blank" rel="noopener noreferrer">
       <FaTwitterSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
-    </a>
-    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    </Link>
+    <Link to="https://instagram.com" target="_blank" rel="noopener noreferrer">
       <FaInstagramSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
-    </a>
+    </Link>
   </div>
 </div>
       </div>

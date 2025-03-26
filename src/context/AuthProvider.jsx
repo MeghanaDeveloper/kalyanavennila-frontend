@@ -1,7 +1,5 @@
 
 import React, { createContext, useContext, useState } from 'react'
-//import { signUp } from '../services/authAPI\'s';
-//import { useDispatch } from 'react-redux';
 
 
 const AuthContext = createContext();
