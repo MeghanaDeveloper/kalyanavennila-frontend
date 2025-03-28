@@ -4,12 +4,10 @@ import { loginUser } from '../redux/slices/authSlice';
 
 
 const BASE_URL = import.meta.env.VITE_BASE_AUTH_URL;
-console.log('BASE_URL',BASE_URL)
+
 export const signUp = async (formData) => {    
-    console.log(formData    )
     try {
         const response = await axios.post(`${BASE_URL}/registration`, formData);
-console.log(`${BASE_URL}/registration`)
         if (response && response.data.token && response.status === 200) {
             localStorage.setItem("signUpToken", response.data.token);
             toast.success(response.data.message, {
@@ -203,10 +201,8 @@ export const loginData = ( accountId, password) => async (dispatch) => {
                 password: password
             }
         )
-        console.log('response')
-        console.log(response)
+
         if (response &&  response.status === 200 && response.data.token) {
-            console.log(response, response.data.token)
             localStorage.setItem("loginToken", response.data.token);            
             dispatch(loginUser(response.data.profileDetails));
             toast.success(response.data.message, {
@@ -256,7 +252,6 @@ export const forgotPassword =  async(accountId, email) => {
                 email:email
             }
         )
-        console.log(response)
         if (response && response.data.token && response.status === 200) {
             sessionStorage.setItem("passwordToken", response.data.token);
             toast.success(response.data.message, {
@@ -271,7 +266,6 @@ export const forgotPassword =  async(accountId, email) => {
         }
     }
     catch(error){
-        console.log(error)
         const errors = error.response.data.error 
         toast.error(errors, {
             position: "top-center",
@@ -297,9 +291,7 @@ export const resetPassword =async  ( resetPasswordData)  => {
                   },
             }
         )
-        console.log(response)
         if (response &&   response.status === 200) {
-            console.log('data',response)
             sessionStorage.removeItem('passwordToken')
             toast.success(response.data.message, {
                 position: "top-center",

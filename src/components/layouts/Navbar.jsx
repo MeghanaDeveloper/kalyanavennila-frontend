@@ -25,8 +25,9 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-6 font-medium">
             {!isAuthenticated ? (
               <>
-                <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Sign Up</p>
+                <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Register For Free</p>
                 <p onClick={() => [setIsLoginOpen(true), setStep(8)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects">Login</p>
+                <Link to='/about' className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects">About Us</Link>
               </>
             ) : (
               <>

@@ -7,6 +7,7 @@ import { FaSpinner } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from 'react-redux';
 import { loginData } from '../../../services/authAPI\'s';
+import toast from 'react-hot-toast';
 
 
 const LoginModal = () => {
@@ -25,7 +26,6 @@ const LoginModal = () => {
     setLoading(true);
     try {
       const response = await dispatch(loginData(accountId, password));
-      console.log("Login Response:", response);
       if (response.success) {
         setIsLoginOpen(false);
         navigate('/home');
@@ -33,7 +33,7 @@ const LoginModal = () => {
         setPassword("");
       }
     } catch (error) {
-      console.error("Login failed", error);
+     return toast.error( error);
     } finally {
       setLoading(false); 
     }

@@ -46,7 +46,7 @@ const ChooseUs = () => {
           <Motion.div whileHover={{ scale: 1.08 }} transition={{ duration: 0.3 }} className="bg-white px-6 py-8 rounded-lg shadow-lg cursor-pointer">
             <FaUserShield className="text-orange-600 text-5xl mx-auto" />
             <h3 className="text-xl font-bold text-center text-primary my-4">Secure & Trusted</h3>
-            <p className="text-gray-600 text-center">We ensure privacy and verification for a safe matchmaking experience.</p>
+            <p className="text-gray-600 text-center">We ensure privacy and verification Via Aadhar Card or Phone Number</p>
           </Motion.div> 
 
           <Motion.div whileHover={{ scale: 1.08 }} transition={{ duration: 0.3 }} className="bg-white px-6 py-8  rounded-lg shadow-lg cursor-pointer">
@@ -58,7 +58,7 @@ const ChooseUs = () => {
           <Motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} className="bg-white px-6 py-8  rounded-lg shadow-lg cursor-pointer">
             <FaStar className="text-orange-600 text-5xl mx-auto" />
             <h3 className="text-xl font-bold text-center text-primary my-4">Personalized Matches</h3>
-            <p className="text-gray-600 text-center">AI-driven recommendations to find your perfect partner.</p>
+            <p className="text-gray-600 text-center">Find your perfect partner.</p>
           </Motion.div>
         </div>
       </section>

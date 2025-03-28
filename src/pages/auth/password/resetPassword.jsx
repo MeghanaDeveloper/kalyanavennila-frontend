@@ -34,12 +34,8 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
-      console.log('password', resetPasswordData)
       const response = await resetPassword(resetPasswordData);
-      console.log(response)
       if (response.success) {
-        console.log('response')
-        console.log(response)
         setIsSignUpOpen(false);
         setResetPasswordData({
           accountId: '',

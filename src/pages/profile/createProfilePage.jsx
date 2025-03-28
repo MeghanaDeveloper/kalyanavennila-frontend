@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
-import UploadProfileDocuments from "./uploadProfileDocuments";
 import { FaArrowLeftLong } from 'react-icons/fa6';
+import UploadProfileImage from "./uploadProfileImage";
+import UploadFiles from "./uploadDocuments";
 import { updateProfileDetails } from "../../services/profileAPI's";
 
 
@@ -39,9 +40,7 @@ const CreateProfile = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(1);
-console.log(userProfile)
-console.log(formData)
+
   useEffect(() => {
     if (userProfile) {
       setFormData({
@@ -88,9 +87,8 @@ console.log(formData)
 
      try {
        const response = await dispatch(updateProfileDetails(formData, navigate));
-       console.log('res',response)
        if (response.success) {
-        setStep(2)
+        toast.error('message');
        } 
      } catch (error) {
        toast.error(error.message);
@@ -102,11 +100,7 @@ console.log(formData)
   return (
     <div className="flex items-center justify-center bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC]">
       <div className="bg-white my-14 mx-4 shadow-xl rounded-3xl p-10 w-full max-w-3xl relative">
-        {
-          step == 2 && (
-            <FaArrowLeftLong onClick={() => setStep(1)} className="text-primary text-2xl transition-effects" />
-          )
-        }
+
         {loading && (
           <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
             <FaSpinner className="text-primary animate-spin text-4xl" />
@@ -123,7 +117,9 @@ console.log(formData)
           Let's Create My Profile
         </h2>
 
-        {step === 1 ? (
+        <UploadProfileImage/>
+
+
         <form className="px-5 py-3" onSubmit={handleSubmit}>
           <div className="pb-5">
             <label className="label-styles">Surname</label>
@@ -245,8 +241,8 @@ console.log(formData)
             <label className="label-styles">Looking For</label>
             <select name="lookingFor" className="textbox-styles" value={formData.lookingFor} onChange={handleChange}>
               <option value="">Select</option>
-              <option value="Man">Man</option>
-              <option value="Woman">Woman</option>
+              <option value="Bride">Bride</option>
+              <option value="Groom">Groom</option>
             </select>
           </div>
 
@@ -285,9 +281,9 @@ console.log(formData)
             </button>
           </div>
         </form>
-         ) : (
-          <UploadProfileDocuments setStep={setStep} />
-        )}
+
+          <UploadFiles />
+  
       </div>
     </div>
   );
