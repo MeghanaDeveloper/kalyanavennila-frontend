@@ -85,6 +85,7 @@ const PasswordGeneration = () => {
               onChange={handleChange}
               placeholder="Enter Account ID"
               disabled={loading}
+              autoComplete=""
             />
           </div>
         </div>

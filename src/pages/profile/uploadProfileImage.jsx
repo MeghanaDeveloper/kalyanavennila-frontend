@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaCamera, FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { FaCamera, FaEdit, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { uploadProfileImage, updateProfileImage, deleteProfileImage } from "../../services/profileAPI's";
 import { useNavigate } from "react-router-dom";
+import { BiSolidErrorAlt } from "react-icons/bi";
+import { TiTick } from "react-icons/ti";
 
 const UploadProfileImage = () => {
     const dispatch = useDispatch();
@@ -12,6 +14,8 @@ const UploadProfileImage = () => {
 
     const [profilePic, setProfilePic] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [uploadStatus, setUploadStatus] = useState(null); 
+
     const userProfile = useSelector((state) => state?.authReducer?.userData);
 
     useEffect(() => {
@@ -22,28 +26,29 @@ const UploadProfileImage = () => {
 
     const handleProfilePicChange = async (e) => {
         const file = e.target.files[0];
-
         if (!file || !["image/jpeg", "image/jpg"].includes(file.type)) {
-            return toast.error("Only JPG/JPEG files are allowed.");
+            toast.error("Only JPG/JPEG files are allowed.");
+            setUploadStatus("error");
+            return;
         }
 
         const previewURL = URL.createObjectURL(file);
         setProfilePic(previewURL);
+        setUploadStatus(null); 
 
         const formData = new FormData();
         formData.append("profile-pic", file);
 
-        try {
             const response = profilePic
                 ? await dispatch(updateProfileImage(formData, navigate))
                 : await dispatch(uploadProfileImage(formData, navigate));
 
             if (response?.success) {
                 setProfilePic(response.data.profilePic);
+                setUploadStatus("success"); 
+            } else {
+                setUploadStatus("error");
             }
-        } catch (error) {
-            toast.error(error.message);
-        }
     };
 
     const handleDeleteProfilePic = async () => {
@@ -51,8 +56,9 @@ const UploadProfileImage = () => {
         if (response?.success) {
             setProfilePic(null);
             setDropdownOpen(false);
+            setUploadStatus("success");
         } else {
-            toast.error("Failed to delete profile picture.");
+            setUploadStatus("error");
         }
     };
 
@@ -71,20 +77,26 @@ const UploadProfileImage = () => {
             </p>
 
             <div className="flex flex-col items-center space-y-4 py-4 relative">
-
-
                 <div className="relative">
-                    <div className="w-36 h-36 rounded-full border-3 border-primary shadow-lg flex items-center justify-center bg-gray-200 cursor-pointer">
+                    <div className="w-40 h-40 rounded-full border-3 border-primary shadow-lg flex items-center justify-center bg-gray-200 cursor-pointer">
                         {profilePic ? (
-                            <img
-                                src={profilePic}
-                                alt="Profile Preview"
-                                className="w-full h-full object-cover rounded-full"
-                            />
+                            <img src={profilePic} alt="Profile Preview" className="w-full h-full object-cover rounded-full" />
                         ) : (
                             <FaCamera className="text-primary" size={40} />
                         )}
                     </div>
+
+                    {/* Success/Error Mark */}
+                    {uploadStatus === "success" && (
+                        <span className="absolute top-17 left-55 bg-green-500 text-white text-xl rounded-full px-2 py-1 ">
+                           <TiTick />
+                        </span>
+                    )}
+                    {uploadStatus === "error" && (
+                        <span className="absolute top-17 left-55 bg-red-500 text-white text-xl   rounded-full px-2 py-1">
+                           <BiSolidErrorAlt />
+                        </span>
+                    )}
 
                     <button
                         onClick={handleCameraClick}
@@ -123,7 +135,6 @@ const UploadProfileImage = () => {
                 </div>
             </div>
         </>
-
     );
 };
 

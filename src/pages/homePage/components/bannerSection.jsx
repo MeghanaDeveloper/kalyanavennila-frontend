@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {  motion as Motion } from 'framer-motion';
 import banner1 from '../../../assets/image1.jpg';
-import banner2 from '../../../assets/image2.jpg';
+import banner2 from '../../../assets/tirupati-img.jpg';
 import banner3 from '../../../assets/image3.png';
 
 const images = [
@@ -21,7 +21,7 @@ const BannerSlider = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-[90vh] overflow-hidden">
+        <div className="relative w-full h-[92vh] overflow-hidden">
                 <Motion.div
                     key={index}
                     className="absolute w-full h-full flex items-center justify-center text-white text-3xl md:text-5xl font-bold bg-black/50"

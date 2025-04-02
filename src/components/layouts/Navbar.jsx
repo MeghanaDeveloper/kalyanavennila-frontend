@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold cursor-pointer">Kalyana Vennila</Link>
 
-          <div className="hidden md:flex items-center space-x-6 font-medium">
+          <div className="hidden md:flex items-center space-x-4 font-medium">
             {!isAuthenticated ? (
               <>
                 <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Register For Free</p>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     {userData?.profilePic && (
                       <img alt="" src={userData?.profilePic} className="size-7 rounded-full ring-2 ring-white" />
                     )}
-                    <p className="text-lg">{userData.firstName}</p>
+                    <p className="text-lg cursor-pointer">{userData.firstName}</p>
                     <FaChevronDown className="text-sm" />
                   </button>
 

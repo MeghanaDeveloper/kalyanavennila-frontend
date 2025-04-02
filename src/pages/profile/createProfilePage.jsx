@@ -31,6 +31,7 @@ const CreateProfile = () => {
     dateOfBirth: "",
     education: "",
     jobType: "",
+    otherJobType: "",
     lookingFor: "",
     partnerAge: "",
     languages: "",
@@ -57,6 +58,7 @@ const CreateProfile = () => {
         dateOfBirth: userProfile.dateOfBirth ? userProfile.dateOfBirth.split("T")[0] : "",
         education: userProfile.education || "",
         jobType: userProfile.jobType || "",
+        otherJobType:userProfile.otherJobType || "",
         lookingFor: userProfile.lookingFor || "",
         partnerAge: userProfile.partnerAge || "",
         languages: Array.isArray(userProfile.languages) ? userProfile.languages : [],
@@ -88,7 +90,7 @@ const CreateProfile = () => {
      try {
        const response = await dispatch(updateProfileDetails(formData, navigate));
        if (response.success) {
-        toast.error('message');
+        
        } 
      } catch (error) {
        toast.error(error.message);
@@ -204,6 +206,13 @@ const CreateProfile = () => {
               <option value="Others">Others</option>
             </select>
           </div>
+
+          {formData.jobType === "Others" && (
+  <div className="pb-5">
+    <label className="label-styles">Specify Job Type</label>
+    <input type="text" name="otherJobType" className="textbox-styles" value={formData.otherJobType} onChange={handleChange} required />
+  </div>
+)}
 
           <div className="pb-5">
             <label className="label-styles">Known Languages</label>

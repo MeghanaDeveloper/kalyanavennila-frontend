@@ -17,9 +17,13 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       state.userData = { ...state.userData, ...action.payload, profilePic: action.payload.profilePic };
     },
-    
+    setGetUserDetails : (state, action) => {
+      state.isAuthenticated = true;
+      state.userData = {...state.userData, ...action.payload};
+    },
     logout: (state) => {
-        state.isAuthenticated = false;    
+        state.isAuthenticated = false;  
+        state.userData={}  
       localStorage.removeItem('loginToken');
     },
   },
@@ -28,6 +32,7 @@ const authSlice = createSlice({
 export const {
     loginUser,
     setUpdateProfile,
+    setGetUserDetails,
   logout,
 }
   = authSlice.actions

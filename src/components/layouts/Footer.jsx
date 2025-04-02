@@ -25,7 +25,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-3">Get in Touch</h3>
           <p>Email: <Link to="mailto:info@kalyanavennila.com" className="hover:text-gray-400">info@kalyanavennila.com</Link></p>
-          <p>Phone: +91 98862 22157</p>
+          <p>Phone: +91 8331085410</p>
           <p>Timings: 10:30 AM - 7:30 PM IST</p>
         </div>
 
