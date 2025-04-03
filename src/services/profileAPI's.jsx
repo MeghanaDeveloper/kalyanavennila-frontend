@@ -231,10 +231,7 @@ export const uploadDocuments = (formData,navigate)  => async (dispatch) => {
                 },
             }
         )
-        console.log('sdwsfergefwedsds',response)
         if (response && response.data && response.status === 200) {
-            console.log('sssssssss',response)
-            console.log('sssssssss',response.data.documents)
             dispatch(setUpdateProfile({ documents: response.data.documents })); 
             toast.success(response.data.message, {
                 position: "top-center",

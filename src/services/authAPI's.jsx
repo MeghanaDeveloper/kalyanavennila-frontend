@@ -336,7 +336,7 @@ export const getUserFullDetails =  async (dispatch,navigate) => {
                 },
             }
         )
-console.log(response)
+
         if (response && response.data && response.status === 200) {
             const result = response.data.user
             dispatch(setGetUserDetails(result))

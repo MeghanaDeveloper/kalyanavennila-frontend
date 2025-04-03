@@ -1,28 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaCamera, FaEdit, FaTrash } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { uploadProfileImage, updateProfileImage, deleteProfileImage } from "../../services/profileAPI's";
 import { useNavigate } from "react-router-dom";
 import { BiSolidErrorAlt } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
 
-const UploadProfileImage = () => {
+const UploadProfileImage = ({setProfilePic, profilePic, userProfile }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
 
-    const [profilePic, setProfilePic] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [uploadStatus, setUploadStatus] = useState(null); 
-
-    const userProfile = useSelector((state) => state?.authReducer?.userData);
 
     useEffect(() => {
         if (userProfile?.profilePic) {
             setProfilePic(userProfile.profilePic);
         }
-    }, [userProfile]);
+    }, [userProfile,setProfilePic]);
 
     const handleProfilePicChange = async (e) => {
         const file = e.target.files[0];

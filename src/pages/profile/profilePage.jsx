@@ -139,6 +139,15 @@
                     </p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-5">
+                  <FaBuilding className="text-primary" />
+                  <div>
+                    <p className="font-bold text-gray-700">Documents:</p>
+                    <p className="text-gray-600"> {userData?.documents.split("/").pop().replace(/^\d+-/, "")}
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="border-b-2 py-5 border-gray-100"></div>

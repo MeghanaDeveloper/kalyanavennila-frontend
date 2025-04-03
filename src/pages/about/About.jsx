@@ -31,9 +31,6 @@ const AboutPage = () => {
                                 We come from a family deeply rooted in Tamil culture and values. Our journey started in Mayiladuthurai, Tamil Nadu, and expanded to Chennai and Hyderabad.
                                 At Kalyana Vennila, we believe that marriage is not just about two individuals but about two families coming together in love and harmony.
                             </p>
-                            <p className="text-gray-600 mt-3">
-                                Our platform is built with **trust, authenticity, and modern technology** to help people find their ideal life partners.
-                            </p>
                         </div>
                     </div>
                 </Motion.div>
@@ -50,9 +47,6 @@ const AboutPage = () => {
                                 always believed and stressed while we are progressing as a society and accepting scientific development,
                                 we should not lose our traditional and moral values which are deep rooted in our social system.
                             </p>
-                            <p className="text-gray-600 mt-3">
-                                Our platform is built with **trust, authenticity, and modern technology** to help people find their ideal life partners.
-                            </p>
                         </div>
                     </div>
                 </Motion.div>
@@ -67,9 +61,6 @@ const AboutPage = () => {
                             <p className="text-gray-600">
                                 Our mission is to create a **safe, genuine, and user-friendly** platform for individuals seeking meaningful relationships.
                                 We ensure **verified profiles, AI-based matchmaking, and privacy protection** to provide a seamless experience.
-                            </p>
-                            <p className="text-gray-600 mt-3">
-                                Our vision is to **blend tradition with modern technology**, making the matchmaking process simple and stress-free for every user.
                             </p>
                         </div>
                     </div>

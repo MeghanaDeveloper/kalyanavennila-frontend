@@ -8,7 +8,7 @@ import { IoMdClose } from "react-icons/io";
 
 const OTPVerification = () => {
   const { setStep, setIsSignUpOpen } = useAuthContextData();
-  const [otp, setOtp] = useState(Array(6).fill(""));
+  const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(90);
   const [canResend, setCanResend] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,15 +28,6 @@ const OTPVerification = () => {
     return () => clearInterval(intervalId);
   }, [timer]);
 
-  const handleOtpChange = (e, index) => {
-    const newOtp = [...otp];
-    newOtp[index] = e.target.value;
-    if (e.target.value && index < 5) {
-      document.getElementById(`otp-input-${index + 1}`).focus();
-    }
-    setOtp(newOtp);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -46,13 +37,11 @@ const OTPVerification = () => {
       return;
     }
 
-    const otpString = otp.join("");
-
     try {
-      const response = await verifyOtp(otpString);
+      const response = await verifyOtp(otp);
       if (response.success) {
         setStep(5);
-        setOtp(Array(6).fill(""));
+        setOtp("");
       }
     } catch (error) {
       toast.error(error.message);
@@ -67,7 +56,7 @@ const OTPVerification = () => {
       const response = await resendOtp();
       if (response.success) {
         setTimer(90);
-        setOtp(Array(6).fill(""));
+        setOtp("");
         setCanResend(false);
       }
     } catch (error) {
@@ -86,9 +75,9 @@ const OTPVerification = () => {
       )}
 
       <IoMdClose
-        onClick={() => [setIsSignUpOpen(false)]}
-        className="absolute top-5 right-5  text-primary text-lg transition-effects">
-      </IoMdClose>
+        onClick={() => setIsSignUpOpen(false)}
+        className="absolute top-5 right-5 text-primary text-lg transition-effects"
+      />
 
       <div className="flex justify-center items-center pt-10">
         <div className="rounded-full p-4 border-white border-2 bg-green-700/20">
@@ -98,34 +87,26 @@ const OTPVerification = () => {
 
       <h2 className="text-2xl font-bold text-primary text-center py-4">Verify your email address</h2>
 
-      <p className="text-gray-600 text-center pb-6">
-        Please enter the 6-digit code sent to your email:
-      </p>
+      <p className="text-gray-600 text-center pb-6">Please enter the 6-digit code sent to your email:</p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col items-center">
-        <div className="flex gap-2 mb-4">
-          {otp.map((value, index) => (
-            <input
-              key={index}
-              id={`otp-input-${index}`}
-              type="text"
-              maxLength="1"
-              value={value}
-              onChange={(e) => handleOtpChange(e, index)}
-              className="w-12 h-12 text-center text-lg font-semibold border border-gray-300 rounded focus:ring focus:ring-blue-500"
-              disabled={loading}
-            />
-          ))}
-        </div>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center px-6">
+        <input
+          type="text"
+          maxLength="6"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+          className="textbox-styles"
+          placeholder="Enter OTP"
+          disabled={loading}
+        />
 
-        <div className="flex justify-between w-full text-primary font-semibold text-sm py-3 px-20">
+        <div className="flex justify-between w-full text-primary font-semibold text-sm py-5 px-6">
           <span>{`00:${String(timer).padStart(2, "0")}`}</span>
           <button
             type="button"
             onClick={handleResendOtp}
             disabled={!canResend || loading}
-            className={`${canResend ? "text-primary cursor-pointer" : "text-gray-400 cursor-not-allowed"
-              }`}
+            className={`${canResend ? "text-primary cursor-pointer" : "text-gray-400 cursor-not-allowed"}`}
           >
             {loading ? <FaSpinner className="animate-spin" /> : "Resend OTP"}
           </button>

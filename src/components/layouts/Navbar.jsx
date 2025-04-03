@@ -11,18 +11,16 @@ const Navbar = () => {
   const { isLoginOpen, setIsLoginOpen, isSignUpOpen, setIsSignUpOpen, setStep } = useAuthContextData();
   const [isOpen, setIsOpen] = useState(null);
 
-
   const { isAuthenticated, userData } = useSelector(state => state.authReducer);
 
   const dispatch = useDispatch();
-
   return (
     <>
       <nav className="padding-lr bg-primary p-4 shadow-md fixed top-0 left-0 w-full text-white z-50">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold cursor-pointer">Kalyana Vennila</Link>
 
-          <div className="hidden md:flex items-center space-x-4 font-medium">
+          <div className="hidden md:flex items-center space-x-3.5 font-medium">
             {!isAuthenticated ? (
               <>
                 <p onClick={() => [setIsSignUpOpen(true), setStep(1)]} className="hover:text-gray-300 border border-white rounded-lg cursor-pointer shadow-2xl px-3 py-1.5 transition-effects">Register For Free</p>
@@ -41,9 +39,6 @@ const Navbar = () => {
                     className="flex items-center gap-2 hover:text-gray-300"
                     onClick={() => setIsOpen(isOpen === "dropdown" ? null : "dropdown")}
                   >
-                    {userData?.profilePic && (
-                      <img alt="" src={userData?.profilePic} className="size-7 rounded-full ring-2 ring-white" />
-                    )}
                     <p className="text-lg cursor-pointer">{userData.firstName}</p>
                     <FaChevronDown className="text-sm" />
                   </button>
