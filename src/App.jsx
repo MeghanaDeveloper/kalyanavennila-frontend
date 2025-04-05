@@ -4,11 +4,11 @@ import Home from './pages/homePage/Home'
 import AboutPage from './pages/about/About'
 import PrivateRoute from './routes/privateRoute'
 import ProfilePage from './pages/profile/profilePage'
-import Navbar from './components/layouts/Navbar'
-import Footer from './components/layouts/Footer'
 import MainPage from './components/mainPage/mainPage'
 import CreateProfile from './pages/profile/createProfilePage'
 import ScrollToTop from './components/common/scrollToTop'
+import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 
 
 function App() {

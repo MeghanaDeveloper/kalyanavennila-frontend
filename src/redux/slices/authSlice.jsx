@@ -10,16 +10,14 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
+      console.log('login',action)
         state.isAuthenticated = true;
         state.userData = {...state.userData, ...action.payload};
     },  
     setUpdateProfile: (state, action) => {
+      console.log('update',action)
       state.isAuthenticated = true;
-      state.userData = { ...state.userData, ...action.payload, profilePic: action.payload.profilePic };
-    },
-    setGetUserDetails : (state, action) => {
-      state.isAuthenticated = true;
-      state.userData = {...state.userData, ...action.payload};
+      state.userData = { ...state.userData, ...action.payload};
     },
     logout: (state) => {
         state.isAuthenticated = false;  
@@ -32,7 +30,6 @@ const authSlice = createSlice({
 export const {
     loginUser,
     setUpdateProfile,
-    setGetUserDetails,
   logout,
 }
   = authSlice.actions

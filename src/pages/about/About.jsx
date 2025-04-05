@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from '../../assets/about-image.png';
+import aboutImage from '../../assets/about-image.jpg';
 import success1 from '../../assets/success-1.jpeg';
 import success2 from '../../assets/success-2.jpg';
 import success3 from '../../assets/success-3.jpg';

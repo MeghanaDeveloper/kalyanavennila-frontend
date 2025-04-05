@@ -3,9 +3,17 @@ import { motion as Motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useAuthContextData } from '../../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const PasswordSuccessModal = () => {
   const { setIsSignUpOpen } = useAuthContextData();
+
+  const navigate = useNavigate()
+
+  const handleHome = () => {
+    setIsSignUpOpen(false)
+    navigate('/')
+  }
 
   return (
     <>
@@ -40,7 +48,7 @@ const PasswordSuccessModal = () => {
 
           <p className='py-4'>Go to <span className='text-primary font-bold'> Home Page </span></p>
 
-          <p onClick={() => setIsSignUpOpen(false)}
+          <p onClick={handleHome}
             className="text-primary text-xl font-bold  underline transition-effects"
           >
             Home

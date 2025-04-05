@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import UploadProfileImage from "./uploadProfileImage";
 import UploadFiles from "./uploadDocuments";
 import { updateProfileDetails } from "../../services/profileAPI's";
@@ -97,10 +96,8 @@ const CreateProfile = () => {
 
     try {
       const response = await dispatch(updateProfileDetails(formData, navigate));
-      if (response.success) {
-        if (progress === 100) {
-          setShowModal(true);
-        }
+      if (response.success && progress === 100) {
+        setShowModal(true);
       }
     } catch (error) {
       toast.error(error.message);
@@ -128,15 +125,13 @@ const CreateProfile = () => {
       totalFields++;
     }
 
-    // Ensure both profilePic and proofDocument are required for 100%
     if (profilePic) filledFields.push("profilePic");
     if (proofDocument) filledFields.push("proofDocument");
 
-    totalFields += 2; // Since profilePic and proofDocument are mandatory
-    console.log(filledFields, totalFields);
+    totalFields += 2;
+
     let progressValue = Math.round((filledFields.length / totalFields) * 100);
 
-    // Ensure 100% is reached only when both images are uploaded
     if (
       filledFields.includes("profilePic") &&
       filledFields.includes("proofDocument") &&
@@ -146,10 +141,6 @@ const CreateProfile = () => {
     }
 
     setProgress(progressValue);
-
-    if (progressValue === 100) {
-      setShowModal(true);
-    }
   }, [formData, profilePic, proofDocument]);
 
   console.log(progress);
@@ -224,7 +215,6 @@ const CreateProfile = () => {
                 className="textbox-styles"
                 value={formData.lastName}
                 onChange={handleChange}
-                required
               />
             </div>
 
@@ -515,14 +505,14 @@ const CreateProfile = () => {
                 matching profiles.
               </span>
               <span>
-                Please check your inbox, as the approval process may take some
-                time depending on the details provided.
+                Please check your inbox, for the approval process may take some
+                time depending on the profile details provided.
               </span>
             </p>
             <div className="mt-8 flex justify-end">
               <button
                 onClick={() => setShowModal(false)}
-                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark cursor-pointer"
+                className="bg-primary text-white px-4 py-2 rounded-md  hover:bg-amber-500 transition-effects cursor-pointer"
               >
                 OK
               </button>

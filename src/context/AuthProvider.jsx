@@ -7,6 +7,7 @@ const AuthContext = createContext();
 export const useAuthContextData = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <>
       <AuthContext.Provider value={{
-        step, setStep, isSignUpOpen, setIsSignUpOpen, isLoginOpen, setIsLoginOpen, formData, setFormData, handleChange
+        step, setStep, isSignUpOpen, setIsSignUpOpen, isLoginOpen, setIsLoginOpen, formData, setFormData, handleChange,profileModalOpen,setProfileModalOpen
 
       }}
       >
