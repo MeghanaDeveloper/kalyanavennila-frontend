@@ -2,8 +2,8 @@ import React from 'react'
 import { FaUser } from 'react-icons/fa6';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { motion as Motion, AnimatePresence } from "framer-motion";
-import { useAuthContextData } from '../../../../../context/AuthProvider';
 import { IoMdClose } from "react-icons/io";
+import useAuthContextData from '../../../../../hooks/useAuthContextData';
 
 const SignUpModalStep1 = () => {
   const { setStep, setIsSignUpOpen, formData, handleChange } = useAuthContextData()

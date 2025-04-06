@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { loginUser } from '../redux/slices/authSlice';
+import { loginUser, setGetUserDetails } from '../redux/slices/authSlice';
+import { checkTokenAndProceed } from '../utilities/accessToken';
 
 
 const BASE_URL = import.meta.env.VITE_BASE_AUTH_URL;
@@ -317,6 +318,43 @@ export const resetPassword =async  ( resetPasswordData)  => {
           return { 
             success: false, 
             errors: errors 
+        };
+    }
+}
+
+  //users
+export const getUserFullDetails = (navigate) =>  async (dispatch) => {
+    try {
+        const token = checkTokenAndProceed(dispatch,navigate);
+        if (!token) return; 
+
+        const response = await axios.get(`${BASE_URL}/user`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+
+        if (response && response.data && response.status === 200) {
+            const result = response.data.user
+            dispatch(setGetUserDetails(result))
+            return {
+                success: true,
+                data: response.data
+            };
+        }
+    }
+    catch (error) {
+        const errors = error.response.data.error
+        toast.error(errors, {
+            position: "top-center",
+            autoClose: 3000,
+            className: 'custom-toast'
+        });
+        return {
+            success: false,
+            errors: errors
         };
     }
 }

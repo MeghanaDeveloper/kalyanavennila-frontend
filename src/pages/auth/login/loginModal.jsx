@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { IoLogInOutline } from "react-icons/io5";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useAuthContextData } from "../../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { loginData } from "../../../services/authAPI's";
 import toast from "react-hot-toast";
+import useProfileContextData from "../../../hooks/useProfileContextData";
+import useAuthContextData from "../../../hooks/useAuthContextData";
 
 const LoginModal = () => {
-  const { setStep, setIsSignUpOpen, setIsLoginOpen, setProfileModalOpen } =
-    useAuthContextData();
+  const { setStep, setIsSignUpOpen, setIsLoginOpen } = useAuthContextData();
+  const { setProfileModalOpen , progress} = useProfileContextData();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +30,9 @@ const LoginModal = () => {
       if (response.success) {
         setIsLoginOpen(false);
         navigate("/home");
-        setProfileModalOpen(true);
+        if (progress < 100) {
+          setProfileModalOpen(true);
+        }
         setAccountId("");
         setPassword("");
       }

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeftLong, FaCircleUser } from 'react-icons/fa6';
-import { useAuthContextData } from '../../../../../context/AuthProvider';
-import { signUp } from '../../../../../services/authAPI\'s';
+import { FaArrowLeftLong, FaCircleUser } from "react-icons/fa6";
+import { signUp } from "../../../../../services/authAPI's";
 import { FaSpinner } from "react-icons/fa";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
-
+import useAuthContextData from "../../../../../hooks/useAuthContextData";
 
 const SignupModalstep3 = () => {
-  const { setStep, formData, handleChange, setFormData, setIsSignUpOpen } = useAuthContextData();
+  const { setStep, formData, handleChange, setFormData, setIsSignUpOpen } =
+    useAuthContextData();
+
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -20,15 +21,15 @@ const SignupModalstep3 = () => {
       if (response.success) {
         setStep(4);
         setFormData({
-          accountCreatedBy: '',
-          gender: '',
-          email: '',
-          mobile: '',
-          surName: '',
-          firstName: '',
-          lastName: '',
-          motherTongue: '',
-          religion: ''
+          accountCreatedBy: "",
+          gender: "",
+          email: "",
+          mobile: "",
+          surName: "",
+          firstName: "",
+          lastName: "",
+          motherTongue: "",
+          religion: "",
         });
       }
     } catch (error) {
@@ -38,33 +39,33 @@ const SignupModalstep3 = () => {
     }
   };
 
-
   return (
     <div className="relative">
-
       {loading && (
         <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
           <FaSpinner className="text-primary animate-spin text-4xl" />
         </div>
       )}
 
-      <div className='flex justify-between items-center pb-5'>
-        <FaArrowLeftLong onClick={() => setStep(2)} className="text-primary text-xl transition-effects" />
+      <div className="flex justify-between items-center pb-5">
+        <FaArrowLeftLong
+          onClick={() => setStep(2)}
+          className="text-primary text-xl transition-effects"
+        />
         <IoMdClose
           onClick={() => [setIsSignUpOpen(false)]}
-          className="  text-primary text-xl transition-effects">
-        </IoMdClose>
+          className="  text-primary text-xl transition-effects"
+        ></IoMdClose>
       </div>
 
-
       <div className="flex justify-center items-center pb-3">
-        <div className='rounded-full p-4 border-2 border-white bg-green-600/10'>
+        <div className="rounded-full p-4 border-2 border-white bg-green-600/10">
           <FaCircleUser className="text-green-600/40 text-3xl " />
         </div>
       </div>
 
       <form className="px-5 py-3" onSubmit={handleSubmit} method="POST">
-        <div className='pb-5'>
+        <div className="pb-5">
           <label htmlFor="surName" className="label-styles">
             Bride/Groom Sur Name
           </label>
@@ -95,7 +96,9 @@ const SignupModalstep3 = () => {
               {/* First Name & Last Name in One Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-3">
                 <div>
-                  <label htmlFor="firstName" className="label-styles">Bride/Groom First Name</label>
+                  <label htmlFor="firstName" className="label-styles">
+                    Bride/Groom First Name
+                  </label>
                   <input
                     required
                     id="firstName"
@@ -110,9 +113,10 @@ const SignupModalstep3 = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="label-styles">Bride/Groom Last Name</label>
+                  <label htmlFor="lastName" className="label-styles">
+                    Bride/Groom Last Name
+                  </label>
                   <input
-                    
                     id="lastName"
                     name="lastName"
                     type="text"
@@ -129,7 +133,6 @@ const SignupModalstep3 = () => {
           )}
         </AnimatePresence>
 
-
         <AnimatePresence>
           {formData.firstName && (
             <Motion.div
@@ -138,7 +141,7 @@ const SignupModalstep3 = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className='pb-5'>
+              <div className="pb-5">
                 <label htmlFor="motherTongue" className="label-styles">
                   Mother Tongue
                 </label>
@@ -169,7 +172,7 @@ const SignupModalstep3 = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className='pb-5'>
+              <div className="pb-5">
                 <label htmlFor="religion" className="label-styles">
                   Religion
                 </label>
@@ -193,21 +196,25 @@ const SignupModalstep3 = () => {
         </AnimatePresence>
 
         <AnimatePresence>
-          {formData.surName && formData.firstName && formData.motherTongue && formData.religion && (
-            <Motion.button
-              type="submit"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className={`button-styles flex justify-center items-center gap-2 ${loading ? "opacity-50 pointer-events-none" : ""}`}
-              disabled={loading}
-            >
-              {loading && <FaSpinner className="animate-spin" />}
-              Submit
-            </Motion.button>
-
-          )}
+          {formData.surName &&
+            formData.firstName &&
+            formData.motherTongue &&
+            formData.religion && (
+              <Motion.button
+                type="submit"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className={`button-styles flex justify-center items-center gap-2 ${
+                  loading ? "opacity-50 pointer-events-none" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading && <FaSpinner className="animate-spin" />}
+                Submit
+              </Motion.button>
+            )}
         </AnimatePresence>
       </form>
     </div>

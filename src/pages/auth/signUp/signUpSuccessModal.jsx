@@ -1,9 +1,8 @@
 import React from "react";
 import { motion as Motion } from "framer-motion";
-import { FaCheckCircle } from "react-icons/fa";
-import { useAuthContextData } from "../../../context/AuthProvider";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
+import useAuthContextData from "../../../hooks/useAuthContextData";
 
 
 const SignUpSuccessModal = () => {

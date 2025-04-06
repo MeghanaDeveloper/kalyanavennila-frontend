@@ -1,11 +1,11 @@
 import { useState } from "react";
 import LoginModal from "../../pages/auth/login/loginModal";
-import { useAuthContextData } from "../../context/AuthProvider";
 import AuthModalLayout from "../layouts/authModalLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slices/authSlice";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuthContextData from "../../hooks/useAuthContextData";
 
 const Navbar = () => {
   const {
@@ -15,6 +15,7 @@ const Navbar = () => {
     setIsSignUpOpen,
     setStep,
   } = useAuthContextData();
+
   const [isOpen, setIsOpen] = useState(null);
 
   const { isAuthenticated, userData } = useSelector(

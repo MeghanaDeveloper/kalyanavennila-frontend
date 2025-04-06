@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useAuthContextData } from "../../../context/AuthProvider";
 import { createPassword } from "../../../services/authAPI's";
 import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
-import { MdError } from "react-icons/md";
+import useAuthContextData from "../../../hooks/useAuthContextData";
 
 const PasswordGeneration = () => {
   const { setIsSignUpOpen, setStep } = useAuthContextData();
@@ -19,13 +18,13 @@ const PasswordGeneration = () => {
   const [passwordData, setPasswordData] = useState({
     accountId: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
     setPasswordData({
       ...passwordData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -40,7 +39,7 @@ const PasswordGeneration = () => {
         setPasswordData({
           accountId: "",
           password: "",
-          confirmPassword: ""
+          confirmPassword: "",
         });
       }
     } catch (error) {
@@ -60,8 +59,8 @@ const PasswordGeneration = () => {
 
       <IoMdClose
         onClick={() => [setIsSignUpOpen(false)]}
-        className="absolute right-3 text-primary text-lg transition-effects">
-      </IoMdClose>
+        className="absolute right-3 text-primary text-lg transition-effects"
+      ></IoMdClose>
 
       <div className="flex justify-center items-center pb-3">
         <div className="rounded-full p-4 mt-6 border-2 border-white bg-red-700/10">
@@ -69,11 +68,15 @@ const PasswordGeneration = () => {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-primary text-center">Generate Password</h2>
+      <h2 className="text-2xl font-bold text-primary text-center">
+        Generate Password
+      </h2>
 
       <form className="px-5 py-3" onSubmit={handleSubmit}>
         <div className="pb-9">
-          <label htmlFor="accountId" className="label-styles">Account ID</label>
+          <label htmlFor="accountId" className="label-styles">
+            Account ID
+          </label>
           <div className="mt-2">
             <input
               required
@@ -99,7 +102,9 @@ const PasswordGeneration = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="pb-7 relative">
-                <label htmlFor="password" className="label-styles">Create Password</label>
+                <label htmlFor="password" className="label-styles">
+                  Create Password
+                </label>
                 <div className="mt-2 relative">
                   <input
                     id="password"
@@ -133,7 +138,9 @@ const PasswordGeneration = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="pb-9 relative">
-                <label htmlFor="confirmPassword" className="label-styles">Confirm Password</label>
+                <label htmlFor="confirmPassword" className="label-styles">
+                  Confirm Password
+                </label>
                 <div className="mt-2 relative">
                   <input
                     id="confirmPassword"
@@ -159,20 +166,24 @@ const PasswordGeneration = () => {
         </AnimatePresence>
 
         <AnimatePresence>
-          {passwordData.accountId && passwordData.password && passwordData.confirmPassword && (
-            <Motion.button
-              type="submit"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className={`button-styles flex justify-center items-center gap-2 ${loading ? "opacity-50 pointer-events-none" : ""}`}
-              disabled={loading}
-            >
-              {loading && <FaSpinner className="animate-spin" />}
-              Submit
-            </Motion.button>
-          )}
+          {passwordData.accountId &&
+            passwordData.password &&
+            passwordData.confirmPassword && (
+              <Motion.button
+                type="submit"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className={`button-styles flex justify-center items-center gap-2 ${
+                  loading ? "opacity-50 pointer-events-none" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading && <FaSpinner className="animate-spin" />}
+                Submit
+              </Motion.button>
+            )}
         </AnimatePresence>
       </form>
 
@@ -184,17 +195,23 @@ const PasswordGeneration = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-lg pl-2 font-bold underline text-primary">Password must contain:</h2>
+            <h2 className="text-lg pl-2 font-bold underline text-primary">
+              Password must contain:
+            </h2>
             <ol className="pl-9 py-2 list-decimal">
-              <li className="py-1"> Must include at least 8 characters long.</li>
+              <li className="py-1">
+                {" "}
+                Must include at least 8 characters long.
+              </li>
               <li className="py-1"> Must include at least 1 number.</li>
-              <li className="py-1"> Must include at least 1 special character (@, #, $).</li>
+              <li className="py-1">
+                {" "}
+                Must include at least 1 special character (@, #, $).
+              </li>
             </ol>
           </Motion.div>
         )}
       </AnimatePresence>
-
-
     </div>
   );
 };

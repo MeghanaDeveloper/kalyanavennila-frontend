@@ -5,12 +5,12 @@ import BannerSlider from "./components/bannerSection";
 import ProfileSection from "./components/profileSection";
 import Community from "./components/community";
 import ChooseUs from "./components/chooseUs";
-import { useAuthContextData } from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
+import useProfileContextData from "../../hooks/useProfileContextData";
 
 const Home = () => {
-  const { profileModalOpen, setProfileModalOpen } = useAuthContextData();
+  const { profileModalOpen, setProfileModalOpen } = useProfileContextData();
 
   const navigate = useNavigate();
   return (

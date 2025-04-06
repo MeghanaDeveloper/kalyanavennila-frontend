@@ -8,16 +8,27 @@ import { useNavigate } from "react-router-dom";
 import UploadProfileImage from "./uploadProfileImage";
 import UploadFiles from "./uploadDocuments";
 import { updateProfileDetails } from "../../services/profileAPI's";
+import useProfileContextData from "../../hooks/useProfileContextData";
+import { getUserFullDetails } from "../../services/authAPI's";
 
 const CreateProfile = () => {
+  const { setProgress, progress } = useProfileContextData();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userProfile = useSelector((state) => state.authReducer.userData);
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      await dispatch(getUserFullDetails(navigate));
+    };
+
+    fetchUserDetails();
+  }, [dispatch, navigate]);
+
+  const userProfile = useSelector((state) => state?.authReducer?.userData);
 
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [proofDocument, setProofDocument] = useState(
     userProfile?.documents || null
   );
@@ -141,7 +152,7 @@ const CreateProfile = () => {
     }
 
     setProgress(progressValue);
-  }, [formData, profilePic, proofDocument]);
+  }, [formData, profilePic, proofDocument, setProgress]);
 
   console.log(progress);
   return (

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { useAuthContextData } from "../../../context/AuthProvider";
 import { resendOtp, verifyOtp } from "../../../services/authAPI's";
 import { FaSpinner } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import useAuthContextData from "../../../hooks/useAuthContextData";
 
 const OTPVerification = () => {
   const { setStep, setIsSignUpOpen } = useAuthContextData();
+
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(90);
   const [canResend, setCanResend] = useState(false);
@@ -85,9 +86,13 @@ const OTPVerification = () => {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-primary text-center py-4">Verify your email address</h2>
+      <h2 className="text-2xl font-bold text-primary text-center py-4">
+        Verify your email address
+      </h2>
 
-      <p className="text-gray-600 text-center pb-6">Please enter the 6-digit code sent to your email:</p>
+      <p className="text-gray-600 text-center pb-6">
+        Please enter the 6-digit code sent to your email:
+      </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col items-center px-6">
         <input
@@ -106,14 +111,22 @@ const OTPVerification = () => {
             type="button"
             onClick={handleResendOtp}
             disabled={!canResend || loading}
-            className={`${canResend ? "text-primary cursor-pointer" : "text-gray-400 cursor-not-allowed"}`}
+            className={`${
+              canResend
+                ? "text-primary cursor-pointer"
+                : "text-gray-400 cursor-not-allowed"
+            }`}
           >
             {loading ? <FaSpinner className="animate-spin" /> : "Resend OTP"}
           </button>
         </div>
 
         <div className="my-5">
-          <button type="submit" className="button-styles flex justify-center items-center gap-2" disabled={loading}>
+          <button
+            type="submit"
+            className="button-styles flex justify-center items-center gap-2"
+            disabled={loading}
+          >
             {loading && <FaSpinner className="animate-spin" />}
             Submit
           </button>

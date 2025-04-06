@@ -1,33 +1,36 @@
-import React from 'react'
-import { PhoneInput } from 'react-international-phone';
-import 'react-international-phone/style.css';
+import React from "react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { motion as Motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeftLong, FaClipboardUser } from 'react-icons/fa6';
-import { useAuthContextData } from '../../../../../context/AuthProvider';
+import { FaArrowLeftLong, FaClipboardUser } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-
+import useAuthContextData from "../../../../../hooks/useAuthContextData";
 
 const SignUpModalStep2 = () => {
-  const { setStep, formData, handleChange, setFormData, setIsSignUpOpen } = useAuthContextData()
+  const { setStep, formData, handleChange, setFormData, setIsSignUpOpen } =
+    useAuthContextData();
 
   return (
     <>
-      <div className='flex justify-between items-center pb-5'>
-        <FaArrowLeftLong onClick={() => setStep(1)} className="text-primary text-xl transition-effects" />
+      <div className="flex justify-between items-center pb-5">
+        <FaArrowLeftLong
+          onClick={() => setStep(1)}
+          className="text-primary text-xl transition-effects"
+        />
         <IoMdClose
           onClick={() => [setIsSignUpOpen(false)]}
-          className=" text-primary text-xl transition-effects">
-        </IoMdClose>
+          className=" text-primary text-xl transition-effects"
+        ></IoMdClose>
       </div>
 
       <div className="flex justify-center items-center pb-5">
-        <div className='rounded-full p-4 border-2 border-white bg-[#800000]/10'>
+        <div className="rounded-full p-4 border-2 border-white bg-[#800000]/10">
           <FaClipboardUser className="text-[#800000]/40 text-3xl " />
         </div>
       </div>
 
       <form className="px-5 py-3">
-        <div className='pb-9'>
+        <div className="pb-9">
           <label htmlFor="email" className="label-styles">
             Email address
           </label>
@@ -42,7 +45,6 @@ const SignUpModalStep2 = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email address"
-
             />
           </div>
         </div>
@@ -59,19 +61,20 @@ const SignUpModalStep2 = () => {
 
               <PhoneInput
                 required
-                name='mobile'
+                name="mobile"
                 defaultCountry="in"
                 value={formData.mobile}
-                onChange={(value) => setFormData({ ...formData, mobile: value })}
-                placeholder='Enter your Mobile number'
+                onChange={(value) =>
+                  setFormData({ ...formData, mobile: value })
+                }
+                placeholder="Enter your Mobile number"
                 inputClassName="w-full border border-gray-200 rounded-md p-2 focus:ring-2 focus:ring-gray-500"
               />
-
             </Motion.div>
           )}
         </AnimatePresence>
 
-        <div className='my-14'>
+        <div className="my-14">
           <AnimatePresence>
             {formData.email && formData.mobile && (
               <Motion.button
@@ -89,7 +92,7 @@ const SignUpModalStep2 = () => {
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default SignUpModalStep2
+export default SignUpModalStep2;

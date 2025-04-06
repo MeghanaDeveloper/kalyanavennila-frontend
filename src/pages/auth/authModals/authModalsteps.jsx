@@ -7,9 +7,9 @@ import PasswordSuccessModal from '../password/passwordSuccessModal';
 import SignUpSuccessModal from '../signUp/signUpSuccessModal';
 import ForgotPassword from '../password/forgotPassword';
 import LoginModal from '../login/loginModal';
-import { useAuthContextData } from '../../../context/AuthProvider';
 import OTPVerification from '../otp/otpVerification';
 import ResetPassword from '../password/resetPassword';
+import useAuthContextData from '../../../hooks/useAuthContextData';
 
 const AuthModalsteps = () => {
   const { step } = useAuthContextData();

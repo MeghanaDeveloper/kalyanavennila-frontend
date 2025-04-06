@@ -1,26 +1,26 @@
-import React from 'react'
+import React from "react";
 import { motion as Motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { useAuthContextData } from '../../../context/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import useAuthContextData from "../../../hooks/useAuthContextData";
 
 const PasswordSuccessModal = () => {
   const { setIsSignUpOpen } = useAuthContextData();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleHome = () => {
-    setIsSignUpOpen(false)
-    navigate('/')
-  }
+    setIsSignUpOpen(false);
+    navigate("/");
+  };
 
   return (
     <>
       <IoMdClose
         onClick={() => [setIsSignUpOpen(false)]}
-        className="absolute top-5 right-5  text-primary text-lg transition-effects">
-      </IoMdClose>
+        className="absolute top-5 right-5  text-primary text-lg transition-effects"
+      ></IoMdClose>
 
       <div className="text-center py-5">
         <div
@@ -42,13 +42,23 @@ const PasswordSuccessModal = () => {
           </h2>
 
           <p>
-            <span className='font-bold text-xl'>Thank you for registering with us. </span>
-            <span className='block py-3'>Your account is now secured, and you can</span>proceed with <span className='text-primary font-bold text-lg'>Login</span> and continue using <span className='block py-3'> our services.</span>
+            <span className="font-bold text-xl">
+              Thank you for registering with us.{" "}
+            </span>
+            <span className="block py-3">
+              Your account is now secured, and you can
+            </span>
+            proceed with{" "}
+            <span className="text-primary font-bold text-lg">Login</span> and
+            continue using <span className="block py-3"> our services.</span>
           </p>
 
-          <p className='py-4'>Go to <span className='text-primary font-bold'> Home Page </span></p>
+          <p className="py-4">
+            Go to <span className="text-primary font-bold"> Home Page </span>
+          </p>
 
-          <p onClick={handleHome}
+          <p
+            onClick={handleHome}
             className="text-primary text-xl font-bold  underline transition-effects"
           >
             Home
@@ -56,7 +66,7 @@ const PasswordSuccessModal = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PasswordSuccessModal
+export default PasswordSuccessModal;
