@@ -1,11 +1,11 @@
 import React from "react";
-import aboutImage from '../../assets/about-image.jpg';
-import success1 from '../../assets/success-1.jpeg';
-import success2 from '../../assets/success-2.jpg';
-import success3 from '../../assets/success-3.jpg';
-import missionImage from '../../assets/vission.webp';
-import bgAbout from '../../assets/bg-about.jpg';
-import valueImage from '../../assets/value-image.png'
+import aboutImage from '../../../assets/about-image.jpg';
+import success1 from '../../../assets/success-1.jpeg';
+import success2 from '../../../assets/success-2.jpg';
+import success3 from '../../../assets/success-3.jpg';
+import missionImage from '../../../assets/vission.webp';
+import bgAbout from '../../../assets/bg-about.jpg';
+import valueImage from '../../../assets/value-image.png'
 import { motion as Motion } from "framer-motion";
 
 const AboutPage = () => {
@@ -14,7 +14,7 @@ const AboutPage = () => {
             <section className="relative bg-cover bg-center py-20 text-center text-white" style={{ backgroundImage: `url(${bgAbout})` }}>
                 <div className="bg-black/50 absolute inset-0"></div>
                 <div className="relative z-10 max-w-4xl mx-auto">
-                    <h1 className="text-4xl font-bold">About Kalyana Vennila</h1>
+                    <h1 className="text-4xl font-bold"></h1>
                     <p className="mt-4 text-lg">
                         Helping you find your perfect life partner with trust, tradition, and technology.
                     </p>

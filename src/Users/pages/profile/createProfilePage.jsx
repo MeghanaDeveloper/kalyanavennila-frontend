@@ -7,9 +7,9 @@ import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import UploadProfileImage from "./uploadProfileImage";
 import UploadFiles from "./uploadDocuments";
-import { updateProfileDetails } from "../../services/profileAPI's";
 import useProfileContextData from "../../hooks/useProfileContextData";
 import { getUserFullDetails } from "../../services/authAPI's";
+import { updateProfileDetails } from "../../services/profileAPI's";
 
 const CreateProfile = () => {
   const { setProgress, progress } = useProfileContextData();
@@ -106,10 +106,8 @@ const CreateProfile = () => {
     setLoading(true);
 
     try {
-      const response = await dispatch(updateProfileDetails(formData, navigate));
-      if (response.success && progress === 100) {
-        setShowModal(true);
-      }
+       await dispatch(updateProfileDetails(formData, navigate));
+
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -153,6 +151,13 @@ const CreateProfile = () => {
 
     setProgress(progressValue);
   }, [formData, profilePic, proofDocument, setProgress]);
+
+  useEffect(() => {
+    if (progress === 100) {
+      setShowModal(true);
+    }
+  }, [progress]);
+  
 
   console.log(progress);
   return (
@@ -502,12 +507,12 @@ const CreateProfile = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-opacity-60 backdrop-blur-sm flex justify-center items-center z-50 shadow-2xl ">
-          <div className="bg-gray-500 bg-opacity-60 rounded-lg p-9 min-h-[55vh] max-h-[90vh] min-w-[35vw] max-w-[75vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide ">
+        <div className="fixed inset-0  bg-opacity-60 backdrop-blur-sm flex justify-center items-center z-50 shadow-2xl ">
+          <div className="bg-lime-50 bg-opacity-30 rounded-lg p-9 min-h-[55vh] max-h-[90vh] min-w-[35vw] max-w-[75vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide ">
             <h3 className="text-2xl py-4 font-bold text-primary text-center ">
               🎉 Profile Completion Successful!
             </h3>
-            <p className="mt-4 text-white font-bold">
+            <p className="mt-4  font-bold">
               Your profile has been successfully submitted for approval. We will
               review your details and send you an email regarding your approval
               status.

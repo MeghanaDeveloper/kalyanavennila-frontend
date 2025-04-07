@@ -1,6 +1,6 @@
 import React from 'react';
-import bgImage from '../../../assets/bg-image-4.avif';
-import sponsor1 from '../../../assets/sponsor1.png';
+import bgImage from '../../../../assets/bg-image-4.avif';
+import sponsor1 from '../../../../assets/sponsor1.png';
 import { motion as Motion } from "framer-motion";
 
 

@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { Toaster } from "react-hot-toast";
-import { persistor, Store } from "./redux/store/myStore.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-import { AuthProvider } from "./context/auth/AuthProvider.jsx";
-import ProfileProvider from "./context/profile/profileProvider.jsx";
+import { persistor, Store } from "./Users/redux/store/myStore.jsx";
+import { AuthProvider } from "./Users/context/auth/AuthProvider.jsx";
+import ProfileProvider from "./Users/context/profile/ProfileProvider.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

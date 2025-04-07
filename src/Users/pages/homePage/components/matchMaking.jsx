@@ -1,11 +1,11 @@
 import React from 'react'
-import bgImage from '../../../assets/bg-image.png'
-import register from '../../../assets/register-icon.png'
-import password from '../../../assets/unlock-password-icon.png'
-import login from '../../../assets/login.jpg'
-import build from '../../../assets/build-icon.png'
-import findMatch from '../../../assets/find-match-icon.png'
-import connect from '../../../assets/connect-icon.png'
+import bgImage from '../../../../assets/bg-image.png'
+import register from '../../../../assets/register-icon.png'
+import password from '../../../../assets/unlock-password-icon.png'
+import login from '../../../../assets/login.jpg'
+import build from '../../../../assets/build-icon.png'
+import findMatch from '../../../../assets/find-match-icon.png'
+import connect from '../../../../assets/connect-icon.png'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { motion as Motion } from "framer-motion";
 

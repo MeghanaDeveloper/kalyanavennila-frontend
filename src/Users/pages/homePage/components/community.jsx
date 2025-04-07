@@ -1,7 +1,7 @@
     import React from "react";
 import { FaComments, FaUsers, FaLightbulb, FaTrophy } from "react-icons/fa";
 import { motion as Motion } from "framer-motion";
-import bgImage from '../../../assets/bg-image-3.jpg'
+import bgImage from '../../../../assets/bg-image-3.jpg'
 
 const Community = () => {
   return (

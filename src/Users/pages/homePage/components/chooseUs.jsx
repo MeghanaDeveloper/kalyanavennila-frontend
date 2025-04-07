@@ -1,7 +1,7 @@
     import React from "react";
 import { FaUsers, FaHeart, FaUserShield, FaStar, FaTrophy, FaLightbulb } from "react-icons/fa";
 import { motion as Motion} from "framer-motion";
-import bgImage from "../../../assets/bg-image-6.webp";
+import bgImage from "../../../../assets/bg-image-6.webp";
 
 const ChooseUs = () => {
   return (

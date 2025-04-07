@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {  motion as Motion } from 'framer-motion';
-import banner1 from '../../../assets/image1.jpg';
-import banner2 from '../../../assets/tirupati-img.jpg';
-import banner3 from '../../../assets/image3.png';
+import banner1 from '../../../../assets/image1.jpg';
+import banner2 from '../../../../assets/tirupati-img.jpg';
+import banner3 from '../../../../assets/image3.png';
 
 const images = [
     { src: banner1, text: "Find Your Perfect Match" },
