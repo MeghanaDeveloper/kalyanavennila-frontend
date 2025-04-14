@@ -1,17 +1,17 @@
 import axios from "axios";
 import { checkTokenAndProceed } from "../utilities/accessToken";
 import toast from "react-hot-toast";
-import { setUpdateProfile } from "../redux/slices/authSlice";
+import { setProfileProgress, setUpdateProfile } from "../redux/slices/authSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_PROFILE_URL;
 
 //update profile
-export const updateProfileDetails = (formData,navigate) => async (dispatch) => {
+export const updateProfileDetails = (formData, progress, navigate) => async (dispatch) => {
     try { 
         const token = checkTokenAndProceed(dispatch,navigate);
         if (!token) return; 
 
-        const response = await axios.put(`${BASE_URL}/update-profile`, formData,
+        const response = await axios.patch(`${BASE_URL}/update-profile`, formData,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -20,6 +20,7 @@ export const updateProfileDetails = (formData,navigate) => async (dispatch) => {
         )
         if (response && response.data && response.status === 200) {
             dispatch(setUpdateProfile(response.data.user))
+            dispatch(setProfileProgress(progress))
             toast.success(response.data.message, {
                 position: "top-center",
                 autoClose: 3000,
@@ -117,7 +118,7 @@ export const updateProfileImage = (formData,navigate) => async (dispatch) => {
         const token = checkTokenAndProceed(dispatch,navigate);
         if (!token) return; 
 
-        const response = await axios.put(`${BASE_URL}/update-profile-image`, formData,
+        const response = await axios.patch(`${BASE_URL}/update-profile-image`, formData,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -277,7 +278,7 @@ export const updateDocuments = (formData,navigate) => async (dispatch) => {
         const token = checkTokenAndProceed(dispatch,navigate);
         if (!token) return; 
 
-        const response = await axios.put(`${BASE_URL}/update-documents`, formData,
+        const response = await axios.patch(`${BASE_URL}/update-documents`, formData,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -1,4 +1,4 @@
-import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagramSquare, FaWhatsappSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -8,9 +8,8 @@ const Footer = () => {
 
         <div>
           <h3 className="text-lg font-bold mb-3">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link to="#" className="hover:underline hover:text-gray-400">Find Your Match</Link></li>
-            <li><Link to="#" className="hover:underline hover:text-gray-400">About Us</Link></li>
+          <ul className="space-y-2">        
+            <li><Link to="/about" className="hover:underline hover:text-gray-400">About Us</Link></li>
           </ul>
         </div>
 
@@ -48,7 +47,7 @@ const Footer = () => {
       <FaFacebookSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
     </Link>
     <Link to="https://twitter.com" target="_blank" rel="noopener noreferrer">
-      <FaTwitterSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
+      <FaWhatsappSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
     </Link>
     <Link to="https://instagram.com" target="_blank" rel="noopener noreferrer">
       <FaInstagramSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />

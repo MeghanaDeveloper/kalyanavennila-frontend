@@ -4,16 +4,18 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { uploadProfileImage, updateProfileImage, deleteProfileImage } from "../../services/profileAPI's";
 import { useNavigate } from "react-router-dom";
-import { BiSolidErrorAlt } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
+import { RiCloseLargeFill } from "react-icons/ri";
 
-const UploadProfileImage = ({setProfilePic, profilePic, userProfile }) => {
+const UploadProfileImage = ({setProfilePicUploaded , userProfile }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const fileInputRef = useRef(null);
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [uploadStatus, setUploadStatus] = useState(null); 
+    const [profilePic, setProfilePic] = useState(userProfile?.profilePic || null);
 
     useEffect(() => {
         if (userProfile?.profilePic) {
@@ -43,8 +45,10 @@ const UploadProfileImage = ({setProfilePic, profilePic, userProfile }) => {
             if (response?.success) {
                 setProfilePic(response.data.profilePic);
                 setUploadStatus("success"); 
+                setProfilePicUploaded(true)
             } else {
                 setUploadStatus("error");
+                setProfilePicUploaded(false)
             }
     };
 
@@ -53,9 +57,9 @@ const UploadProfileImage = ({setProfilePic, profilePic, userProfile }) => {
         if (response?.success) {
             setProfilePic(null);
             setDropdownOpen(false);
-            setUploadStatus("success");
-        } else {
-            setUploadStatus("error");
+            setProfilePicUploaded(false)
+        }else {
+            setProfilePicUploaded(true)
         }
     };
 
@@ -90,8 +94,8 @@ const UploadProfileImage = ({setProfilePic, profilePic, userProfile }) => {
                         </span>
                     )}
                     {uploadStatus === "error" && (
-                        <span className="absolute top-17 left-55 bg-red-500 text-white text-xl   rounded-full px-2 py-1">
-                           <BiSolidErrorAlt />
+                        <span className="absolute top-17 left-55 bg-red-500 text-white text-xl font-bold   rounded-full px-2 py-1">
+                           <RiCloseLargeFill />
                         </span>
                     )}
 

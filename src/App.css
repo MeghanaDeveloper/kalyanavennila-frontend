@@ -8,6 +8,11 @@ body {
   display: none;
 }
 
+.custom-toast{
+  font-size: 25px;
+  width: 350px
+}
+
 
 
 

@@ -58,14 +58,17 @@ const Navbar = () => {
                 <Link to="/home" className="hover:text-gray-300">
                   Home
                 </Link>
-                <Link to="#" className="hover:text-gray-300">
-                  Find Your Match
-                </Link>
                 <Link to="/about" className="hover:text-gray-300">
                   About Us
                 </Link>
                 <Link to="/create-profile" className="hover:text-gray-300">
                   Create Profile
+                </Link>
+                {/* <Link to="#" className="hover:text-gray-300">
+                  Find Your Match
+                </Link> */}
+                <Link to="/blogs" className="hover:text-gray-300">
+                  Blogs
                 </Link>
 
                 <div className="relative">

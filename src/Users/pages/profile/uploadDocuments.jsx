@@ -5,10 +5,13 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { deleteDocuments, updateDocuments, uploadDocuments } from "../../services/profileAPI's";
 
-const UploadDocuments = ({ proofDocument, setProofDocument, userProfile }) => {
+const UploadDocuments = ({ setDocumentsUploaded, userProfile }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const fileInputRef = useRef(null);
+
+     const [proofDocument, setProofDocument] = useState( userProfile?.documents || null);
     const [fileName, setFileName] = useState("");
 
     useEffect(() => {
@@ -36,8 +39,10 @@ const UploadDocuments = ({ proofDocument, setProofDocument, userProfile }) => {
 
             if (response?.success) {
                 setProofDocument(response.data.documents);
+                setDocumentsUploaded(true)
             } else {
                 setProofDocument(userProfile?.documents || null);
+                setDocumentsUploaded(false)
             }
         } catch (error) {
             toast.error(error.message);
@@ -50,6 +55,9 @@ const UploadDocuments = ({ proofDocument, setProofDocument, userProfile }) => {
         if (response?.success) {
             setProofDocument(null);
             setFileName("");
+            setDocumentsUploaded(false)
+        }else{
+            setDocumentsUploaded(true)
         }
     };
 

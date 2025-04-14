@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { loginUser, setGetUserDetails } from '../redux/slices/authSlice';
+import { loginUser, setGetUserDetails, setProfileProgress } from '../redux/slices/authSlice';
 import { checkTokenAndProceed } from '../utilities/accessToken';
 
 
@@ -323,7 +323,7 @@ export const resetPassword =async  ( resetPasswordData)  => {
 }
 
   //users
-export const getUserFullDetails = (navigate) =>  async (dispatch) => {
+export const getUserFullDetails = (progress,navigate) =>  async (dispatch) => {
     try {
         const token = checkTokenAndProceed(dispatch,navigate);
         if (!token) return; 
@@ -339,6 +339,7 @@ export const getUserFullDetails = (navigate) =>  async (dispatch) => {
         if (response && response.data && response.status === 200) {
             const result = response.data.user
             dispatch(setGetUserDetails(result))
+            dispatch(setProfileProgress(progress))
             return {
                 success: true,
                 data: response.data

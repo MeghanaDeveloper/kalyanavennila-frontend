@@ -1,6 +1,7 @@
 import { jwtDecode } from "jwt-decode";
-import { logout } from "../redux/slices/authSlice";
 import toast from "react-hot-toast";
+import { logout } from "../redux/slices/authSlice";
+
 
 export const isTokenExpired = (token) => {
     if (!token) return true;

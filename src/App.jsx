@@ -9,17 +9,19 @@ import Home from "./Users/pages/homePage/Home";
 import ProfilePage from "./Users/pages/profile/profilePage";
 import CreateProfile from "./Users/pages/profile/createProfilePage";
 import Footer from "./Users/components/footer/Footer";
+import Blogs from "./Users/pages/blogs/Blogs";
+import usePageTracking from "./Users/routes/pageTracking";
 
 
 
 function App() {
   return (
     <BrowserRouter>
+    <PageTracker/>
       <ScrollToTop />
 
       <Routes>
-        <Route
-          path="/*"
+        <Route path="/*"
           element={
             <>
               <Navbar />
@@ -31,6 +33,7 @@ function App() {
                   <Route path="/home" element={<Home />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/create-profile" element={<CreateProfile />} />
+                  <Route path="/blogs" element={<Blogs />} />
                 </Route>
               </Routes>
               <Footer />
@@ -41,5 +44,11 @@ function App() {
     </BrowserRouter>
   );
 }
+
+
+const PageTracker = () => {
+  usePageTracking();
+  return null;
+};
 
 export default App;

@@ -1,8 +1,5 @@
 import React from "react";
-import aboutImage from '../../../assets/about-image.jpg';
-import success1 from '../../../assets/success-1.jpeg';
-import success2 from '../../../assets/success-2.jpg';
-import success3 from '../../../assets/success-3.jpg';
+import aboutImage from '../../../assets/about-image.png';
 import missionImage from '../../../assets/vission.webp';
 import bgAbout from '../../../assets/bg-about.jpg';
 import valueImage from '../../../assets/value-image.png'
@@ -63,50 +60,6 @@ const AboutPage = () => {
                                 We ensure **verified profiles, AI-based matchmaking, and privacy protection** to provide a seamless experience.
                             </p>
                         </div>
-                    </div>
-                </Motion.div>
-            </section>
-
-            <section className="bg-[#FFF8F2] py-10 text-center">
-                <Motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-7xl mx-auto">
-                    <h2 className="text-4xl font-bold text-primary mb-6">Success Stories</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
-                        <Motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl cursor-pointer transform transition-all duration-300"
-                        >
-                            <img src={success1} alt="Happy Couple 1" className="w-full h-56 object-cover rounded-lg" />
-                            <h3 className="text-lg font-semibold text-gray-800 mt-4">"We Found Love!"</h3>
-                            <p className="text-gray-600 mt-2">
-                                "Thanks to Kalyana Vennila, we found each other and are happily married! The platform was easy to use."
-                            </p>
-                        </Motion.div>
-
-                        <Motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl cursor-pointer transform transition-all duration-300"
-                        >
-                            <img src={success2} alt="Happy Couple 2" className="w-full h-56 object-cover rounded-lg" />
-                            <h3 className="text-lg font-semibold text-gray-800 mt-4">"Best Decision Ever!"</h3>
-                            <p className="text-gray-600 mt-2">
-                                "We connected through this platform and now we are on a beautiful journey together."
-                            </p>
-                        </Motion.div>
-
-                        <Motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl cursor-pointer transform transition-all duration-300"
-                        >
-                            <img src={success3} alt="Happy Couple 3" className="w-full h-56 object-cover rounded-lg" />
-                            <h3 className="text-lg font-semibold text-gray-800 mt-4">"A Perfect Match!"</h3>
-                            <p className="text-gray-600 mt-2">
-                                "We found our soulmate on this platform. It was the best experience for us!"
-                            </p>
-                        </Motion.div>
                     </div>
                 </Motion.div>
             </section>

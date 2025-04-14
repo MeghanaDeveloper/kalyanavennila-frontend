@@ -8,11 +8,16 @@ import ChooseUs from "./components/chooseUs";
 import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import useProfileContextData from "../../hooks/useProfileContextData";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const { profileModalOpen, setProfileModalOpen } = useProfileContextData();
 
   const navigate = useNavigate();
+
+  const profileProgress  = useSelector((state) => state.authReducer.profileProgress);
+console.log('home', profileProgress)
+  const shouldShowModal = profileProgress !== 100
   return (
     <>
       <BannerSlider />
@@ -22,7 +27,7 @@ const Home = () => {
       <ChooseUs />
       <Sponsors />
 
-      {profileModalOpen && (
+      {shouldShowModal && profileModalOpen && (
         <>
           <div className="fixed inset-0 bg-opacity-60 backdrop-blur-sm flex justify-center items-center z-50 shadow-2xl  ">
             <div className="bg-white bg-opacity-60 rounded-lg p-10  min-h-[50vh] max-h-[90vh] min-w-[30vw] max-w-[80vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide relative ">
