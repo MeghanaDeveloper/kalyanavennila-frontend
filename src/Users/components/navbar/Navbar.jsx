@@ -1,11 +1,12 @@
 import { useState } from "react";
 import LoginModal from "../../pages/auth/login/loginModal";
-import AuthModalLayout from "../layouts/authModalLayout";
+import AuthModalLayout from "../layouts/modalLayouts/authModalLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slices/authSlice";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuthContextData from "../../hooks/useAuthContextData";
+import logo from '../../../assets/logo.jpg'
 
 const Navbar = () => {
   const {
@@ -27,9 +28,13 @@ const Navbar = () => {
     <>
       <nav className="padding-lr bg-primary p-4 shadow-md fixed top-0 left-0 w-full text-white z-50">
         <div className="container mx-auto flex justify-between items-center">
+          <div className="flex justify-center items-center gap-3">
+            <img src={logo} alt='logo' className="w-10 h-10 rounded-full" />
           <Link to="/" className="text-2xl font-bold cursor-pointer">
             Kalyana Vennila
           </Link>
+          </div>
+
 
           <div className="hidden md:flex items-center space-x-3.5 font-medium">
             {!isAuthenticated ? (
@@ -67,8 +72,11 @@ const Navbar = () => {
                 {/* <Link to="#" className="hover:text-gray-300">
                   Find Your Match
                 </Link> */}
-                <Link to="/blogs" className="hover:text-gray-300">
+                {/* <Link to="/blogs" className="hover:text-gray-300">
                   Blogs
+                </Link> */}
+                <Link to="/contact-us" className="hover:text-gray-300">
+                  Contact Us
                 </Link>
 
                 <div className="relative">

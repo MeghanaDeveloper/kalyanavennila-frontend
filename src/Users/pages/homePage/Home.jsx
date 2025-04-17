@@ -16,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const profileProgress  = useSelector((state) => state.authReducer.profileProgress);
-console.log('home', profileProgress)
+
   const shouldShowModal = profileProgress !== 100
   return (
     <>

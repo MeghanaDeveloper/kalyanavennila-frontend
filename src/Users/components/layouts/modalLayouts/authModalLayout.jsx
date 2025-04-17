@@ -1,5 +1,5 @@
   import React from "react";
-import AuthModalsteps from "../../pages/auth/authModals/authModalsteps";
+import AuthModalsteps from "../../../pages/auth/authModals/authModalsteps";
 
 
   const AuthModalLayout = () => {

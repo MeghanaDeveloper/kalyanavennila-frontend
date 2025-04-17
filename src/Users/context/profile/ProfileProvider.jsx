@@ -4,11 +4,10 @@ import { ProfileContext } from "./ProfileContext";
 
  const ProfileProvider = ({ children }) => {
   const [profileModalOpen, setProfileModalOpen] = useState(false);
-    const [progress, setProgress] = useState(0);
 
   return (
     <>
-      <ProfileContext.Provider value={{ profileModalOpen, setProfileModalOpen,progress ,setProgress}}>
+      <ProfileContext.Provider value={{ profileModalOpen, setProfileModalOpen}}>
         {children}
       </ProfileContext.Provider>
     </>

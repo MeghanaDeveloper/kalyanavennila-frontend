@@ -10,17 +10,15 @@ import { getUserFullDetails } from "../../services/authAPI's";
 import { updateProfileDetails } from "../../services/profileAPI's";
 import { setProfileProgress } from "../../redux/slices/authSlice";
 import ProfilePageForm from "./profilePageForm";
-
+import { motion as Motion } from "framer-motion";
 
 const CreateProfile = () => {
-  //const { setProgress, progress } = useProfileContextData();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const progress = useSelector((state) => state?.authReducer?.profileProgress);
   const userProfile = useSelector((state) => state?.authReducer?.userData);
-console.log('first', progress)
+
   useEffect(() => {
     const fetchUserDetails = async () => {
       await dispatch(getUserFullDetails(navigate));
@@ -145,7 +143,6 @@ console.log('first', progress)
     if (documentsUploaded) filledFields.push("proofDocument");
 
     totalFields += 2;
-    console.log('profilePicUploaded', profilePicUploaded)
 
     let progressValue = Math.round((filledFields.length / totalFields) * 100);
 
@@ -162,19 +159,23 @@ console.log('first', progress)
   }, [formData, profilePicUploaded, documentsUploaded,dispatch]);
 
   useEffect(() => {
-    if (progress === 100 ) {
+    if (progress === 100 && userProfile?.isProfileStatus == "Pending") {
       setShowModal(true); 
     }
-  }, [progress]);
+  }, [progress, userProfile?.isProfileStatus ]);
 
-   console.log(typeof profilePic, userProfile, userProfile?.profilePic);
   return (
     <>
       <div
         className=" flex items-center justify-center  bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC]"
       >
+<Motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white my-14 mx-4 shadow-xl rounded-3xl p-10 w-full max-w-3xl relative"
+        >
 
-        <div className="bg-white my-14 mx-4 shadow-xl rounded-3xl p-10 w-full max-w-3xl relative">
           {loading && (
             <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
               <FaSpinner className="text-primary animate-spin text-4xl" />
@@ -195,7 +196,7 @@ console.log('first', progress)
             <div className="bg-gray-200 rounded-full h-2.5 flex-1">
               <div
                 className="bg-green-500 h-2.5 rounded-full"
-                style={{ width: `${progress}%` }}
+                style={{ width: `${progress || 0}%` }}
               ></div>
             </div>
             <span className="ml-3 text-lg font-bold text-primary">
@@ -220,9 +221,8 @@ console.log('first', progress)
             setDocumentsUploaded={setDocumentsUploaded}
             userProfile={userProfile}
           />
-        </div>
 
-        
+        </Motion.div>
       </div>
 
       {showModal && (

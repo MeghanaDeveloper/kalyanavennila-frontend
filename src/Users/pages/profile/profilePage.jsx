@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaEdit,
   FaMapMarkerAlt,
@@ -13,18 +13,35 @@ import {
   FaBirthdayCake,
   FaHeart,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getUserFullDetails } from "../../services/authAPI's";
+import { motion as Motion } from "framer-motion";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const { userData } = useSelector((state) => state.authReducer);
+
+    useEffect(() => {
+      const fetchUserDetails = async () => {
+        await dispatch(getUserFullDetails(navigate));
+      };
+  
+      fetchUserDetails();
+    }, [dispatch, navigate]);
 
   return (
     <>
       <div className="bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC] py-12">
-        <div className="bg-white mx-auto py-16 shadow-xl rounded-3xl  w-[90%] md:max-w-2xl lg:max-w-3xl relative">
+      <Motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white mx-auto py-16 shadow-xl rounded-3xl  w-[90%] md:max-w-2xl lg:max-w-3xl relative"
+        >
+
           <p className="text-primary text-center font-bold text-4xl pb-9">
             My Profile
           </p>
@@ -217,7 +234,7 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Motion.div>
       </div>
     </>
   );

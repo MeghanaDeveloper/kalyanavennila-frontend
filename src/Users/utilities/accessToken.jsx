@@ -29,7 +29,7 @@ export const checkTokenAndProceed = (dispatch, navigate) => {
     const token = getValidToken();
 
     if (!token) {
-        toast.error("Your token has expired. Please log in again.", {
+        toast.error("Your session has expired. Please log in again", {
             position: "top-center",
             autoClose: 5000,
             className: "custom-toast",

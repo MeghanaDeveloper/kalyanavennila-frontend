@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginData } from "../../../services/authAPI's";
 import toast from "react-hot-toast";
 import useProfileContextData from "../../../hooks/useProfileContextData";
@@ -12,7 +12,9 @@ import useAuthContextData from "../../../hooks/useAuthContextData";
 
 const LoginModal = () => {
   const { setStep, setIsSignUpOpen, setIsLoginOpen } = useAuthContextData();
-  const { setProfileModalOpen , progress} = useProfileContextData();
+  const { setProfileModalOpen } = useProfileContextData();
+
+  const progress = useSelector((state) => state?.authReducer?.profileProgress)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const LoginModal = () => {
       if (response.success) {
         setIsLoginOpen(false);
         navigate("/home");
-        if (progress < 100) {
+        if (progress !== 100) {
           setProfileModalOpen(true);
         }
         setAccountId("");
@@ -169,6 +171,20 @@ const LoginModal = () => {
                 className="text-primary text-md font-bold underline transition-effects"
               >
                 Sign Up
+              </span>
+            </li>
+            <li className="py-1">
+              If you not verified your account with registered email - Verify first go to the
+              Verification Page -{" "}
+              <span
+                onClick={() => [
+                  setIsLoginOpen(false),
+                  setIsSignUpOpen(true),
+                  setStep(4),
+                ]}
+                className="text-primary text-md font-bold underline transition-effects"
+              >
+                Verification Page
               </span>
             </li>
             <li className="py-1">

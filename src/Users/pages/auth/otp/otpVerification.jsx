@@ -5,9 +5,12 @@ import { resendOtp, verifyOtp } from "../../../services/authAPI's";
 import { FaSpinner } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import useAuthContextData from "../../../hooks/useAuthContextData";
+import { useSelector } from "react-redux";
 
 const OTPVerification = () => {
   const { setStep, setIsSignUpOpen } = useAuthContextData();
+
+  const userData = useSelector((state) => state.authReducer.userData)
 
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(90);
@@ -91,7 +94,7 @@ const OTPVerification = () => {
       </h2>
 
       <p className="text-gray-600 text-center pb-6">
-        Please enter the 6-digit code sent to your email:
+        Please enter the 6-digit code sent to registered email {userData?.email}:
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col items-center px-6">
