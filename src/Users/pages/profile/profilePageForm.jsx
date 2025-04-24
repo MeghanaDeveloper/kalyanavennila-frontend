@@ -7,7 +7,7 @@ const ProfilePageForm = ({handleChange, handleSubmit, formData, loading, setForm
     <>
               <form className="px-5 py-3" onSubmit={handleSubmit}>
             <div className="pb-5">
-              <label className="label-styles">Surname</label>
+              <label className="label-styles">SurName</label>
               <input
                 type="text"
                 name="surName"

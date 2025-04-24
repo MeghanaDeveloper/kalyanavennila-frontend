@@ -25,7 +25,7 @@ const Footer = () => {
           <h3 className="text-lg font-bold mb-3">Get in Touch</h3>
           <p>Email: <Link to="mailto:info@kalyanavennila.com" className="hover:text-gray-400">info@kalyanavennila.com</Link></p>
           <p>Phone: +91 8331085410</p>
-          <p>Timings: 10:30 AM - 7:30 PM IST</p>
+          <p>Timings: 9:30 AM - 7:30 PM IST</p>
         </div>
 
         <div>
@@ -46,10 +46,10 @@ const Footer = () => {
     <Link to="https://facebook.com" target="_blank" rel="noopener noreferrer">
       <FaFacebookSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
     </Link>
-    <Link to="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    <a href=" https://wa.me/918331085410 " target="_blank" rel="noopener noreferrer">
       <FaWhatsappSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
-    </Link>
-    <Link to="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    </a>
+    <Link to="https://www.instagram.com/kalyanavennila/" target="_blank" rel="noopener noreferrer">
       <FaInstagramSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
     </Link>
   </div>

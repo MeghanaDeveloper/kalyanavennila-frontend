@@ -6,7 +6,7 @@ import { logout } from "../../redux/slices/authSlice";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuthContextData from "../../hooks/useAuthContextData";
-import logo from '../../../assets/logo.jpg'
+import logo from "../../../assets/logo1.jpg";
 
 const Navbar = () => {
   const {
@@ -28,13 +28,12 @@ const Navbar = () => {
     <>
       <nav className="padding-lr bg-primary p-4 shadow-md fixed top-0 left-0 w-full text-white z-50">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex justify-center items-center gap-3">
-            <img src={logo} alt='logo' className="w-10 h-10 rounded-full" />
-          <Link to="/" className="text-2xl font-bold cursor-pointer">
-            Kalyana Vennila
+          <Link to="/home" className="flex justify-center items-center gap-3">
+            <img src={logo} alt="logo" className="w-11 h-11 rounded-3xl" />
+            <span className="text-2xl font-bold cursor-pointer">
+              Kalyana Vennila
+            </span>
           </Link>
-          </div>
-
 
           <div className="hidden md:flex items-center space-x-3.5 font-medium">
             {!isAuthenticated ? (

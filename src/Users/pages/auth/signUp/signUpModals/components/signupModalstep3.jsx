@@ -67,7 +67,7 @@ const SignupModalstep3 = () => {
       <form className="px-5 py-3" onSubmit={handleSubmit} method="POST">
         <div className="pb-5">
           <label htmlFor="surName" className="label-styles">
-            Bride/Groom Sur Name
+            Bride/Groom SurName
           </label>
           <div className="mt-2">
             <input
