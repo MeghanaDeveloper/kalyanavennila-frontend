@@ -37,8 +37,8 @@ const AboutPage = () => {
               className="w-80 h-80 object-cover rounded-lg"
             />
             <div className="text-left">
-              <h2 className="text-3xl font-bold text-primary mb-4">About Us</h2>
-              <p className="text-gray-600">
+              <h2 className="text-5xl font-italian font-bold text-primary mb-4">About Us</h2>
+              <p className="text-gray-600 text-lg">
                 We come from a family deeply rooted in Tamil culture and values.
                 Our journey started in Mayiladuthurai, Tamil Nadu, and expanded
                 to Chennai and Hyderabad. At Kalyana Vennila, we believe that
@@ -64,10 +64,10 @@ const AboutPage = () => {
               className="w-80 h-80 object-cover rounded-lg"
             />
             <div className="text-left">
-              <h2 className="text-3xl font-bold text-primary mb-4">
+              <h2 className="text-5xl font-bold font-italian  text-primary mb-4">
                 Our Value
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-lg">
                 My great grandfather Narayanaswamy Iyer and grandfather
                 Ramachandran Iyer who led a very austere life, always believed
                 and stressed while we are progressing as a society and accepting
@@ -93,10 +93,10 @@ const AboutPage = () => {
               className="w-80 h-80 object-cover rounded-lg"
             />
             <div className="text-left">
-              <h2 className="text-3xl font-bold text-primary mb-4">
+              <h2 className="text-5xl font-italian font-bold text-primary mb-6">
                 Our Mission & Vision
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-lg">
                 Our mission is to create a **safe, genuine, and user-friendly**
                 platform for individuals seeking meaningful relationships. We
                 ensure **verified profiles, AI-based matchmaking, and privacy
@@ -114,7 +114,7 @@ const AboutPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-4xl mx-auto px-6"
         >
-          <h2 className="text-3xl font-bold text-primary py-3">
+          <h2 className="text-5xl font-italian font-bold text-primary py-3">
             Find Your Life Partner with Us!
           </h2>
           <p className="my-4 text-lg text-gray-700">
@@ -136,7 +136,7 @@ const AboutPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-7xl mx-auto px-6"
         >
-          <h2 className="text-3xl font-bold text-primary mb-6">How It Works</h2>
+          <h2 className="text-5xl font-italian font-bold text-primary mb-12">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Motion.div
               whileHover={{ scale: 1.08 }}

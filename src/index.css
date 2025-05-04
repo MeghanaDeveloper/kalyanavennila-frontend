@@ -11,7 +11,7 @@
  @layer components {
   .button-styles{
     @apply bg-primary text-white text-lg px-18 py-3 rounded-4xl font-bold
-     hover:bg-amber-500  cursor-pointer mx-auto block mt-auto hover:transform hover:duration-300 hover:scale-105 hover:ease-in-out
+     hover:bg-amber-500  cursor-pointer mx-auto block mt-auto hover:transform hover:duration-300 hover:scale-110 hover:ease-in-out
   }
   .label-styles{
     @apply  block text-lg font-medium text-gray-900
@@ -22,8 +22,12 @@
   .textbox-styles{
     @apply block w-full rounded-lg bg-white px-3 py-2.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-200 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-gray-500 sm:text-sm/6
   }
-  .transition-effects{
-    @apply hover:transform hover:duration-300 hover:scale-125 ease-in-out cursor-pointer
+  .transition-effects {
+    @apply transition  duration-300 ease-in-out transform hover:scale-110 cursor-pointer;
+  }
+  
+  .background-color{
+    @apply bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC]
   }
 }
 
@@ -38,4 +42,12 @@
 }
 
 
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
 

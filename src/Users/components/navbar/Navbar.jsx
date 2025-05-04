@@ -68,9 +68,9 @@ const Navbar = () => {
                 <Link to="/create-profile" className="hover:text-gray-300">
                   Create Profile
                 </Link>
-                {/* <Link to="#" className="hover:text-gray-300">
+                <Link to="/find-your-match" className="hover:text-gray-300">
                   Find Your Match
-                </Link> */}
+                </Link>
                 {/* <Link to="/blogs" className="hover:text-gray-300">
                   Blogs
                 </Link> */}

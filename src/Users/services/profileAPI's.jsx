@@ -1,9 +1,39 @@
 import axios from "axios";
 import { checkTokenAndProceed } from "../utilities/accessToken";
 import toast from "react-hot-toast";
-import { setProfileProgress, setUpdateProfile } from "../redux/slices/authSlice";
+import { setAllUserDetails, setProfileProgress, setUpdateProfile } from "../redux/slices/authSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_PROFILE_URL;
+
+
+//all users
+export const getAllUserFullDetails =   async (dispatch) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/all-users`)
+
+        if (response && response.data && response.status === 200) {
+            const result = response.data.users
+             dispatch(setAllUserDetails(result))
+            return {
+                success: true,
+                data: response.data
+            };
+        }
+    }
+    catch (error) {
+        const errors = error.response.data.error
+        toast.error(errors, {
+            position: "top-center",
+            autoClose: 3000,
+            className: 'custom-toast'
+        });
+        return {
+            success: false,
+            errors: errors
+        };
+    }
+}
+
 
 //update profile
 export const updateProfileDetails = (formData, progress, navigate) => async (dispatch) => {

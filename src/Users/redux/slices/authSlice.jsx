@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userData: {},
    profileProgress: 0,
+   allUserDetails:[],
   isAuthenticated: !!localStorage.getItem("loginToken"),
 };
 
@@ -11,24 +12,24 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => { 
-      console.log("login", action);
       state.isAuthenticated = true;
       state.userData = { ...state.userData, ...action.payload };
     },
     setUpdateProfile: (state, action) => {
-      console.log("update", action);
       state.isAuthenticated = true;
       state.userData = { ...state.userData, ...action.payload };
     },
     setGetUserDetails: (state, action) => {
-      console.log("get", action);
       state.isAuthenticated = true;
       state.userData = { ...state.userData, ...action.payload };
     },
     setProfileProgress: (state, action) => {
-      console.log("get profile", action);
       state.isAuthenticated = true;
       state.profileProgress = action.payload 
+    },
+    setAllUserDetails: (state, action) => {
+      state.isAuthenticated = true;
+      state.allUserDetails = action.payload
     },
     logout: (state) => {
       state.isAuthenticated = false;
@@ -39,7 +40,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { loginUser, setUpdateProfile, setGetUserDetails, setProfileProgress, logout } =
+export const { loginUser, setUpdateProfile, setGetUserDetails, setProfileProgress,setAllUserDetails, logout } =
   authSlice.actions;
 
 export default authSlice.reducer;

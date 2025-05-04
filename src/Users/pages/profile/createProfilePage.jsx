@@ -87,7 +87,7 @@ const CreateProfile = () => {
       if (userProfile?.profilePic) {
         setProfilePicUploaded(true);
       }
-  
+
       if (userProfile?.documents) {
         setDocumentsUploaded(true);
       }
@@ -156,26 +156,23 @@ const CreateProfile = () => {
     const finalProgressValue = Math.max(0, Math.min(100, progressValue));
 
     dispatch(setProfileProgress(finalProgressValue));
-  }, [formData, profilePicUploaded, documentsUploaded,dispatch]);
+  }, [formData, profilePicUploaded, documentsUploaded, dispatch]);
 
   useEffect(() => {
     if (progress === 100 && userProfile?.isProfileStatus == "Pending") {
-      setShowModal(true); 
+      setShowModal(true);
     }
-  }, [progress, userProfile?.isProfileStatus ]);
+  }, [progress, userProfile?.isProfileStatus]);
 
   return (
     <>
-      <div
-        className=" flex items-center justify-center  bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC]"
-      >
-<Motion.div
+      <div className=" flex items-center justify-center background-color">
+        <Motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="bg-white my-14 mx-4 shadow-xl rounded-3xl p-10 w-full max-w-3xl relative"
         >
-
           {loading && (
             <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
               <FaSpinner className="text-primary animate-spin text-4xl" />
@@ -221,14 +218,13 @@ const CreateProfile = () => {
             setDocumentsUploaded={setDocumentsUploaded}
             userProfile={userProfile}
           />
-
         </Motion.div>
       </div>
 
       {showModal && (
         <div className="fixed inset-0  bg-opacity-60 backdrop-blur-sm flex justify-center items-center z-50 shadow-2xl ">
-          <div className="bg-lime-50 bg-opacity-30 rounded-lg p-9 min-h-[55vh] max-h-[90vh] min-w-[35vw] max-w-[75vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide ">
-            <h3 className="text-2xl py-4 font-bold text-primary text-center ">
+          <div className="bg-white border-4 border-primary bg-opacity-30 rounded-lg p-9 min-h-[55vh] max-h-[90vh] min-w-[35vw] max-w-[75vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide ">
+            <h3 className="text-5xl font-italian py-4 font-bold text-primary text-center ">
               🎉 Profile Completion Successful!
             </h3>
             <p className="mt-4  font-bold">

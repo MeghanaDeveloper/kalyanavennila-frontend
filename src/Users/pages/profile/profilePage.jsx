@@ -12,6 +12,7 @@ import {
   FaTag,
   FaBirthdayCake,
   FaHeart,
+  FaUserCircle
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +35,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-[#E0BBE4] via-[#957DAD] to-[#D291BC] py-12">
+      <div className="background-color py-12">
       <Motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -71,6 +72,14 @@ const ProfilePage = () => {
 
           <div className="flex justify-center items-center flex-col">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-28 text-lg">
+            <div className="flex items-center gap-5">
+                <FaUserCircle className="text-primary" />
+                <div>
+                  <p className="font-bold text-gray-700">My Account ID:</p>
+                  <p className="text-gray-600">{userData?.accountId}</p>
+                </div>
+              </div>
+
               <div className="flex items-center gap-5">
                 <FaBirthdayCake className="text-primary" />
                 <div>

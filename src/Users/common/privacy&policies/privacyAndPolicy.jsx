@@ -10,25 +10,26 @@ const PrivacyAndPolicy = () => {
     if (index === 0) return;
     setOpenIndex(prevIndex => (prevIndex === index ? null : index));
   };
+
   return (
     <>
-          <section
-            className="relative bg-cover bg-center py-20 text-center text-white"
-            style={{ backgroundImage: `url(${bgHeader})` }}
-          >
-            <div className="bg-black/50 absolute inset-0"></div>
-            <div className="relative z-10 max-w-4xl mx-auto">
-              <h1 className="text-4xl font-bold"></h1>
-              <p className="mt-4 text-lg">
-                Privacy and Policies
-              </p>
-            </div>
-          </section>
+      <section
+        className="relative bg-cover bg-center py-20 text-center text-white"
+        style={{ backgroundImage: `url(${bgHeader})` }}
+      >
+        <div className="bg-black/50 absolute inset-0"></div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold">Privacy and Policies</h1>
+          <p className="mt-4 text-lg">
+            Learn how we protect your data and ensure secure matchmaking.
+          </p>
+        </div>
+      </section>
 
-          <div className="max-w-7xl mx-auto padding-lr padding-tb cursor-pointer">
+      <div className="max-w-7xl mx-auto padding-lr padding-tb cursor-pointer">
         {accordionData.map((item, index) => (
           <Accordion 
-          key={index}
+            key={index}
             index={index}
             isOpen={index === 0 || openIndex === index} 
             onToggle={handleToggle}
@@ -37,9 +38,8 @@ const PrivacyAndPolicy = () => {
           />
         ))}
       </div>
-
     </>
   )
 }
 
-export default PrivacyAndPolicy
+export default PrivacyAndPolicy;

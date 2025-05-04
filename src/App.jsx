@@ -15,6 +15,8 @@ import ClickTracker from "./Users/routes/clickTracking";
 import PrivacyAndPolicy from "./Users/common/privacy&policies/privacyAndPolicy";
 import ScrollToTop from "./Users/common/scrolltotop/scrollToTop";
 import TermsAndConditions from "./Users/common/terms&conditions/terms&conditions";
+import FindYourMatch from "./Users/pages/matchMaking/findyourMatch";
+import FullProfileDetails from "./Users/pages/matchMaking/fullProfileDetails";
 
 
 
@@ -22,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
     <PageTracker/>
-    <ClickTracker/>
+    {/* <ClickTracker/> */}
       <ScrollToTop />
 
       <Routes>
@@ -41,6 +43,8 @@ function App() {
                   <Route path="/create-profile" element={<CreateProfile />} />
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/contact-us" element={<ContactUs />} />
+                  <Route path="/find-your-match" element={<FindYourMatch />} />
+                  <Route path="/find-your-match/:id" element={<FullProfileDetails />} />
                 </Route>
               </Routes>
               <Footer />

@@ -4,20 +4,20 @@ import bgHeader from "../../../assets/bg-about.jpg";
 const TermsAndConditions = () => {
   return (
     <>
-      <section
-        className="relative bg-cover bg-center  text-center text-white"
-        style={{ backgroundImage: `url(${bgHeader})` }}
-      >
-        <div className="bg-black/50 absolute inset-0"></div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold"></h1>
-          <p className="mt-4 text-lg">Terms And Conditions</p>
-        </div>
-      </section>
+           <section
+             className="relative bg-cover bg-center py-20 text-center text-white"
+             style={{ backgroundImage: `url(${bgHeader})` }}
+           >
+             <div className="bg-black/50 absolute inset-0"></div>
+             <div className="relative z-10 max-w-4xl mx-auto">
+               <h1 className="text-4xl font-bold">Terms and Conditions</h1>
+             </div>
+           </section>
 
-      <div className="max-w-7xl mx-auto padding-lr padding-tb">
-        <section className="bg-gray-50 p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+
+           <div className="max-w-7xl mx-auto padding-lr padding-tb cursor-pointer">
+        <section >
+          <h2 className="text-5xl font-bold text-primary text-center mb-9 font-italian">
             Terms and Conditions
           </h2>
 
@@ -26,43 +26,19 @@ const TermsAndConditions = () => {
           </p>
 
           <p className="text-lg text-gray-700 mb-4">
-            Welcome to <strong>Kalyanavennila</strong>, owned and operated by{" "}
-            <strong>Kalyanavennila Private Limited</strong>. By accessing or
-            using the www.kalyanavennila.com website (hereafter referred to as
-            KVN), you agree to abide by the following terms and conditions.
-            These terms apply to all visitors, users, and others who access or
-            use the services of KVN.
+          Welcome to Kalyanavennila Private Limited, the owner of the website www.kalyanavennila.com (referred to as "KV").
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Acceptance of Terms
-          </h3>
           <p className="text-lg text-gray-700 mb-4">
-            By visiting the KVN website or signing up as a member, you confirm
-            your acceptance and agreement to be bound by these terms and
-            conditions. Additionally, when you use or visit any current or
-            future KVN service or business associated with KVN, you will also be
-            subject to the applicable guidelines and terms associated with those
-            services.
+          KV and its affiliates provide services under the following terms and conditions. By visiting our website or registering on the KV website, you agree to comply with the terms and conditions outlined here. Additionally, by using or visiting any current or future KV service, or any associated business of KV, you will be bound by the guidelines and terms specific to that service or business. We encourage you to review the services provided by KV before making any payments for any service.
           </p>
           <p className="text-lg text-gray-700 mb-4">
-            We encourage you to review all the services KVN offers before making
-            any payments or committing to any service.
+          By accessing services from KV, you confirm that you have read, understood, and agreed to these terms and conditions. This agreement governs the relationship between you and KV, as well as all transactions or services provided by, with, or in connection to KV. This agreement shall be unconditionally binding between both parties, without any reservations.
           </p>
 
           <p className="text-lg text-gray-700 mb-4">
             The users availing services from KVN are deemed to have read,
-            understood, and accepted these terms and conditions. This agreement
-            will govern the relationship between you and KVN, as well as all
-            transactions or services provided by KVN. These terms are binding
-            upon both parties without any reservations.
-          </p>
-          <p className="text-lg text-gray-700 mb-4">
-            KVN reserves the right, at its sole discretion, to update, change,
-            or modify these terms and conditions from time to time. Any changes
-            will be reflected on this page. Continued use of KVN’s services
-            after any changes or updates signifies your acceptance of those
-            changes.
+            All rights, privileges, obligations, and liabilities of you and/or KV related to any transaction or service are governed by these terms. KV reserves the right to change or alter these terms and conditions at its sole discretion from time to time.
           </p>
         </section>
       </div>

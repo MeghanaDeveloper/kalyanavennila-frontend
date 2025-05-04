@@ -11,7 +11,7 @@ const ContactUs = () => {
           transition={{ duration: 0.5 }}
           className="max-w-7xl mx-auto px-6"
         >
-          <h2 className="text-3xl font-bold text-primary text-center mb-6">
+          <h2 className="text-5xl font-italian font-bold text-primary text-center mb-6">
             Contact Us
           </h2>
           <p className="text-gray-700 text-center mb-10">
@@ -46,7 +46,7 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <form className="space-y-4">
+            <form className="space-y-4 pb-6">
               <div>
                 <label className="label-styles">Your Name</label>
                 <input
