@@ -17,20 +17,20 @@ const Accordion = ({ title, content, isOpen, onToggle, index }) => {
       </button>
       <div
         className={`px-6 overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-[500px] pb-6' : 'max-h-0'
+          isOpen ? 'max-h-[980px] pb-6' : 'max-h-0'
         }`}
       >
           {isOpen && (
         <div>
-          {Array.isArray(content) ? (
-            <ul className="list-disc list-inside">
+          {/* {Array.isArray(content) ? (
+            <ul className="list-disc list-inside ">
               {content.map((point, i) => (
                 <li key={i}  className="text-gray-800 text-lg pb-1 ">{point}</li>
               ))}
             </ul>
-          ) : (
-            <p className="text-gray-800 text-lg">{content}</p>
-          )}
+          ) : ( */}
+            <p className="text-gray-800 text-md">{content}</p>
+          {/* )} */}
         </div>
       )}
       </div>

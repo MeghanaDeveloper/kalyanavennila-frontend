@@ -25,7 +25,7 @@ const ContactUs = () => {
                 <span className="text-3xl text-primary">📞</span>
                 <div>
                   <p className="text-lg font-semibold text-gray-800">Phone</p>
-                  <p className="text-gray-600">+91 98765 43210</p>
+                  <p className="text-gray-600">+91 8331085410</p>
                 </div>
               </div>
 
@@ -41,7 +41,8 @@ const ContactUs = () => {
                 <span className="text-3xl text-primary">📍</span>
                 <div>
                   <p className="text-lg font-semibold text-gray-800">Address</p>
-                  <p className="text-gray-600">Chennai, Tamil Nadu, India</p>
+                  <p className="text-gray-600">1205 Aspira Apartments, J.P.Nagar, Banglore,
+                  <span className="block">Karnataka - 560078</span></p>
                 </div>
               </div>
             </div>

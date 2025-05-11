@@ -35,7 +35,9 @@ export const checkTokenAndProceed = (dispatch, navigate) => {
             className: "custom-toast",
         });
 
-        handleLogout(dispatch, navigate);
+        setTimeout(() => {
+            handleLogout(dispatch, navigate); // let the toast show for a moment
+          }, 1500);
         return null;
     }
 

@@ -1,10 +1,45 @@
 import axios from "axios";
 import { checkTokenAndProceed } from "../utilities/accessToken";
 import toast from "react-hot-toast";
-import { setAllUserDetails, setProfileProgress, setUpdateProfile } from "../redux/slices/authSlice";
+import { setAllUserDetails, setGetUserDetails, setProfileProgress, setUpdateProfile } from "../redux/slices/authSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_PROFILE_URL;
 
+  //users
+  export const getUserFullDetails = (navigate) =>  async (dispatch) => {
+    try {
+        const token = checkTokenAndProceed(dispatch,navigate);
+        if (!token) return; 
+
+        const response = await axios.get(`${BASE_URL}/user`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+        if (response && response.data && response.status === 200) {
+            const result = response.data.user
+            dispatch(setGetUserDetails(result))
+            return {
+                success: true,
+                data: response.data
+            };
+        }
+    }
+    catch (error) {
+        const errors = error.response.data.error
+        toast.error(errors, {
+            position: "top-center",
+            autoClose: 3000,
+            className: 'custom-toast'
+        });
+        return {
+            success: false,
+            errors: errors
+        };
+    }
+}
 
 //all users
 export const getAllUserFullDetails =   async (dispatch) => {

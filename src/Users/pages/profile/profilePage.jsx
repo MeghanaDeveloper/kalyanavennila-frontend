@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaEdit,
-  FaMapMarkerAlt,
+  FaSpinner,
   FaPhone,
   FaBuilding,
   FaTransgender,
@@ -12,237 +12,69 @@ import {
   FaTag,
   FaBirthdayCake,
   FaHeart,
-  FaUserCircle
+  FaUserCircle,
+  FaEnvelope,
+  FaGlobeAmericas,
+  FaCity,
+  FaGlobe,
 } from "react-icons/fa";
+import { GiCapitol } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserFullDetails } from "../../services/authAPI's";
+import { getUserFullDetails } from "../../services/profileAPI's";
 import { motion as Motion } from "framer-motion";
+import toast from "react-hot-toast";
+import ViewProfileDetails from "./viewProfileDetails";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.authReducer);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-      const fetchUserDetails = async () => {
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
         await dispatch(getUserFullDetails(navigate));
-      };
-  
-      fetchUserDetails();
-    }, [dispatch, navigate]);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUserDetails();
+  }, [dispatch, navigate]);
 
   return (
     <>
-      <div className="background-color py-12">
-      <Motion.div
+      <div className="background-color padding-tb">
+        <Motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="bg-white mx-auto py-16 shadow-xl rounded-3xl  w-[90%] md:max-w-2xl lg:max-w-3xl relative"
+          className="bg-blue-50 mx-auto py-16 shadow-xl rounded-3xl md:max-w-2xl lg:max-w-3xl relative"
         >
-
-          <p className="text-primary text-center font-bold text-4xl pb-9">
-            My Profile
-          </p>
-
-          <button
-            onClick={() => navigate("/create-profile")}
-            className="absolute top-28 md:right-10 right-4 text-primary transition-effects"
-          >
-            <FaEdit size={24} />
-          </button>
-
-          <div className="flex justify-center items-center">
-            <img
-              src={userData?.profilePic}
-              alt="Profile"
-              className="w-32 h-32 text-center rounded-full border-3 border-primary shadow-lg"
-            />
-          </div>
-
-          <p className="text-center text-3xl font-bold text-gray-800 pt-6 pb-3">
-            {userData?.surName} {userData?.firstName} {userData?.lastName}
-          </p>
-
-          <p className="text-center text-lg text-gray-600 pb-12">
-            {userData?.email}
-          </p>
-
-          <div className="flex justify-center items-center flex-col">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-28 text-lg">
-            <div className="flex items-center gap-5">
-                <FaUserCircle className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">My Account ID:</p>
-                  <p className="text-gray-600">{userData?.accountId}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaBirthdayCake className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Date of Birth:</p>
-                  <p className="text-gray-600">
-                    {userData?.dateOfBirth
-                      ? new Date(userData.dateOfBirth).toLocaleDateString(
-                          "en-GB",
-                          {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          }
-                        )
-                      : "N/A"}
-                    {userData?.myAge ? ` (${userData.myAge} years)` : ""}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaPhone className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Mobile Number:</p>
-                  <p className="text-gray-600">{userData?.mobile}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaTransgender className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Gender:</p>
-                  <p className="text-gray-600">{userData?.gender}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaLanguage className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Mother Tongue:</p>
-                  <p className="text-gray-600">{userData?.motherTongue}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaPrayingHands className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Religion:</p>
-                  <p className="text-gray-600">{userData?.religion}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaLandmark className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Caste:</p>
-                  <p className="text-gray-600">{userData?.caste}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaTag className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Sub-Caste:</p>
-                  <p className="text-gray-600">{userData?.subCaste}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaGraduationCap className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Education:</p>
-                  <p className="text-gray-600">{userData?.education}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaBuilding className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Job Type:</p>
-                  <p className="text-gray-600">
-                    {" "}
-                    {userData?.jobType === "Others"
-                      ? userData?.otherJobType
-                      : userData?.jobType}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaMapMarkerAlt className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Known Languages:</p>
-                  <p className="text-gray-600">
-                    {Array.isArray(userData?.languages)
-                      ? userData.languages.join(", ")
-                      : userData?.languages || "N/A"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaBuilding className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Documents:</p>
-                  <p className="text-gray-600">
-                    {" "}
-                    {userData?.documents?.split("/").pop().replace(/^\d+-/, "")}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-b-2 py-5 border-gray-100"></div>
-
-            <p className="text-primary font-bold text-2xl pl-16 py-7">
-              My Partner Preferences :
+          <div className="flex flex-wrap gap-6 px-10 sm:justify-between justify-center items-center pb-9">
+            <p className="text-primary font-bold text-5xl font-italian">
+              My Profile
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-44  gap-y-6 text-lg">
-              <div className="flex items-center gap-5">
-                <FaHeart className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Looking For:</p>
-                  <p className="text-gray-600">{userData?.lookingFor}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaHeart className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Partner Age:</p>
-                  <p className="text-gray-600">{userData?.partnerAge}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaLanguage className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Mother Tongue:</p>
-                  <p className="text-gray-600">
-                    {userData?.partnerMotherTongue}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaLandmark className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Caste:</p>
-                  <p className="text-gray-600">{userData?.partnerCaste}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-5">
-                <FaPrayingHands className="text-primary" />
-                <div>
-                  <p className="font-bold text-gray-700">Religion:</p>
-                  <p className="text-gray-600">{userData?.partnerReligion}</p>
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={() => navigate("/create-profile")}
+              className="flex items-center gap-2 font-bold transition-effects bg-primary text-white rounded-2xl px-4 py-2 hover:bg-amber-500"
+            >
+              <FaEdit size={20} />
+              <span>Edit</span>
+            </button>
           </div>
+
+          {loading && (
+            <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
+              <FaSpinner className="text-primary animate-spin text-4xl" />
+            </div>
+          )}
+
+          <ViewProfileDetails userData={userData} showCards={true} />
         </Motion.div>
       </div>
     </>

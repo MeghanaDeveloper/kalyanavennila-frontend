@@ -3,6 +3,7 @@ import {
   FaInstagramSquare,
   FaYoutubeSquare,
   FaWhatsappSquare,
+  FaLinkedin
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -59,9 +60,6 @@ const Footer = () => {
             <span className="font-bold">Phone : </span>+91 8331085410
           </p>
           <p>
-            <span className="font-bold">Timings : </span> 9:30 AM - 7:30 PM IST
-          </p>
-          <p>
             <span className="font-bold block">Address : </span>
             1205 Aspira Apartments, J.P.Nagar, Banglore,
             <span className="block">Karnataka - 560078</span>
@@ -114,6 +112,13 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <FaInstagramSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
+            </Link>
+            <Link
+              to="https://www.linkedin.com/in/kalyana-vennila-202574364/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </Link>
           </div>
         </div>

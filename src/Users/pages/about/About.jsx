@@ -1,6 +1,6 @@
 import React from "react";
 import aboutImage from "../../../assets/about-image.png";
-import missionImage from "../../../assets/vission.webp";
+import missionImage from "../../../assets/vission.jpg";
 import bgAbout from "../../../assets/bg-about.jpg";
 import valueImage from "../../../assets/value-image.png";
 import { motion as Motion } from "framer-motion";

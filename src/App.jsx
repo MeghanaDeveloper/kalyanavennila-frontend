@@ -9,14 +9,14 @@ import ProfilePage from "./Users/pages/profile/profilePage";
 import CreateProfile from "./Users/pages/profile/createProfilePage";
 import Footer from "./Users/components/footer/Footer";
 import Blogs from "./Users/pages/blogs/Blogs";
-import usePageTracking from "./Users/routes/pageTracking";
 import ContactUs from "./Users/pages/contact/contactUs";
-import ClickTracker from "./Users/routes/clickTracking";
+//import ClickTracker from "./Users/routes/clickTracking";
 import PrivacyAndPolicy from "./Users/common/privacy&policies/privacyAndPolicy";
-import ScrollToTop from "./Users/common/scrolltotop/scrollToTop";
+import ScrollToTop from "./Users/common/scrollToTop/scrollToTop";
 import TermsAndConditions from "./Users/common/terms&conditions/terms&conditions";
-import FindYourMatch from "./Users/pages/matchMaking/findyourMatch";
+import FindYourMatch from "./Users/pages/matchMaking/findYourMatch";
 import FullProfileDetails from "./Users/pages/matchMaking/fullProfileDetails";
+import usePageTracking from "./Users/routes/pageTracking";
 
 
 

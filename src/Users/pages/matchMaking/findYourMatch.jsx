@@ -1,19 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserFullDetails } from "../../services/authAPI's";
+import { getUserFullDetails } from "../../services/profileAPI's";
 import { motion as Motion } from "framer-motion";
 import ProfileCards from "./profileCards";
+import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
 
 const FindYourMatch = () => {
   const userProfile = useSelector((state) => state?.authReducer?.userData);
+
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
+      setLoading(true);
+      try {
       await dispatch(getUserFullDetails(navigate));
+    } catch (error) {
+      toast.error( error.message);
+    } finally {
+      setLoading(false);
+    }
     };
 
     fetchUserDetails();
@@ -21,7 +32,12 @@ const FindYourMatch = () => {
 
   return (
     <>
-      <section className="background-color padding-lr padding-tb">
+      <section className="background-color padding-tb">
+      {loading && (
+                    <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
+                      <FaSpinner className="text-primary animate-spin text-4xl" />
+                    </div>
+                  )}
           {userProfile?.isProfileStatus !== "Approved" ? (
             <Motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -53,7 +69,7 @@ const FindYourMatch = () => {
                 <button
                   className="bg-primary text-white px-4 py-2 rounded-2xl font-bold  hover:bg-amber-500 transition-effects cursor-pointer"
                   onClick={() => [
-                    // setProfileModalOpen(false),
+                    //setProfileModalOpen(false),
                     navigate("/create-profile"),
                   ]}
                   variant="contained"

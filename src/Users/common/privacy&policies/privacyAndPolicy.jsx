@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { accordionData } from './privacy&policiesData';
+import {  privacyAndPoliciesData } from './privacy&policiesData';
 import bgHeader from '../../../assets/bg-about.jpg'
 import Accordion from '../../components/layouts/accordionLayout/accordion';
 
@@ -26,8 +26,8 @@ const PrivacyAndPolicy = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto padding-lr padding-tb cursor-pointer">
-        {accordionData.map((item, index) => (
+      <div className="max-w-7xl mx-auto padding -lr padding-tb cursor-pointer">
+        {privacyAndPoliciesData.map((item, index) => (
           <Accordion 
             key={index}
             index={index}

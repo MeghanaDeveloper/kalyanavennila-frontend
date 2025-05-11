@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserFullDetails } from "../../services/profileAPI's";
-//import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
+import { FaSpinner } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import SearchProfile from "./searchProfile";
 
 const ProfileCards = () => {
   const allUserProfile = useSelector(
@@ -14,103 +17,55 @@ const ProfileCards = () => {
   );
 
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-  //const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
-      await getAllUserFullDetails(dispatch);
+      setLoading(true);
+      try {
+        await getAllUserFullDetails(dispatch);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchUserDetails();
   }, [dispatch]);
 
-  const handleViewProfile = () => {
-    setShowModal(true);
+  const handleViewProfile = (profileId) => {
+    //setShowModal(true);
+    navigate(`/find-your-match/${profileId}`);
   };
 
+  //const filteredProfiles = approvedProfiles?.filter(applyFilters);
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
-        {approvedProfiles?.map((profile) => (
-          <div
-            key={profile?._id}
-            className="bg-white shadow-md rounded-2xl hover:shadow-lg transition-shadow duration-300 flex flex-col">
-            <div className="p-6 flex items-center justify-center flex-col grow flex-1">
-              <div className="w-44 h-44 mx-auto">
-                <img
-                  src={profile?.profilePic || "/default-profile.png"}
-                  alt="Profile"
-                  className="w-full h-full object-cover rounded-2xl border-2 border-primary"
-                />
-              </div>
-              <div className="space-y-3 text-lg">
-                <div className="flex pt-6">
-                  <p className="font-bold text-primary min-w-[120px]">
-                    Full Name
-                  </p>
-                  <p>
-                    <span className="pr-4">:</span>
-                    {profile?.surName} {profile?.firstName} {profile?.lastName}
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="font-bold text-primary min-w-[120px]">
-                    Date of Birth
-                  </p>
-                  <p>
-                    <span className="pr-4">:</span>
-                    {profile?.dateOfBirth
-                      ? new Date(profile?.dateOfBirth).toLocaleDateString(
-                          "en-GB",
-                          {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                          }
-                        )
-                      : "-----"}
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="font-bold text-primary min-w-[120px]">Gender</p>
-                  <p>
-                    <span className="pr-4">:</span>{" "}
-                    {profile?.gender ? profile?.gender : "-----"}
-                  </p>
-                </div>
-                <div className="flex pb-6">
-                  <p className="font-bold text-primary min-w-[120px]">Job</p>
-                  <p>
-                    <span className="pr-4">:</span>{" "}
-                    {profile?.jobType ? profile?.jobType : "-----"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 mt-auto ">
-                <button
-                  onClick={() => handleViewProfile(profile._id)}
-                  className="bg-primary text-white px-9 py-3 font-bold rounded-full hover:bg-amber-500 transition-effects"
-                >
-                  View Profile
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {approvedProfiles?.length === 0 && (
-          <div className="col-span-full text-center text-gray-500 text-lg mt-10">
-            No approved profiles found.
-          </div>
-        )}
+      <div className="fixed  top-18 left-0 w-full bg-yellow-100 text-yellow-900 text-center px-4 py-4 shadow-md z-5 mb-6">
+        <span className="text-lg font-semibold">
+          🔓 Unlock Unlimited Profiles — Just One Subscription for 3 Months to
+          view profiles!
+        </span>
       </div>
+
+      <SearchProfile
+        approvedProfiles={approvedProfiles}
+        handleViewProfile={handleViewProfile}
+      />
+
+      {loading && (
+        <div className="absolute inset-0 bg-white/80 flex justify-center items-center z-10">
+          <FaSpinner className="text-primary animate-spin text-4xl" />
+        </div>
+      )}
 
       {showModal && (
         <div className="fixed inset-0 bg-opacity-60 backdrop-blur-md flex justify-center items-center z-50 shadow-3xl  ">
-          <div className="bg-white bg-opacity-60 rounded-lg p-10  min-h-[50vh] max-h-[90vh] min-w-[30vw] max-w-[80vw] md:max-w-[35vw] overflow-y-scroll scrollbar-hide relative text-center border-primary border-4 ">
+          <div className="bg-white bg-opacity-60 rounded-lg p-6 sm:p-10 min-h-[50vh] max-h-[90vh] w-[90vw] sm:w-[80vw] md:w-[40vw] overflow-y-auto scrollbar-hide relative text-center border-primary border-4">
             <IoMdClose
               onClick={() => [setShowModal(false)]}
               className="absolute right-8  text-primary text-xl transition-effects"
@@ -119,19 +74,18 @@ const ProfileCards = () => {
               Subscribe to View Profiles
             </p>
             <p className="mb-6">
-              To view profile contacts , please subscribe. You’ll
-              get unlimited access to view profiles for 3 months.
+              To view profile contacts , please subscribe. You’ll get unlimited
+              access to view profiles for 3 months.
             </p>
             <p className="mb-9">
               Subscribe now to unlock all profiles and find your perfect match!
-              
             </p>
             <div className="mb-9">
               <a
-                href="https://your-payment-link.com"
+                href="upi://pay?pa=Ashok.nagraj13@okicici&pn=Ashok&am=100&cu=INR"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary text-white px-9 py-3 text-lg font-bold rounded-full hover:bg-amber-500 transition-effects"
+                className="bg-primary text-white text-center px-6 py-3 w-full sm:w-auto text-base font-bold rounded-ful hover:bg-amber-500 transition-all"
               >
                 Click here to Subscribe
               </a>

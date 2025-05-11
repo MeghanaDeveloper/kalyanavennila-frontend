@@ -35,7 +35,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-3.5 font-medium">
+          <div className="hidden lg:flex items-center space-x-3.5 font-medium">
             {!isAuthenticated ? (
               <>
                 <p
@@ -117,7 +117,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsOpen(isOpen === "mobile" ? null : "mobile")}
           >
             <div className="w-6 h-1 bg-white mb-1"></div>
@@ -127,7 +127,7 @@ const Navbar = () => {
         </div>
 
         {isOpen === "mobile" && (
-          <div className="md:hidden flex flex-col bg-[#F7641E] p-4 space-y-3">
+          <div className="lg:hidden flex flex-col bg-[#F7641E] px-9 py-6 font-bold space-y-4">
             {!isAuthenticated ? (
               <>
                 <p
@@ -161,13 +161,6 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link
-                  to="#"
-                  className="hover:text-gray-300"
-                  onClick={() => setIsOpen(null)}
-                >
-                  Find Your Match
-                </Link>
-                <Link
                   to="/about"
                   className="hover:text-gray-300"
                   onClick={() => setIsOpen(null)}
@@ -180,6 +173,13 @@ const Navbar = () => {
                   onClick={() => setIsOpen(null)}
                 >
                   Create Profile
+                </Link>
+                <Link
+                  to="/find-your-match"
+                  className="hover:text-gray-300"
+                  onClick={() => setIsOpen(null)}
+                >
+                  Find Your Match
                 </Link>
                 <Link
                   to="/profile"
