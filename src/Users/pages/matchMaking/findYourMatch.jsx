@@ -33,11 +33,7 @@ const FindYourMatch = () => {
   return (
     <>
       <section className="background-color padding-tb">
-      {loading && (
-                    <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
-                      <FaSpinner className="text-primary animate-spin text-4xl" />
-                    </div>
-                  )}
+
           {userProfile?.isProfileStatus !== "Approved" ? (
             <Motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -45,6 +41,11 @@ const FindYourMatch = () => {
               transition={{ duration: 0.5 }}
               className="bg-white mx-auto py-10 shadow-xl rounded-3xl  w-[90%] md:max-w-2xl lg:max-w-3xl relative text-center px-16"
             >
+                    {loading && (
+                    <div className="absolute inset-0 bg-white/70 flex justify-center items-center z-10">
+                      <FaSpinner className="text-primary animate-spin text-4xl" />
+                    </div>
+                  )}
               <div className="text-6xl my-6 animate-pulse ">⏳</div>
               <p className="text-5xl  font-italian font-bold text-primary mb-6">
                 Profile Under Review

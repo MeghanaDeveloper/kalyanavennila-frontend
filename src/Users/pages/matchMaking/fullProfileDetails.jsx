@@ -1,26 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  FaPhone,
-  FaBuilding,
-  FaTransgender,
-  FaLanguage,
-  FaGraduationCap,
-  FaPrayingHands,
-  FaLandmark,
-  FaTag,
-  FaBirthdayCake,
-  FaHeart,
-  FaUserCircle,
-  FaEnvelope,
-  FaGlobe,
-  FaGlobeAmericas,
-  FaCity,
-} from "react-icons/fa";
-import { GiCapitol } from "react-icons/gi";
 import { motion as Motion } from "framer-motion";
-import ViewProfileDetails from "../profile/viewProfileDetails";
+import ViewProfileDetails from "../profile/common/viewProfileDetails";
 
 const FullProfileDetails = () => {
   const { id } = useParams();
@@ -40,7 +22,7 @@ const FullProfileDetails = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="bg-blue-50 py-20 mx-auto shadow-xl rounded-3xl sm:max-w-xl md:max-w-2xl lg:max-w-3xl relative"
+          className="bg-blue-50 py-20 px- mx-auto shadow-xl rounded-3xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl relative"
         >
           <p className="text-primary text-center font-bold text-4xl pb-12">
             Profile Details

@@ -1,30 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
   FaEdit,
-  FaSpinner,
-  FaPhone,
-  FaBuilding,
-  FaTransgender,
-  FaLanguage,
-  FaGraduationCap,
-  FaPrayingHands,
-  FaLandmark,
-  FaTag,
-  FaBirthdayCake,
-  FaHeart,
-  FaUserCircle,
-  FaEnvelope,
-  FaGlobeAmericas,
-  FaCity,
-  FaGlobe,
+  FaSpinner
 } from "react-icons/fa";
-import { GiCapitol } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserFullDetails } from "../../services/profileAPI's";
+import { getUserFullDetails } from "../../../services/profileAPI's";
 import { motion as Motion } from "framer-motion";
 import toast from "react-hot-toast";
-import ViewProfileDetails from "./viewProfileDetails";
+import ViewProfileDetails from "../common/viewProfileDetails";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -52,7 +36,7 @@ const ProfilePage = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="bg-blue-50 mx-auto py-16 shadow-xl rounded-3xl md:max-w-2xl lg:max-w-3xl relative"
+          className="bg-blue-50 mx-auto py-16 shadow-xl rounded-3xl md:max-w-3xl lg:max-w-4xl relative"
         >
           <div className="flex flex-wrap gap-6 px-10 sm:justify-between justify-center items-center pb-9">
             <p className="text-primary font-bold text-5xl font-italian">

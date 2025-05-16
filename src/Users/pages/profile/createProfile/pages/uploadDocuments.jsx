@@ -7,9 +7,12 @@ import {
   deleteDocuments,
   updateDocuments,
   uploadDocuments,
-} from "../../services/profileAPI's";
+} from "../../../../services/profileAPI's";
+import useProfileContextData from "../../../../hooks/useProfileContextData";
 
-const UploadDocuments = ({ setDocumentsUploaded, userProfile }) => {
+const UploadDocuments = () => {
+  const {setDocumentsUploaded, userProfile } = useProfileContextData()
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -79,15 +82,15 @@ const UploadDocuments = ({ setDocumentsUploaded, userProfile }) => {
   };
 
   return (
-    <div className="px-4">
-      <div className="bg-gray-50 shadow-md rounded-t-2xl px-7 pt-9 pb-16">
+    <div className="md:p-12">
+      <div className="bg-blue-50 shadow-md rounded-2xl px-7 pt-9 pb-16">
         <p className="text-xl font-bold text-primary pb-6">
           {proofDocument
             ? "Update Aadhar Card (.jpg):"
             : "Upload Aadhar Card (.jpg):"}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 gap-6 rounded-2xl border-4 border-gray-300 w-full max-w-2xl">
+        <div className="flex flex-col flex-wrap sm:flex-row items-center justify-between p-4 sm:p-6 gap-6 rounded-2xl border-4 border-gray-300 w-full max-w-4xl">
           <div className="flex items-center gap-2 flex-wrap ">
             <FaFileAlt className="text-primary text-xl" />
             <span className=" text-md truncate max-w-[180px] sm:max-w-none">
@@ -95,7 +98,7 @@ const UploadDocuments = ({ setDocumentsUploaded, userProfile }) => {
             </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="flex flex-col flex-wrap sm:flex-row gap-9 w-full sm:w-auto">
             <button
               onClick={handleFileClick}
               className="bg-primary text-white px-4 py-2 rounded-md text-md flex items-center gap-3 hover:bg-amber-500 transition-effects cursor-pointer font-bold w-full sm:w-auto justify-center"

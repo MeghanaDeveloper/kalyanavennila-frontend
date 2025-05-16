@@ -6,12 +6,15 @@ import {
   uploadProfileImage,
   updateProfileImage,
   deleteProfileImage,
-} from "../../services/profileAPI's";
+} from "../../../../services/profileAPI's";
 import { useNavigate } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 import { RiCloseLargeFill } from "react-icons/ri";
+import useProfileContextData from "../../../../hooks/useProfileContextData";
 
-const UploadProfileImage = ({ setProfilePicUploaded, userProfile }) => {
+const UploadProfileImage = () => {
+  const  { setProfilePicUploaded, userProfile } = useProfileContextData()
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -85,8 +88,8 @@ const UploadProfileImage = ({ setProfilePicUploaded, userProfile }) => {
 
   return (
     <>
-      <div className="px-4">
-        <div className="bg-gray-50 shadow-md rounded-t-2xl px-7 pt-9 pb-16">
+      <div className="md:p-14">
+        <div className="bg-blue-50 shadow-md rounded-2xl px-7 pt-9 pb-16">
           <p className="text-xl font-bold text-primary pb-6">
             {profilePic
               ? "Update Profile Picture (.jpg) :"

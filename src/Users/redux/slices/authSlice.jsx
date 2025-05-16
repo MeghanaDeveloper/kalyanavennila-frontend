@@ -34,7 +34,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
       state.userData = {};
-      //state.profileProgress=0
+      state.profileProgress=0
       localStorage.removeItem("loginToken");
     },
   },

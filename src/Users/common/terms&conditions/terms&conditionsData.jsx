@@ -292,7 +292,9 @@ export const termsAndConditionsData = [
         may not transfer or assign your account to any third party.
       </p>,
     ],
-  },
+  }, 
+
+  
   {
     title: "Other Important Information",
     content: [

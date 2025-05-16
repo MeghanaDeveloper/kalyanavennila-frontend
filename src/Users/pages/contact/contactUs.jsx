@@ -33,7 +33,7 @@ const ContactUs = () => {
                 <span className="text-3xl text-primary">📧</span>
                 <div>
                   <p className="text-lg font-semibold text-gray-800">Email</p>
-                  <p className="text-gray-600">info@kalyanavennila.com</p>
+                  <p className="text-gray-600">services@kalyanavennila.com</p>
                 </div>
               </div>
 
@@ -62,6 +62,14 @@ const ContactUs = () => {
                   type="email"
                   className="textbox-styles"
                   placeholder="Enter your email"
+                />
+              </div>
+              <div>
+                <label className="label-styles">Your Mobile Number</label>
+                <input
+                  type="tel"
+                  className="textbox-styles"
+                  placeholder="Enter your mobile number"
                 />
               </div>
               <div className="pb-5">

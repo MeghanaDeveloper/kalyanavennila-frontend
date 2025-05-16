@@ -18,7 +18,7 @@ const allCities = formData?.locationDetails?.state?.code
 
   return (
     <>
-      <div className="px-4">
+      <div className="md:px-14">
         <div className=" bg-white shadow-md rounded-tl-2xl rounded-tr-2xl  px-9 py-9 ">
           <form>
             <p className="text-2xl font-bold text-primary mb-4">

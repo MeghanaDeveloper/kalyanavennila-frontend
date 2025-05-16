@@ -53,7 +53,7 @@ const Footer = () => {
               to="mailto:info@kalyanavennila.com"
               className="hover:text-gray-400"
             >
-              info@kalyanavennila.com
+              services@kalyanavennila.com
             </Link>
           </p>
           <p>

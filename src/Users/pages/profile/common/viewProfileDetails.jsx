@@ -1,5 +1,4 @@
-import { City, Country, State } from "country-state-city";
-import React from "react";
+
 import {
   FaPhone,
   FaBuilding,
@@ -39,7 +38,7 @@ const Card = ({ icon: Icon, label, value }) => (
 
 const ViewProfileDetails = ({ userData, showCards = true }) => {
   if (!userData) return null;
-console.log(userData)
+  console.log(userData);
   return (
     <>
       <div className="bg-gray-50 shadow-md rounded-2xl p-10 mb-8 mx-6">
@@ -64,7 +63,7 @@ console.log(userData)
         </div>
       </div>
 
-      <div  className="bg-gray-50 shadow-md rounded-2xl p-10 mb-8 mx-6">
+      <div className="bg-gray-50 shadow-md rounded-2xl p-10 mb-8 mx-6">
         <p className="text-2xl font-bold text-primary mb-4">
           Personal Information
         </p>
@@ -76,18 +75,14 @@ console.log(userData)
             value={`${userData?.surName} ${userData?.firstName} ${userData?.lastName}`}
           />
           <Card
-  icon={FaBirthdayCake}
-  label="Date of Birth"
-  value={
-    `${userData?.dateOfBirth ? formatDate(userData.dateOfBirth) : "N/A"} (${userData?.myAge} Years)`
-  }
-/>
-
-          <Card
-            icon={FaTransgender}
-            label="Gender"
-            value={userData?.gender}
+            icon={FaBirthdayCake}
+            label="Date of Birth"
+            value={`${
+              userData?.dateOfBirth ? formatDate(userData.dateOfBirth) : "N/A"
+            } (${userData?.myAge} Years)`}
           />
+
+          <Card icon={FaTransgender} label="Gender" value={userData?.gender} />
           <Card
             icon={FaLanguage}
             label="Mother Tongue"
@@ -125,11 +120,7 @@ console.log(userData)
           Communication Information
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <Card
-            icon={FaPhone}
-            label="Mobile Number"
-            value={userData?.mobile}
-          />
+          <Card icon={FaPhone} label="Mobile Number" value={userData?.mobile} />
           <Card
             icon={FaGlobeAmericas}
             label="Country"
@@ -203,13 +194,13 @@ console.log(userData)
             icon={FaLanguage}
             label="Mother Tongue"
             value={userData?.partnerPreferences?.partnerMotherTongue}
-          />  
+          />
           <Card
             icon={FaLandmark}
             label="Caste"
             value={userData?.partnerPreferences?.partnerCaste}
           />
-           <Card
+          <Card
             icon={FaPrayingHands}
             label="Religion"
             value={userData?.partnerPreferences?.partnerReligion}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa6";
 
-const SearchProfile = ({ approvedProfiles, handleViewProfile }) => {
+const SearchProfile = ({ approvedProfiles, handleViewProfile, loading }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [genderFilter, setGenderFilter] = useState("");
   const [ageFilter, setAgeFilter] = useState("");
@@ -28,15 +30,21 @@ const SearchProfile = ({ approvedProfiles, handleViewProfile }) => {
   const filteredProfiles = approvedProfiles?.filter(applyFilters);
   return (
     <>
-      <div className="w-full bg-yellow-100 text-yellow-900 text-center padding-lr mt-6 py-6 shadow-lg">
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between p-6 bg-white shadow-sm rounded-lg">
-          <input
-            type="text"
-            placeholder="Search by name..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="textbox-styles w-full md:w-1/3 border border-gray-300 rounded-lg px-4 py-2"
-          />
+      <div className="w-full text-center padding-lr pt-20 sm:pt-10 pb-6">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between py-9 px-6 bg-white shadow-2xl rounded-lg">
+
+
+<div className="relative w-full md:w-1/3">
+  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+  <input
+    type="text"
+    placeholder="Search by name..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="pl-10 pr-4 py-2 border-2 w-full rounded textbox-styles"
+  />
+</div>
+
 
           <select
             value={genderFilter}
@@ -66,12 +74,18 @@ const SearchProfile = ({ approvedProfiles, handleViewProfile }) => {
         </div>
       </div>
 
+            {loading && (
+        <div className="absolute inset-0 bg-white/80 flex justify-center items-center z-10">
+          <FaSpinner className="text-primary animate-spin text-4xl" />
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 padding-lr  pt-10">
         {filteredProfiles && filteredProfiles.length > 0 ? (
           filteredProfiles?.map((profile) => (
             <div
               key={profile?._id}
-              className="bg-white border border-gray-200 shadow-xl rounded-2xl transition duration-300 hover:shadow-2xl flex flex-col pt-6 overflow-hidden"
+              className="bg-white border border-gray-200 shadow-xl rounded-2xl transition duration-300 flex flex-col pt-6 overflow-hidden"
             >
               <div className="p-6 flex items-center justify-center flex-col grow flex-1">
                 <div className="w-44 h-44 mx-auto">

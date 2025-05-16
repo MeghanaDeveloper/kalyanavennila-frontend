@@ -9,7 +9,7 @@ const PartnerPreferencesForm = ({
 }) => {
   return (
     <>
-      <div className="px-4">
+      <div className="md:px-14">
         <div className=" bg-white shadow-md rounded-t-2xl px-9 py-6 ">
           <form>
             <p className="text-primary font-bold text-2xl pb-8">

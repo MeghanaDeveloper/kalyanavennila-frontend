@@ -55,13 +55,8 @@ const ProfileCards = () => {
       <SearchProfile
         approvedProfiles={approvedProfiles}
         handleViewProfile={handleViewProfile}
+        loading={loading}
       />
-
-      {loading && (
-        <div className="absolute inset-0 bg-white/80 flex justify-center items-center z-10">
-          <FaSpinner className="text-primary animate-spin text-4xl" />
-        </div>
-      )}
 
       {showModal && (
         <div className="fixed inset-0 bg-opacity-60 backdrop-blur-md flex justify-center items-center z-50 shadow-3xl  ">

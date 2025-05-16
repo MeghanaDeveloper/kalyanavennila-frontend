@@ -6,6 +6,7 @@ import ProfileSection from "./components/profileSection";
 import Community from "./components/community";
 import ChooseUs from "./components/chooseUs";
 import ProfileModals from "../profileModals/profileModals";
+import Subscription from "./components/subscription";
 
 
 const Home = () => {
@@ -13,8 +14,11 @@ const Home = () => {
   return (
     <>
       <BannerSlider />
-      <ProfileSection />
+
+            <ProfileSection />
+            
       <MatchMaking />
+            <Subscription/>
       <Community />
       <ChooseUs />
       <Sponsors />
