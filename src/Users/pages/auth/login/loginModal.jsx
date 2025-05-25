@@ -31,7 +31,7 @@ const LoginModal = () => {
       const response = await dispatch(loginData(accountId, password));
       if (response.success) {
         setIsLoginOpen(false);
-        navigate("/home");
+        navigate("/");
         if (progress !== 100) {
           setProfileModalOpen(true);
         }
@@ -61,7 +61,7 @@ const LoginModal = () => {
             }`}
           ></IoMdClose>
 
-           <p className='text-xl text-blue-700 font-bold pt-9 text-center'>Currently we are registering manually please write to us at services@kalyanavennila.com</p>
+           {/* <p className='text-xl text-blue-700 font-bold pt-9 text-center'>Currently we are registering manually please write to us at services@kalyanavennila.com</p> */}
 
           <div className="flex justify-center items-center pt-10">
             <div

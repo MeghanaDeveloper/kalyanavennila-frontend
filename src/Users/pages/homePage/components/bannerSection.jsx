@@ -3,11 +3,12 @@ import {  motion as Motion } from 'framer-motion';
 import banner1 from '../../../../assets/image1.jpg';
 import banner2 from '../../../../assets/tirupati-img.jpg';
 import banner3 from '../../../../assets/image3.png';
+    
 
 const images = [
     { src: banner1, text: "Find Your Perfect Match" },
     { src: banner2, text: "" },
-    { src: banner3, text: "" } 
+    { src: banner3, text: "" }
 ];
 
 const BannerSlider = () => {
@@ -37,9 +38,10 @@ const BannerSlider = () => {
                 </Motion.div>
                 
         </div>
-        <div className="w-full overflow-hidden bg-primary py-3">
+
+        <div className="w-full overflow-hidden bg-yellow-500 py-3">
   <div className="whitespace-nowrap animate-marquee text-xl font-bold text-black">
-         <p className='bg-primary padding-lr  font-bold py-3 text-xl text-black'>Introducing soon: Kalyanavennila.com. For now,write to us at services@kalyanavennila.com or call us at 83310 85410</p>
+         <p className=' padding-lr  font-bold py-3 text-xl text-black'>Introducing soon: Kalyanavennila.com. Register for free here or write to us at services@kalyanavennila.com or call us at 83310 85410</p>
          </div>
          </div>
          </>

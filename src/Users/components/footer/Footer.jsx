@@ -61,8 +61,8 @@ const Footer = () => {
           </p>
           <p>
             <span className="font-bold block">Address : </span>
-            1205 Aspira Apartments, J.P.Nagar, Banglore,
-            <span className="block">Karnataka - 560078</span>
+           87, Phase 1,Emerald park, Annojiguda, 
+            <span className="block">Hyderabad - 500088</span>
           </p>
         </div>
 

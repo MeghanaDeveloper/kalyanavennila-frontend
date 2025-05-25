@@ -16,7 +16,7 @@ const SignUpModalStep1 = () => {
         className="absolute top-5 right-5  text-primary text-lg transition-effects">
       </IoMdClose>
 
-      <p className='text-xl text-blue-700 font-bold pt-9 text-center'>Currently we are registering manually please write to us at services@kalyanavennila.com</p>
+      {/* <p className='text-xl text-blue-700 font-bold pt-9 text-center'>Currently we are registering manually please write to us at services@kalyanavennila.com</p> */}
 
 
       <div className="flex justify-center items-center pt-6 lg:pt-10 ">

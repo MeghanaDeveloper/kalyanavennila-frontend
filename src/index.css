@@ -34,7 +34,7 @@
 
 @layer utilities {
   .padding-lr {
-    @apply px-10 md:px-14  lg:px-34  ;
+    @apply px-10 md:px-14  lg:px-36  ;
   }
   .padding-tb {
     @apply py-14 ;
@@ -59,7 +59,7 @@
 
 @layer utilities {
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 17s linear infinite;
   }
 
   .marquee-track {

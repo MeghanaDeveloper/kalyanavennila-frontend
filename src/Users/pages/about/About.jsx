@@ -5,6 +5,8 @@ import bgAbout from "../../../assets/bg-about.jpg";
 import valueImage from "../../../assets/value-image.png";
 import { motion as Motion } from "framer-motion";
 import ContactUs from "../contact/contactUs";
+import { Link } from "react-router-dom";
+import logo from '../../../assets/logo1.jpg'
 
 const AboutPage = () => {
   return (
@@ -107,25 +109,27 @@ const AboutPage = () => {
         </Motion.div>
       </section>
 
-      <section className="bg-[#F9F9F9] py-10 text-center">
+      <section className="bg-[#F9F9F9] pt-10 pb-20  text-center">
         <Motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto px-6"
+          className="max-w-7xl mx-auto px-6"
         >
-          <h2 className="text-5xl font-italian font-bold text-primary py-3">
+          <div className="bg-white rounded-lg p-10 pb-16 shadow-lg flex flex-col space-y-6 md:space-y-0 md:space-x-8">
+          <h2 className="text-6xl font-italian font-bold text-primary py-3">
             Find Your Life Partner with Us!
           </h2>
-          <p className="my-4 text-lg text-gray-700">
+          <p className="my-4 font-bold text-xl text-gray-700">
             Join the most **trusted matchmaking platform** and start your
             journey today.
           </p>
-          <p className="my-2 pb-7 text-md text-gray-600">
-            With thousands of success stories, we help you find a match based on
+          <p className="my-2 pb-7 font-bold text-xl text-gray-600">
+            We help you find a match based on
             **values, compatibility, and trust**.
           </p>
-          <button className="button-styles">Register Now</button>
+          <Link to='/' className="button-styles bg-green-700 text-2xl">Register Now For Free</Link>
+          </div>
         </Motion.div>
       </section>
 
@@ -148,8 +152,8 @@ const AboutPage = () => {
                 1. Create Your Profile
               </h3>
               <p className="text-gray-600 my-2">
-                Sign up and share details about yourself, your lifestyle, and
-                what you're looking for in a partner.
+                Sign up and share your profile for Free, to connect with
+                whom you want as a lifetime partner.
               </p>
             </Motion.div>
 
@@ -158,13 +162,15 @@ const AboutPage = () => {
               transition={{ duration: 0.3 }}
               className="bg-white p-6 shadow-lg cursor-pointer rounded-lg transition-all"
             >
-              <span className="text-4xl text-primary">💖</span>
+              <div className="flex justify-center items-center">
+              <img src={logo} width='40' height='40' className="rounded-full"/>
+              </div>
+
               <h3 className="text-xl font-bold text-primary my-4">
-                2. Find Compatible Matches
+                2. Find Your Compatible Match
               </h3>
               <p className="text-gray-600 my-2">
-                Our advanced **AI-powered matching** system finds potential
-                partners based on shared interests and values.
+                  With small subscription of Rs.1000 access your preferred contact numbers, unlimited for 3 months.
               </p>
             </Motion.div>
 

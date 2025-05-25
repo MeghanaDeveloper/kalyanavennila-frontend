@@ -24,16 +24,16 @@ const Subscription = () => {
                 🔓 Unlock Unlimited Profiles
               </h2>
               <p className="text-gray-700 text-xl mb-4">
-                With just need{" "}
+                With {" "}
                 <strong className="text-primary">one subscription</strong>, you
                 get full access to browse{" "}
                 <strong className="text-primary">
                   unlimited profiles for 3 months.
                 </strong>{" "}
-                Find your perfect match faster with enhanced search and contact
+                Find your perfect match faster with unlimited search and contact
                 options.
               </p>
-              <p className="text-gray-700 text-lg mb-6">
+              <p className="text-gray-700 text-xl mb-6">
                 Meet genuine, verified individuals who share your values. Your
                 journey to meaningful connections starts now!
               </p>

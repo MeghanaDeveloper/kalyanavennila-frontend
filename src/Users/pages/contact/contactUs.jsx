@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion as Motion } from "framer-motion";
+import toast from "react-hot-toast";
+import { userContactToEmail } from "../../services/authAPI's";
 
 const ContactUs = () => {
+  const [formData,setFormData] = useState({
+    name:"",
+    email:"",
+    phone:"",
+    message:""
+  })
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await userContactToEmail(formData);
+      if (res.success) {
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } 
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <>
       <section className="bg-[#FDF6F0] py-10">
@@ -41,8 +70,7 @@ const ContactUs = () => {
                 <span className="text-3xl text-primary">📍</span>
                 <div>
                   <p className="text-lg font-semibold text-gray-800">Address</p>
-                  <p className="text-gray-600">1205 Aspira Apartments, J.P.Nagar, Banglore,
-                  <span className="block">Karnataka - 560078</span></p>
+                  <p className="text-gray-600">87, Phase 1, Emerald park, Annojiguda, Hyderabad-500088</p>
                 </div>
               </div>
             </div>
@@ -51,36 +79,48 @@ const ContactUs = () => {
               <div>
                 <label className="label-styles">Your Name</label>
                 <input
+                name="name"
                   type="text"
                   className="textbox-styles"
                   placeholder="Enter your name"
+                  value={formData?.name}
+                  onChange={handleChange}
                 />
               </div>
               <div>
                 <label className="label-styles">Your Email</label>
                 <input
+                name="email"
                   type="email"
                   className="textbox-styles"
                   placeholder="Enter your email"
+                  value={formData?.email}
+                  onChange={handleChange}
                 />
               </div>
               <div>
                 <label className="label-styles">Your Mobile Number</label>
                 <input
+                name="phone"
                   type="tel"
                   className="textbox-styles"
                   placeholder="Enter your mobile number"
+                  value={formData?.phone}
+                  onChange={handleChange}
                 />
               </div>
               <div className="pb-5">
                 <label className="label-styles">Message</label>
                 <textarea
+                name="message"
                   className="textbox-styles"
                   placeholder="Write your message..."
                   rows="4"
+                  value={formData?.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
-              <button type="submit" className="button-styles">
+              <button type="submit" className="button-styles" onClick={handleSubmit}>
                 Send Message
               </button>
             </form>

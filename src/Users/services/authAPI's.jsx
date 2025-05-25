@@ -321,6 +321,38 @@ export const resetPassword =async  ( resetPasswordData)  => {
     }
 }
 
+//user contact
+export const userContactToEmail = async  ( formData)  => {
+    try{
+        const response = await axios.post(`${BASE_URL}/user-contact`,formData)
+        if (response &&   response.status === 200) {
+            toast.success(response.data.message, {
+                position: "top-center",
+                autoClose: 3000 ,
+                 className: 'custom-toast'
+            });
+            return  { 
+                success: true, 
+                data: response.data 
+            };
+        }
+    }
+    catch(error){
+        const errors = error.response.data.error 
+        toast.error(errors, {
+            position: "top-center",
+            duration: 5000,
+            style: {
+                border: '3px solid red',
+                padding: '16px',
+              }
+          });
+          return { 
+            success: false, 
+            errors: errors 
+        };
+    }
+}
 
 
 

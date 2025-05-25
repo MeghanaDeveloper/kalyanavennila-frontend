@@ -8,22 +8,18 @@ import ChooseUs from "./components/chooseUs";
 import ProfileModals from "../profileModals/profileModals";
 import Subscription from "./components/subscription";
 
-
 const Home = () => {
-
   return (
     <>
       <BannerSlider />
-
-            <ProfileSection />
-            
+      <ProfileSection />
       <MatchMaking />
-            <Subscription/>
+      <Subscription />
       <Community />
       <ChooseUs />
       <Sponsors />
 
-      <ProfileModals/>
+      {/* <ProfileModals /> */}
     </>
   );
 };

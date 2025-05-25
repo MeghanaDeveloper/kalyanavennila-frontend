@@ -23,9 +23,6 @@ const MatchMaking = () => {
                 <h2 className="text-lg md:text-3xl font-bold text-primary mb-6">
                     We take registrations for Kannada, <p className='block'>Tamil & Telugu Hindus</p> across globally
                 </h2>
-                <p className="text-md text-gray-500 font-semibold">
-                    "Register now for free"
-                </p>
             </div>
 
             <div className="flex justify-center items-center flex-wrap gap-6 ">
@@ -34,7 +31,7 @@ const MatchMaking = () => {
                   { img: login, title: "Login", desc: "Your ideal profile" },
                   { img: build, title: "Build", desc: "Your ideal profile" },
                   { img: findMatch, title: "Find", desc: "Your match" },
-                  { img: connect, title: "Connect", desc: "25 brides/grooms Rs.1001/-" }].map((step, index) => (
+                  { img: connect, title: "Connect", desc: "Unlimited 3 Months" }].map((step, index) => (
                     <React.Fragment key={index}>
                         <Motion.div 
                             className="flex flex-col items-center text-center"
@@ -46,7 +43,7 @@ const MatchMaking = () => {
                             <img src={step.img} alt={step.title} 
                                  className="w-24 md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-[#FF6F00] cursor-pointer" />
                             <h3 className="font-extrabold text-2xl text-primary m-2">{step.title}</h3>
-                            <p className="text-gray-500 text-[12px]">{step.desc}</p>
+                            <p className="text- text-[12px] font-bold">{step.desc}</p>
                         </Motion.div>
                         {index < 5 && (
                             <div className="flex items-center h-full">

@@ -28,13 +28,13 @@ const Navbar = () => {
     <>
       <nav className="padding-lr bg-primary p-4 shadow-md fixed top-0 left-0 w-full text-white z-50">
         <div className="container mx-auto flex justify-between items-center">
-          <Link to="/home" className="flex justify-center items-center gap-3">
+          <Link to="/" className="flex justify-center items-center gap-3">
             <img src={logo} alt="logo" className="w-11 h-11 rounded-3xl" />
             <span className="text-2xl font-bold cursor-pointer">
               Kalyana Vennila
             </span>
           </Link>
-
+      
           <div className="hidden lg:flex items-center space-x-3.5 font-medium">
             {!isAuthenticated ? (
               <>
@@ -59,7 +59,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/home" className="hover:text-gray-300">
+                <Link to="/" className="hover:text-gray-300">
                   Home
                 </Link>
                 <Link to="/about" className="hover:text-gray-300">
@@ -154,7 +154,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Link
-                  to="/home"
+                  to="/"
                   className="hover:text-gray-300"
                   onClick={() => setIsOpen(null)}
                 >
