@@ -20,6 +20,7 @@ import UploadDocuments from "./Users/pages/profile/createProfile/pages/uploadDoc
 import CreateProfileLayout from "./Users/pages/profile/createProfile/createProfileLayout";
 import PageNotFound from "./Users/routes/pageNotFound";
 import LoginModal from "./Users/pages/auth/login/loginModal";
+import Blogs from "./Users/pages/blogs/blogs";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/privacy&policy" element={<PrivacyAndPolicy />} />
         <Route path="/terms&conditions" element={<TermsAndConditions />} />
 

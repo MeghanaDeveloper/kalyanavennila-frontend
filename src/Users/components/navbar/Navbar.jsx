@@ -56,6 +56,12 @@ const Navbar = () => {
                 >
                   About Us
                 </Link>
+                <Link
+                  to="/blogs"
+                  className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects"
+                >
+                  Our Blogs
+                </Link>
               </>
             ) : (
               <>
@@ -71,9 +77,9 @@ const Navbar = () => {
                 <Link to="/find-your-match" className="hover:text-gray-300">
                   Find Your Match
                 </Link>
-                {/* <Link to="/blogs" className="hover:text-gray-300">
-                  Blogs
-                </Link> */}
+                <Link to="/blogs" className="hover:text-gray-300">
+                  Our Blogs
+                </Link>
                 <Link to="/contact-us" className="hover:text-gray-300">
                   Contact Us
                 </Link>
@@ -146,10 +152,22 @@ const Navbar = () => {
                     setStep(8),
                     setIsOpen(null),
                   ]}
-                  className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition"
+                  className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition-effects"
                 >
                   Login
                 </p>
+                <Link
+                 to='/about'
+                  className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition"
+                >
+                  About Us
+                </Link>
+                <Link
+                  to='/blogs'
+                  className="hover:text-gray-300 rounded-lg cursor-pointer px-3 py-1.5 transition"
+                >
+                  Our Blogs
+                </Link>
               </>
             ) : (
               <>
