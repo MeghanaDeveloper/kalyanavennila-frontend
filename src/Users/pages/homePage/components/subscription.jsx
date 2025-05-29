@@ -20,7 +20,7 @@ const Subscription = () => {
             />
 
             <div className="text-left flex-1">
-              <h2 className="text-5xl md:text-5xl font-bold text-primary mb-4 font-italian">
+              <h2 className="text-6xl font-bold text-primary mb-4 font-italian">
                 🔓 Unlock Unlimited Profiles
               </h2>
               <p className="text-gray-700 text-xl mb-4">

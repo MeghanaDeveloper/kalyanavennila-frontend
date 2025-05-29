@@ -21,6 +21,7 @@ import CreateProfileLayout from "./Users/pages/profile/createProfile/createProfi
 import PageNotFound from "./Users/routes/pageNotFound";
 import LoginModal from "./Users/pages/auth/login/loginModal";
 import Blogs from "./Users/pages/blogs/blogs";
+import FAQS from "./Users/common/FAQ/FAQ";
 
 function App() {
   return (
@@ -31,12 +32,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/how-to-write-a-perfect-matrimonial-profile" element={<Blogs />} />
         <Route path="/privacy&policy" element={<PrivacyAndPolicy />} />
         <Route path="/terms&conditions" element={<TermsAndConditions />} />
+        <Route path="/faq's" element={<FAQS />} />
 
         <Route element={<PrivateRoute />}>
-          {/* <Route path="/home" element={<Home />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/create-profile" element={<CreateProfileLayout />}>
             <Route index element={<CreateProfile />} />

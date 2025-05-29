@@ -33,7 +33,6 @@ const allCities = formData?.locationDetails?.state?.code
                 className="textbox-styles"
                 value={formData.surName}
                 onChange={handleChange}
-                required
               />
             </div>
 
@@ -159,7 +158,7 @@ const allCities = formData?.locationDetails?.state?.code
                 className="textbox-styles"
                 value={formData.caste}
                 onChange={handleChange}
-                required
+                
               />
             </div>
 

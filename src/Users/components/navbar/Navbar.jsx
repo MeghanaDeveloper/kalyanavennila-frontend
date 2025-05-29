@@ -57,7 +57,7 @@ const Navbar = () => {
                   About Us
                 </Link>
                 <Link
-                  to="/blogs"
+                  to="/blogs/how-to-write-a-perfect-matrimonial-profile"
                   className="hover:text-gray-300 border border-white rounded-lg cursor-pointer px-3 py-1.5 transition-effects"
                 >
                   Our Blogs

@@ -1,8 +1,8 @@
 import React from "react";
-import aboutImage from "../../../assets/about-image.png";
-import missionImage from "../../../assets/vission.jpg";
+import aboutImage from "../../../assets/about-image.webp";
+import missionImage from "../../../assets/vission.webp";
 import bgAbout from "../../../assets/bg-about.jpg";
-import valueImage from "../../../assets/value-image.png";
+import valueImage from "../../../assets/value-image.webp";
 import { motion as Motion } from "framer-motion";
 import ContactUs from "../contact/contactUs";
 import { Link } from "react-router-dom";
@@ -101,7 +101,7 @@ const AboutPage = () => {
               <p className="text-gray-600 text-lg">
                 Our mission is to create a **safe, genuine, and user-friendly**
                 platform for individuals seeking meaningful relationships. We
-                ensure **verified profiles, AI-based matchmaking, and privacy
+                ensure **verified profiles and privacy
                 protection** to provide a seamless experience.
               </p>
             </div>

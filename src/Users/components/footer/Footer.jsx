@@ -19,6 +19,16 @@ const Footer = () => {
                 About Us
               </Link>
             </li>
+            <li>
+              <Link to="/blogs/how-to-write-a-perfect-matrimonial-profile" className="hover:underline hover:text-gray-400">
+               Blogs
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq's" className="hover:underline hover:text-gray-400">
+                FAQ
+              </Link>
+            </li>
           </ul>
         </div>
 

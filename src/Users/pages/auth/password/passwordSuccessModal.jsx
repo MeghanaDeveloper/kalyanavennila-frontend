@@ -17,6 +17,7 @@ const PasswordSuccessModal = () => {
 
   return (
     <>
+    <div id='signupSuccess'>
       <IoMdClose
         onClick={() => [setIsSignUpOpen(false)]}
         className="absolute top-5 right-5  text-primary text-lg transition-effects"
@@ -64,6 +65,7 @@ const PasswordSuccessModal = () => {
             Home
           </p>
         </div>
+      </div>
       </div>
     </>
   );

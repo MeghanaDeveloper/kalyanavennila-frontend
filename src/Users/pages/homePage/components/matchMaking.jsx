@@ -15,7 +15,7 @@ const MatchMaking = () => {
         <section className="bg-cover bg-center py-12 px-6"
             style={{ backgroundImage: `url(${bgImage})` }}
         >
-            <h2 className="text-5xl md:text-[65px] font-bold text-center font-italian text-primary mb-5">
+            <h2 className="text-6xl font-bold text-center font-italian text-primary mb-5">
                 Find Your Special person here
             </h2>
 

@@ -9,7 +9,7 @@ const ProfileSection = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold font-italian"
+          className="text-5xl md:text-6xl font-bold font-italian"
         >
           Kalyana Vennila : Find Your Perfect <span className="block pt-6">South Indian Matrimony Match Online.</span>
         </Motion.h1>

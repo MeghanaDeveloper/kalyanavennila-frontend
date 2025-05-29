@@ -1,69 +1,22 @@
-import React from "react";
+
 import {
-  FaUsers,
-  FaHeart,
   FaUserShield,
   FaStar,
-  FaTrophy,
-  FaLightbulb,
   FaUser,
 } from "react-icons/fa";
 import { motion as Motion } from "framer-motion";
-import bgImage from "../../../../assets/bg-image-6.webp";
+import bgImage from "../../../../assets/bg-image-6.jpg";
 
 const ChooseUs = () => {
   return (
     <>
-      {/* <section className="relative bg-orange-600 text-white flex justify-center items-center flex-col padding-tb padding-lr">
-        <Motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className=" text-4xl md:text-6xl font-bold font-italian"
-        >
-          Find Your Match – Free to Join, Easy to Connect!
-        </Motion.h1>
-
-        <Motion.ul
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-2xl mt-6 max-w-2xl mx-auto"
-        >
-          <li>
-            ✔ Free Registration: Create your profile in minutes – absolutely
-            free.
-          </li>
-          <li className="block">
-            ✔ Your Profile is Visible to All: Whether you're subscribed or not,
-            your profile will be shown to potential matches.
-          </li>
-          <li className="block">
-            ✔ You Might Find a Match Even Without Paying!
-          </li>
-          <li className="block">
-            ✔ Upgrade Anytime: Want more visibility and features?
-          </li>
-        </Motion.ul>
-
-        <Motion.button
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-          className="mt-9 bg-white text-orange-600 px-6 py-3 rounded-full font-semibold shadow-lg"
-        >
-          Join Now - It’s Free!
-        </Motion.button>
-
-         Join for Free – No Payment Needed to Start!
-      </section> */}
-
       <section className="relative bg-primary text-white flex justify-center items-center px-6 padding-tb">
         <div className="max-w-4xl w-full text-left">
           <Motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl text-center font-bold font-italian mb-6"
+            className="text-6xl text-center font-bold font-italian mb-6"
           >
             Find Your Match – Free to Join, Easy to Connect!
           </Motion.h1>
@@ -72,7 +25,7 @@ const ChooseUs = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-xl space-y-6 pl-32 list-none"
+            className="text-xl space-y-6 md:pl-32 list-none"
           >
             <li>
               ✔ Free Registration: Create your profile in minutes – absolutely
@@ -95,7 +48,7 @@ const ChooseUs = () => {
         className="padding-tb padding-lr bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <h2 className=" text-4xl md:text-6xl font-bold text-center text-primary font-italian">
+        <h2 className="text-6xl font-bold text-center text-primary font-italian">
           Why Choose Us?
         </h2>
 

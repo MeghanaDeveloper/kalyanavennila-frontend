@@ -71,7 +71,6 @@ const SignupModalstep3 = () => {
           </label>
           <div className="mt-2">
             <input
-              required
               id="surName"
               name="surName"
               type="text"
