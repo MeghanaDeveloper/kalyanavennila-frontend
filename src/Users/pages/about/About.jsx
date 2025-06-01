@@ -6,7 +6,7 @@ import valueImage from "../../../assets/value-image.webp";
 import { motion as Motion } from "framer-motion";
 import ContactUs from "../contact/contactUs";
 import { Link } from "react-router-dom";
-import logo from '../../../assets/logo1.jpg'
+import logo from '../../../assets/logo1.webp'
 
 const AboutPage = () => {
   return (
@@ -36,8 +36,11 @@ const AboutPage = () => {
             <img
               src={aboutImage}
               alt="About Us"
-              className="w-80 h-80 object-cover rounded-lg"
+              className="w-60  h-60 object-cover rounded-lg"
+              decoding="async" 
             />
+
+
             <div className="text-left">
               <h2 className="text-5xl font-italian font-bold text-primary mb-4">About Us</h2>
               <p className="text-gray-600 text-lg">
@@ -63,7 +66,8 @@ const AboutPage = () => {
             <img
               src={valueImage}
               alt="About Us"
-              className="w-80 h-80 object-cover rounded-lg"
+               className="w-60 h-60 object-cover rounded-lg"
+              decoding="async" 
             />
             <div className="text-left">
               <h2 className="text-5xl font-bold font-italian  text-primary mb-4">
@@ -92,7 +96,8 @@ const AboutPage = () => {
             <img
               src={missionImage}
               alt="Mission & Vision"
-              className="w-80 h-80 object-cover rounded-lg"
+               className="w-60 h-60 object-cover rounded-lg"
+              decoding="async" 
             />
             <div className="text-left">
               <h2 className="text-5xl font-italian font-bold text-primary mb-6">

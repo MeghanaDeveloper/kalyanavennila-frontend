@@ -6,7 +6,7 @@ import { logout } from "../../redux/slices/authSlice";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuthContextData from "../../hooks/useAuthContextData";
-import logo from "../../../assets/logo1.jpg";
+import logo from "../../../assets/logo1.webp";
 
 const Navbar = () => {
   const {

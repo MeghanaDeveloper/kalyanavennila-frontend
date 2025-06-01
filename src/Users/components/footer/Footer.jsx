@@ -99,6 +99,7 @@ const Footer = () => {
               to="https://www.facebook.com/people/Kalyanavennila/61575497643118/?sk=about"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit our Facebook page"
             >
               <FaFacebookSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </Link>
@@ -106,6 +107,7 @@ const Footer = () => {
               to="https://www.youtube.com/@Kalyanavennila"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit our You Tube page"
             >
               <FaYoutubeSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </Link>
@@ -113,6 +115,7 @@ const Footer = () => {
               href=" https://wa.me/918331085410 "
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit our What's UP page"
             >
               <FaWhatsappSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </a>
@@ -120,6 +123,7 @@ const Footer = () => {
               to="https://www.instagram.com/kalyanavennila/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit our Instagram page"
             >
               <FaInstagramSquare className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </Link>
@@ -127,6 +131,7 @@ const Footer = () => {
               to="https://www.linkedin.com/in/kalyana-vennila-202574364/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit our LinkedIn page"
             >
               <FaLinkedin className="w-8 h-8 transition-transform duration-300 hover:scale-125" />
             </Link>
